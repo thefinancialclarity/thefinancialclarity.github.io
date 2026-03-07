@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Financial Clarity · Tu dinero, tu tranquilidad</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap');
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1A2B38;--ink2:#2E4A5C;--ink3:#4A6B7A;
@@ -28,11 +26,11 @@ body{background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif;f
 
 /* NAV */
 nav{position:fixed;top:34px;left:0;right:0;z-index:200;padding:18px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
-nav.scrolled{background:rgba(253,252,249,.98);backdrop-filter:blur(20px);padding:14px 52px;border-bottom:1px solid rgba(26,43,56,.12);box-shadow:0 2px 20px rgba(26,43,56,.08);}
+nav.scrolled{background:rgba(253,252,249,.98);backdrop-filter:blur(20px);padding:14px 52px;border-bottom:1px solid rgba(26,43,56,.07);box-shadow:0 2px 20px rgba(26,43,56,.04);}
 .nav-logo{font-family:'Lora',serif;font-size:19px;font-weight:600;text-decoration:none;color:white;transition:color .3s;}
 nav.scrolled .nav-logo{color:var(--ink);}
 .nav-logo span{color:var(--sage3);font-style:italic;}
-nav.scrolled .nav-logo span{color:#4A7C6F;}
+nav.scrolled .nav-logo span{color:var(--sage);}
 .nav-links{display:flex;gap:28px;list-style:none;}
 .nav-links a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:color .2s;color:rgba(255,255,255,.95);}
 nav.scrolled .nav-links a{color:var(--ink);font-weight:400;}
@@ -63,7 +61,7 @@ nav.scrolled .nav-toggle span{background:var(--ink);}
 
 .hero-h1{font-family:'Lora',serif;font-size:clamp(42px,5.5vw,78px);font-weight:700;line-height:1.02;color:white;margin-bottom:10px;animation:up .8s ease forwards .2s;}
 .hero-h1 em{font-style:italic;color:var(--sage3);display:block;}
-.hero-subtitle{font-family:'Lora',serif;font-size:clamp(18px,2vw,26px);font-weight:400;font-style:italic;color:rgba(255,255,255,.65);margin-bottom:28px;animation:up .8s ease forwards .35s;}
+.hero-subtitle{font-family:'Lora',serif;font-size:clamp(18px,2vw,26px);font-weight:400;font-style:italic;color:rgba(255,255,255,.4);margin-bottom:28px;animation:up .8s ease forwards .35s;}
 
 .hero-pain{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;animation:up .8s ease forwards .45s;}
 .pain-item{display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,.72);line-height:1.5;}
@@ -248,20 +246,20 @@ textarea.cfi{resize:vertical;min-height:90px;}
 .cfb:hover{background:var(--sage);}
 
 /* FOOTER */
-footer{background:#EFF0E8;padding:48px 52px 24px;border-top:2px solid #4A7C6F;}
+footer{background:#E8E9E0;padding:48px 52px 24px;border-top:2px solid #4A7C6F;}
 .fi{max-width:1060px;margin:0 auto;}
 .ft{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:40px;}
-.f-logo{font-family:'Lora',serif;font-size:20px;font-weight:600;color:#1A2B38;margin-bottom:7px;}
-.f-logo span{color:#4A7C6F;font-style:italic;}
-.f-tag{font-size:13px;color:#4A6B7A;line-height:1.6;max-width:200px;}
+.f-logo{font-family:'Lora',serif;font-size:20px;font-weight:600;color:white;margin-bottom:7px;}
+.f-logo span{color:var(--sage3);font-style:italic;}
+.f-tag{font-size:13px;color:rgba(255,255,255,.75);line-height:1.6;max-width:200px;}
 .f-links{display:flex;gap:40px;flex-wrap:wrap;}
-.flg-t{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4A7C6F;margin-bottom:12px;}
+.flg-t{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage3);margin-bottom:12px;}
 .flg-l{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.flg-l a{font-size:13px;color:#2E4A5C;text-decoration:none;transition:color .2s;}
-.flg-l a:hover{color:#4A7C6F;}
-.fb-row{border-top:1px solid rgba(26,43,56,.12);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-.f-copy{font-size:12px;color:#4A6B7A;}
-.f-ig{font-size:12px;color:#4A7C6F;text-decoration:none;}
+.flg-l a{font-size:13px;color:rgba(255,255,255,.78);text-decoration:none;transition:color .2s;}
+.flg-l a:hover{color:var(--sage3);}
+.fb-row{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.f-copy{font-size:12px;color:rgba(255,255,255,.65);}
+.f-ig{font-size:12px;color:var(--sage3);text-decoration:none;}
 .f-ig:hover{color:var(--sage2);}
 
 /* DIVIDER */
@@ -292,6 +290,13 @@ footer{background:#EFF0E8;padding:48px 52px 24px;border-top:2px solid #4A7C6F;}
   .ft{flex-direction:column;}
   .f-links{flex-direction:column;gap:18px;}
 }
+
+/* FOOTER FORCE DARK TEXT */
+footer, footer * { color: #1A2B38 !important; }
+footer .f-logo span { color: #4A7C6F !important; }
+footer .flg-t { color: #4A7C6F !important; }
+footer .f-ig { color: #4A7C6F !important; }
+footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
 </style>
 </head>
 <body>
@@ -315,7 +320,8 @@ footer{background:#EFF0E8;padding:48px 52px 24px;border-top:2px solid #4A7C6F;}
     <li><a href="#pain"    data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a></li>
     <li><a href="#about"   data-es="Sobre mí"    data-en="About Me">Sobre mí</a></li>
     <li><a href="#services" data-es="Servicios"  data-en="Services">Servicios</a></li>
-    <li><a href="#lm"      data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li>
+    <li><a href="#lm" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li>
+    <li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test gratis" data-en="Free Quiz">Test gratis</a></li>
     <li><a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="nav-cta" data-es="Agendar sesión" data-en="Book Session">Agendar sesión</a></li>
   </ul>
   <button class="nav-toggle" id="navT" onclick="tm()"><span></span><span></span><span></span></button>
@@ -381,6 +387,10 @@ footer{background:#EFF0E8;padding:48px 52px 24px;border-top:2px solid #4A7C6F;}
         <span class="pc-match" data-es="Sí, eso me pasa" data-en="Yes, that's me">Sí, eso me pasa</span>
       </div>
     </div>
+      <div style="text-align:center;margin-top:36px;" class="reveal">
+        <p style="font-size:14px;color:var(--ink3);margin-bottom:14px;" data-es="¿Te identificaste? Descubre tu perfil financiero exacto." data-en="Sound familiar? Find your exact financial profile.">¿Te identificaste? Descubre tu perfil financiero exacto.</p>
+        <a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" style="display:inline-block;padding:13px 28px;border-radius:100px;background:var(--ink);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;" data-es="→ Hacer el test gratis (3 min)" data-en="→ Take the free quiz (3 min)">→ Hacer el test gratis (3 min)</a>
+      </div>
   </div>
 </section>
 
@@ -618,7 +628,8 @@ footer{background:#EFF0E8;padding:48px 52px 24px;border-top:2px solid #4A7C6F;}
       </div>
       <div class="f-links">
         <div><div class="flg-t" data-es="Navegar" data-en="Navigate">Navegar</div><ul class="flg-l"><li><a href="#pain" data-es="¿Te suena?" data-en="Sound familiar?">¿Te suena?</a></li><li><a href="#about" data-es="Sobre mí" data-en="About Me">Sobre mí</a></li><li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li><li><a href="#lm" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li><li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li></ul></div>
-        <div><div class="flg-t" data-es="Servicios" data-en="Services">Servicios</div><ul class="flg-l"><li><a href="#services" data-es="Sesión Diagnóstico" data-en="Diagnostic Session">Sesión Diagnóstico</a></li><li><a href="#services" data-es="Coaching 1:1" data-en="1:1 Coaching">Coaching 1:1</a></li><li><a href="#services" data-es="Programa Grupal" data-en="Group Program">Programa Grupal</a></li></ul></div>
+        <div><div class="flg-t" data-es="Servicios" data-en="Services">Servicios</div><ul class="flg-l"><li><a href="#services" data-es="Sesión Diagnóstico" data-en="Diagnostic Session">Sesión Diagnóstico</a></li><li><a href="#services" data-es="Coaching 1:1" data-en="1:1 Coaching">Coaching 1:1</a></li><li><a href="#services" data-es="Programa Grupal" data-en="Group Program">Programa Grupal</a></li>
+<li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test: Tu relación con el dinero" data-en="Quiz: Your money relationship">Test: Tu relación con el dinero</a></li></ul></div>
       </div>
     </div>
     <div class="fb-row">
@@ -638,12 +649,8 @@ function setLang(l){
     if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')return;
     const val=el.getAttribute('data-'+l);
     if(!val)return;
-    // Only use textContent for elements with no child elements
-    if(el.children.length===0){
-      el.textContent=val;
-    } else {
-      el.innerHTML=val;
-    }
+    if(el.children.length===0){el.textContent=val;}
+    else{el.innerHTML=val;}
   });
   document.querySelectorAll('[data-ph-es]').forEach(el=>{el.placeholder=el.getAttribute('data-ph-'+l)||el.placeholder;});
 }
