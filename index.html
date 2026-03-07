@@ -55,25 +55,25 @@ nav.scrolled .nav-toggle span{background:var(--ink);}
 @keyframes float{0%,100%{transform:translate(0,0);}50%{transform:translate(20px,-30px);}}
 
 .hero-inner{position:relative;z-index:1;max-width:1060px;margin:0 auto;width:100%;}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(74,124,111,.2);border:1px solid rgba(157,196,184,.25);border-radius:100px;padding:6px 16px 6px 10px;margin-bottom:32px;opacity:0;animation:up .8s ease forwards .1s;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(74,124,111,.2);border:1px solid rgba(157,196,184,.25);border-radius:100px;padding:6px 16px 6px 10px;margin-bottom:32px;animation:up .8s ease forwards .1s;}
 .hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--sage3);}
 .hero-tag-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage3);}
 
-.hero-h1{font-family:'Lora',serif;font-size:clamp(42px,5.5vw,78px);font-weight:700;line-height:1.02;color:white;margin-bottom:10px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero-h1{font-family:'Lora',serif;font-size:clamp(42px,5.5vw,78px);font-weight:700;line-height:1.02;color:white;margin-bottom:10px;animation:up .8s ease forwards .2s;}
 .hero-h1 em{font-style:italic;color:var(--sage3);display:block;}
-.hero-subtitle{font-family:'Lora',serif;font-size:clamp(18px,2vw,26px);font-weight:400;font-style:italic;color:rgba(255,255,255,.4);margin-bottom:28px;opacity:0;animation:up .8s ease forwards .35s;}
+.hero-subtitle{font-family:'Lora',serif;font-size:clamp(18px,2vw,26px);font-weight:400;font-style:italic;color:rgba(255,255,255,.55);margin-bottom:28px;animation:up .8s ease forwards .35s;}
 
-.hero-pain{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;opacity:0;animation:up .8s ease forwards .45s;}
+.hero-pain{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;animation:up .8s ease forwards .45s;}
 .pain-item{display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,.72);line-height:1.5;}
 .pain-check{width:20px;height:20px;border-radius:50%;background:rgba(74,124,111,.25);border:1px solid rgba(157,196,184,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;}
 
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:up .8s ease forwards .6s;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:up .8s ease forwards .6s;}
 .btn-sage{padding:14px 28px;border-radius:100px;background:var(--sage);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;transition:all .25s;display:inline-block;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
 .btn-sage:hover{background:var(--sage2);transform:translateY(-2px);}
 .btn-outline{padding:14px 28px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s;display:inline-block;}
 .btn-outline:hover{border-color:var(--sage3);color:var(--sage3);transform:translateY(-2px);}
 
-@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
 
 /* PAIN SECTION — "¿Te suena familiar?" */
 #pain{background:var(--cream);padding:88px 52px;}
@@ -290,6 +290,10 @@ footer{background:var(--ink);padding:48px 52px 24px;}
   .ft{flex-direction:column;}
   .f-links{flex-direction:column;gap:18px;}
 }
+
+/* VISIBILITY OVERRIDE */
+.hero-tag,.hero-h1,.hero-subtitle,.hero-pain,.hero-btns{opacity:1!important;}
+.reveal{opacity:1!important;transform:none!important;}
 </style>
 </head>
 <body>
@@ -588,7 +592,7 @@ footer{background:var(--ink);padding:48px 52px 24px;}
         <p class="sec-p" data-es="Escríbeme por donde te sea más cómodo. Respondo en menos de 24 horas hábiles." data-en="Reach out wherever is most convenient. I respond within 24 business hours.">Escríbeme por donde te sea más cómodo. Respondo en menos de 24 horas hábiles.</p>
         <div class="c-methods">
           <a href="https://instagram.com/thefinancialclarity" target="_blank" class="cm"><div class="cm-ic">📱</div><div><div class="cm-l">Instagram</div><div class="cm-v">@thefinancialclarity</div></div></a>
-          <a href="/cdn-cgi/l/email-protection#a5cdc0c9c9cae5d1cdc0c3cccbc4cbc6ccc4c9c6c9c4d7ccd1dc8bcad7c2" class="cm"><div class="cm-ic">✉️</div><div><div class="cm-l" data-es="Email" data-en="Email">Email</div><div class="cm-v"><span class="__cf_email__" data-cfemail="eb838e878784ab9f838e8d82858a8588828a8788878a99829f92c584998c">[email&#160;protected]</span></div></div></a>
+          <a href="mailto:hello@thefinancialclarity.org" class="cm"><div class="cm-ic">✉️</div><div><div class="cm-l" data-es="Email" data-en="Email">Email</div><div class="cm-v">hello@thefinancialclarity.org</div></div></a>
           <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="cm"><div class="cm-ic">📅</div><div><div class="cm-l" data-es="Agenda directa" data-en="Direct booking">Agenda directa</div><div class="cm-v" data-es="Agenda tu sesión aquí" data-en="Book your session here">Agenda tu sesión aquí</div></div></a>
         </div>
       </div>
@@ -626,7 +630,7 @@ footer{background:var(--ink);padding:48px 52px 24px;}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 let lang='es';
 function setLang(l){
   lang=l;
