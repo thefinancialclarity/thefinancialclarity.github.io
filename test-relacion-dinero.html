@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test: ¿Cuál es tu relación con el dinero? · The Financial Clarity</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A2B38;--ink2:#2E4A5C;--ink3:#4A6B7A;
+  --sage:#4A7C6F;--sage2:#6A9E8F;--sage3:#9DC4B8;--sage4:#D4EDE7;
+  --blue:#2B5A8C;--blue2:#4A7DB5;--blue3:#89B4D4;--blue4:#D6E9F5;
+  --cream:#F8F6F0;--cream2:#EFF0E8;
+  --white:#FDFCF9;
+  --gold:#B8922A;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;}
+
+/* TOP BAR */
+.topbar{background:var(--ink);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;}
+.tb-logo{font-family:'Lora',serif;font-size:16px;font-weight:600;color:white;text-decoration:none;}
+.tb-logo span{color:var(--sage3);font-style:italic;}
+.tb-back{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;}
+.tb-back:hover{color:var(--sage3);}
+
+/* HERO */
+.quiz-hero{background:linear-gradient(135deg,#1A2B38 0%,#1E3545 50%,#1A3A30 100%);padding:60px 24px 48px;text-align:center;position:relative;overflow:hidden;}
+.qh-circle1{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(74,124,111,.15) 0%,transparent 65%);top:-100px;right:-80px;}
+.qh-circle2{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(43,90,140,.12) 0%,transparent 65%);bottom:-60px;left:-60px;}
+.qh-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(74,124,111,.2);border:1px solid rgba(157,196,184,.25);border-radius:100px;padding:5px 14px 5px 9px;margin-bottom:20px;}
+.qh-dot{width:6px;height:6px;border-radius:50%;background:var(--sage3);}
+.qh-tag-t{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sage3);}
+.qh-h{font-family:'Lora',serif;font-size:clamp(28px,5vw,52px);font-weight:700;color:white;line-height:1.05;margin-bottom:10px;position:relative;z-index:1;}
+.qh-h em{font-style:italic;color:var(--sage3);display:block;}
+.qh-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto 28px;line-height:1.7;position:relative;z-index:1;}
+.qh-meta{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;position:relative;z-index:1;}
+.qhm{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.5);}
+.qhm-ic{font-size:14px;}
+
+/* PROGRESS */
+.progress-wrap{max-width:600px;margin:0 auto;padding:28px 24px 0;}
+.prog-bar-bg{height:4px;background:rgba(26,43,56,.1);border-radius:100px;margin-bottom:8px;}
+.prog-bar{height:4px;background:linear-gradient(to right,var(--sage),var(--blue2));border-radius:100px;transition:width .5s ease;}
+.prog-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);text-align:right;}
+
+/* QUIZ CONTAINER */
+.quiz-wrap{max-width:600px;margin:0 auto;padding:28px 24px 60px;}
+
+/* QUESTION CARD */
+.q-card{background:white;border-radius:20px;padding:32px 28px;border:1px solid rgba(26,43,56,.07);box-shadow:0 4px 24px rgba(26,43,56,.06);animation:fadeIn .4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.q-num{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.q-num::before{content:'';width:16px;height:1px;background:var(--sage);}
+.q-text{font-family:'Lora',serif;font-size:clamp(17px,3vw,22px);font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:24px;}
+.q-emoji{font-size:32px;margin-bottom:14px;display:block;}
+
+/* OPTIONS */
+.options{display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(26,43,56,.09);background:var(--cream);cursor:pointer;transition:all .2s;text-align:left;}
+.opt:hover{border-color:var(--sage);background:var(--sage4);transform:translateX(3px);}
+.opt.selected{border-color:var(--sage);background:var(--sage4);transform:translateX(3px);}
+.opt-letter{width:26px;height:26px;border-radius:8px;background:white;border:1.5px solid rgba(26,43,56,.12);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--ink3);flex-shrink:0;transition:all .2s;}
+.opt.selected .opt-letter{background:var(--sage);border-color:var(--sage);color:white;}
+.opt-text{font-size:14px;color:var(--ink2);line-height:1.5;padding-top:3px;}
+
+/* NEXT BTN */
+.next-wrap{margin-top:20px;display:flex;justify-content:flex-end;}
+.btn-next{padding:12px 28px;border-radius:100px;background:var(--ink);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;opacity:.35;pointer-events:none;}
+.btn-next.active{opacity:1;pointer-events:all;}
+.btn-next.active:hover{background:var(--sage);transform:translateY(-2px);}
+
+/* EMAIL GATE */
+.email-gate{background:white;border-radius:20px;padding:36px 28px;border:1px solid rgba(26,43,56,.07);box-shadow:0 4px 24px rgba(26,43,56,.06);text-align:center;animation:fadeIn .4s ease;}
+.eg-emoji{font-size:44px;margin-bottom:16px;display:block;}
+.eg-h{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.eg-sub{font-size:14px;color:var(--ink3);line-height:1.7;max-width:380px;margin:0 auto 24px;}
+.eg-form{display:flex;flex-direction:column;gap:10px;max-width:360px;margin:0 auto;}
+.eg-input{padding:13px 16px;border-radius:10px;border:1.5px solid rgba(26,43,56,.1);background:var(--cream);font-size:14px;color:var(--ink);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;}
+.eg-input:focus{border-color:var(--sage);}
+.eg-input::placeholder{color:var(--ink3);opacity:.5;}
+.eg-btn{padding:14px;border-radius:100px;background:var(--sage);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;}
+.eg-btn:hover{background:var(--ink);}
+.eg-note{font-size:11px;color:var(--ink3);opacity:.5;margin-top:4px;}
+
+/* RESULT */
+.result-card{animation:fadeIn .5s ease;}
+.result-hero{border-radius:20px;padding:36px 28px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden;}
+.rh-gastador{background:linear-gradient(135deg,#8B3A1A,#C4622D);}
+.rh-evitador{background:linear-gradient(135deg,#1A2B38,#2B5A8C);}
+.rh-ambicioso{background:linear-gradient(135deg,#1A3A30,#4A7C6F);}
+.rh-acumulador{background:linear-gradient(135deg,#3A2A1A,#8B6914);}
+.result-emoji{font-size:56px;margin-bottom:12px;display:block;position:relative;z-index:1;}
+.result-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px;position:relative;z-index:1;}
+.result-name{font-family:'Lora',serif;font-size:clamp(26px,5vw,38px);font-weight:700;color:white;line-height:1.1;position:relative;z-index:1;}
+.result-name em{font-style:italic;display:block;font-size:.75em;opacity:.8;}
+
+.result-body{background:white;border-radius:20px;padding:28px;border:1px solid rgba(26,43,56,.07);margin-bottom:12px;}
+.rb-desc{font-size:15px;color:var(--ink2);line-height:1.85;margin-bottom:20px;}
+.rb-h{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.rb-h::before{content:'';width:14px;height:1px;background:var(--sage);}
+.rb-items{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.rb-item{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink2);line-height:1.6;}
+.rb-item::before{content:'→';color:var(--sage);flex-shrink:0;margin-top:1px;}
+.rb-strengths{display:flex;flex-direction:column;gap:8px;}
+.rb-str{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink2);line-height:1.6;}
+.rb-str::before{content:'✓';color:var(--blue2);flex-shrink:0;margin-top:1px;font-weight:700;}
+
+/* CTA */
+.result-cta{background:var(--ink);border-radius:20px;padding:28px;text-align:center;}
+.rc-h{font-family:'Lora',serif;font-size:20px;font-weight:700;color:white;margin-bottom:6px;}
+.rc-h em{font-style:italic;color:var(--sage3);}
+.rc-sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:20px;line-height:1.6;}
+.rc-btns{display:flex;flex-direction:column;gap:10px;}
+.btn-cta-primary{display:block;padding:14px;border-radius:100px;background:var(--sage);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;transition:all .25s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-cta-primary:hover{background:var(--sage2);}
+.btn-cta-secondary{display:block;padding:13px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s;}
+.btn-cta-secondary:hover{border-color:var(--sage3);color:var(--sage3);}
+
+/* SHARE */
+.share-row{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
+.share-btn{padding:8px 16px;border-radius:100px;font-size:11px;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(26,43,56,.1);background:white;color:var(--ink2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:flex;align-items:center;gap:5px;}
+.share-btn:hover{border-color:var(--sage);color:var(--sage);}
+
+/* OTHER PROFILES */
+.other-profiles{margin-top:16px;}
+.op-h{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);text-align:center;margin-bottom:12px;}
+.op-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.op-card{background:white;border-radius:12px;padding:14px;border:1px solid rgba(26,43,56,.07);text-align:center;cursor:pointer;transition:all .2s;}
+.op-card:hover{border-color:var(--sage);transform:translateY(-2px);}
+.op-emoji{font-size:22px;margin-bottom:4px;display:block;}
+.op-name{font-size:12px;color:var(--ink2);font-weight:500;}
+
+/* FOOTER */
+.quiz-footer{text-align:center;padding:24px;font-size:11px;color:var(--ink3);opacity:.5;letter-spacing:1px;}
+
+@media(max-width:480px){
+  .qh-meta{gap:14px;}
+  .q-card,.email-gate,.result-body,.result-cta{padding:22px 18px;}
+  .result-hero{padding:28px 18px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="https://thefinancialclarity.github.io/thefinancialclarity.github.io" class="tb-logo">The Financial<span>Clarity</span></a>
+  <a href="https://thefinancialclarity.github.io/thefinancialclarity.github.io" class="tb-back">← Volver al sitio</a>
+</div>
+
+<div class="quiz-hero">
+  <div class="qh-circle1"></div>
+  <div class="qh-circle2"></div>
+  <div class="qh-tag"><div class="qh-dot"></div><span class="qh-tag-t">Test gratuito · The Financial Clarity</span></div>
+  <h1 class="qh-h">¿Cuál es tu<em>relación con el dinero?</em></h1>
+  <p class="qh-sub">10 preguntas. 4 perfiles. Descubre el patrón que más te cuesta dinero sin que te des cuenta.</p>
+  <div class="qh-meta">
+    <div class="qhm"><span class="qhm-ic">⏱️</span> 3 minutos</div>
+    <div class="qhm"><span class="qhm-ic">🧠</span> Basado en psicología del dinero</div>
+    <div class="qhm"><span class="qhm-ic">✨</span> 100% gratis</div>
+  </div>
+</div>
+
+<div class="progress-wrap" id="progressWrap" style="display:none;">
+  <div class="prog-bar-bg"><div class="prog-bar" id="progBar" style="width:10%;"></div></div>
+  <div class="prog-text" id="progText">Pregunta 1 de 10</div>
+</div>
+
+<div class="quiz-wrap" id="quizWrap">
+  <div id="quizContent"></div>
+</div>
+
+<div class="quiz-footer">© 2025 The Financial Clarity · @thefinancialclarity</div>
+
+<script>
+const questions = [
+  {
+    emoji: "💸",
+    text: "Recibes un pago inesperado — digamos el doble de lo normal. ¿Qué haces primero?",
+    options: [
+      { text: "Me doy un gusto que tenía pendiente. Me lo merezco.", profile: "gastador" },
+      { text: "Lo meto a una cuenta de ahorro y casi no lo toco.", profile: "acumulador" },
+      { text: "Lo dejo en mi cuenta principal y 'ya veo'.", profile: "evitador" },
+      { text: "Pienso en invertirlo pero no sé bien cómo, y se va en gastos del mes.", profile: "ambicioso" }
+    ]
+  },
+  {
+    emoji: "📱",
+    text: "¿Con qué frecuencia revisas tu estado de cuenta o saldo?",
+    options: [
+      { text: "Casi nunca. Me da ansiedad verlo.", profile: "evitador" },
+      { text: "Todo el tiempo. Necesito saber exactamente cuánto tengo.", profile: "acumulador" },
+      { text: "Cuando me acuerdo, que no es muy seguido.", profile: "ambicioso" },
+      { text: "Solo cuando voy a comprar algo grande.", profile: "gastador" }
+    ]
+  },
+  {
+    emoji: "😤",
+    text: "Tuviste una semana muy estresante. ¿Cómo reaccionas con el dinero?",
+    options: [
+      { text: "Compro algo para sentirme mejor. Un capricho pequeño o grande.", profile: "gastador" },
+      { text: "Me bloqueo y evito cualquier decisión financiera.", profile: "evitador" },
+      { text: "Me obsesiono revisando mis cuentas y calculando cuánto tengo.", profile: "acumulador" },
+      { text: "Pienso en cómo ganar más, pero no hago nada concreto.", profile: "ambicioso" }
+    ]
+  },
+  {
+    emoji: "🏠",
+    text: "Cuando piensas en metas grandes como una casa o tu retiro...",
+    options: [
+      { text: "Las tengo muy claras pero no he empezado a ahorrar para ellas.", profile: "ambicioso" },
+      { text: "Me generan ansiedad. Prefiero no pensar en eso.", profile: "evitador" },
+      { text: "Ya tengo un ahorro pero siento que nunca es suficiente.", profile: "acumulador" },
+      { text: "Las veo muy lejas — primero quiero disfrutar el presente.", profile: "gastador" }
+    ]
+  },
+  {
+    emoji: "💬",
+    text: "Alguien te pregunta '¿cuánto tienes ahorrado?' Tu reacción honesta es:",
+    options: [
+      { text: "Cambio el tema. No quiero pensar en eso.", profile: "evitador" },
+      { text: "Le doy el número exacto. Siempre lo sé.", profile: "acumulador" },
+      { text: "Más o menos lo sé, pero no con exactitud.", profile: "ambicioso" },
+      { text: "Poco. Pero es que he tenido muchos gastos últimamente.", profile: "gastador" }
+    ]
+  },
+  {
+    emoji: "🎯",
+    text: "¿Cuál de estas frases describe mejor tu relación con los presupuestos?",
+    options: [
+      { text: "Los hago con entusiasmo pero no los sigo por mucho tiempo.", profile: "ambicioso" },
+      { text: "Los sigo muy estrictamente, a veces demasiado.", profile: "acumulador" },
+      { text: "No tengo y no planeo hacer uno pronto.", profile: "evitador" },
+      { text: "Los hago pero siempre hay una 'excepción' que los rompe.", profile: "gastador" }
+    ]
+  },
+  {
+    emoji: "🚨",
+    text: "Llega un gasto inesperado (coche, médico, algo urgente). ¿Qué pasa?",
+    options: [
+      { text: "Lo pago con mis ahorros aunque me duela muchísimo tocarlo.", profile: "acumulador" },
+      { text: "Entro en pánico. No tengo fondo de emergencia.", profile: "evitador" },
+      { text: "Lo saco de algún lado, aunque quede ajustado el mes.", profile: "gastador" },
+      { text: "Sé que debería tener un fondo pero no lo he armado todavía.", profile: "ambicioso" }
+    ]
+  },
+  {
+    emoji: "💰",
+    text: "¿Cómo te sientes cuando gastas dinero en algo que no es 'necesario'?",
+    options: [
+      { text: "Bien. Me lo gané y merezco disfrutarlo.", profile: "gastador" },
+      { text: "Culpable. Siento que debería haberlo ahorrado.", profile: "acumulador" },
+      { text: "No le presto mucha atención. Total, ya pasó.", profile: "evitador" },
+      { text: "Depende del día. A veces bien, a veces me arrepiento.", profile: "ambicioso" }
+    ]
+  },
+  {
+    emoji: "📈",
+    text: "Alguien te recomienda invertir en algo. ¿Cuál es tu respuesta más honesta?",
+    options: [
+      { text: "Me interesa muchísimo pero nunca doy el paso.", profile: "ambicioso" },
+      { text: "Ya tengo dónde tengo mi dinero y no quiero moverlo.", profile: "acumulador" },
+      { text: "No sé nada de inversiones y no me he puesto a aprender.", profile: "evitador" },
+      { text: "Lo considero pero si hay algo que me guste más, me gasto ese dinero.", profile: "gastador" }
+    ]
+  },
+  {
+    emoji: "🌙",
+    text: "¿Cuál de estas frases te ha cruzado por la cabeza más de una vez?",
+    options: [
+      { text: '"Cuando gane más, entonces voy a ahorrar."', profile: "evitador" },
+      { text: '"Nunca voy a tener suficiente dinero."', profile: "acumulador" },
+      { text: '"La vida es corta, hay que disfrutarla."', profile: "gastador" },
+      { text: '"Sé exactamente lo que tengo que hacer, solo me falta empezar."', profile: "ambicioso" }
+    ]
+  }
+];
+
+const profiles = {
+  gastador: {
+    emoji: "🛍️",
+    name: "El Gastador",
+    subtitle: "Emocional",
+    heroClass: "rh-gastador",
+    desc: "Usas el dinero para gestionar emociones — cuando estás feliz celebras, cuando estás estresada te das un gusto. No es un problema de disciplina: es que nadie te enseñó herramientas emocionales alternativas. El dinero se convirtió en tu regulador emocional.",
+    patterns: [
+      "Gastas más cuando estás estresada, celebrando o aburrida",
+      "Los presupuestos duran poco porque hay siempre una 'excepción'",
+      "Sabes que deberías ahorrar pero el presente siempre gana",
+      "Sientes que te lo mereces — y tienes razón, pero hay una forma más inteligente"
+    ],
+    strengths: [
+      "Eres generosa y sabes disfrutar la vida",
+      "Tienes buena energía con el dinero cuando entra",
+      "Una vez que conectas el ahorro con una meta emocional, eres imparable"
+    ]
+  },
+  evitador: {
+    emoji: "🙈",
+    name: "El Evitador",
+    subtitle: "Financiero",
+    heroClass: "rh-evitador",
+    desc: "Evitar ver tus números es una estrategia de protección: si no lo ves, no duele. El problema es que el dinero no desaparece por no mirarlo — al contrario, crece el estrés. Este patrón suele venir de experiencias donde el dinero fue fuente de conflicto o angustia.",
+    patterns: [
+      "Rara vez sabes con exactitud cuánto tienes o cuánto gastas",
+      "Posponer decisiones financieras es tu modo por defecto",
+      "Los temas de retiro o inversión te generan ansiedad",
+      "Usas frases como 'cuando tenga más orden, me pongo'"
+    ],
+    strengths: [
+      "Cuando decides enfrentar algo, lo haces con seriedad",
+      "Eres muy receptiva a aprender cuando el ambiente es seguro",
+      "Tu progreso suele ser rápido una vez que das el primer paso"
+    ]
+  },
+  ambicioso: {
+    emoji: "🚀",
+    name: "El Ambicioso",
+    subtitle: "Sin Brecha",
+    heroClass: "rh-ambicioso",
+    desc: "Sabes exactamente qué deberías hacer — invertir, ahorrar, tener un fondo de emergencia. Pero hay una brecha enorme entre el conocimiento y la acción. Esto no es pereza: suele ser perfeccionismo (quiero hacerlo bien o no lo hago) o falta de un sistema concreto.",
+    patterns: [
+      "Tienes muchos planes pero pocos en ejecución",
+      "Consumes mucho contenido de finanzas pero no aplicas",
+      "Empiezas fuerte y pierdes consistencia",
+      "Te dices 'cuando tenga tiempo lo organizo'"
+    ],
+    strengths: [
+      "Ya tienes la mentalidad correcta — eso es el 50%",
+      "Aprendes rápido y te motivas con resultados visibles",
+      "Con un sistema claro y acompañamiento, tu curva de crecimiento es enorme"
+    ]
+  },
+  acumulador: {
+    emoji: "🔒",
+    name: "El Acumulador",
+    subtitle: "Ansioso",
+    heroClass: "rh-acumulador",
+    desc: "Ahorras, pero desde el miedo, no desde la abundancia. Para ti el dinero nunca es suficiente — aunque tengas un colchón, la ansiedad persiste. Este patrón suele venir de escasez vivida en el pasado o de mensajes de que el dinero puede desaparecer en cualquier momento.",
+    patterns: [
+      "Sabes exactamente cuánto tienes en cada cuenta",
+      "Te cuesta gastar aunque sea en cosas que necesitas",
+      "El dinero guardado no te da paz — siempre quieres más",
+      "Puede que estés dejando de vivir experiencias por no 'gastar'"
+    ],
+    strengths: [
+      "Tienes disciplina financiera real — muy pocos la tienen",
+      "Tu base económica es sólida",
+      "El trabajo es emocional: pasar del ahorro por miedo al ahorro con propósito"
+    ]
+  }
+};
+
+let current = 0;
+let answers = [];
+let scores = { gastador: 0, evitador: 0, ambicioso: 0, acumulador: 0 };
+let userName = '';
+
+function init() {
+  document.getElementById('quizContent').innerHTML = renderStart();
+}
+
+function renderStart() {
+  return `
+    <div class="q-card" style="text-align:center;">
+      <span style="font-size:48px;display:block;margin-bottom:16px;">🧠</span>
+      <h2 style="font-family:'Lora',serif;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:10px;">Descubre tu perfil financiero</h2>
+      <p style="font-size:14px;color:var(--ink3);line-height:1.75;max-width:400px;margin:0 auto 24px;">10 preguntas honestas sobre cómo te comportas con el dinero. Sin juicios. Solo claridad.</p>
+      <button onclick="startQuiz()" style="padding:14px 32px;border-radius:100px;background:var(--sage);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--sage)'">Empezar el test →</button>
+    </div>`;
+}
+
+function startQuiz() {
+  document.getElementById('progressWrap').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  const letters = ['A','B','C','D'];
+  updateProgress();
+  document.getElementById('quizContent').innerHTML = `
+    <div class="q-card">
+      <div class="q-num">Pregunta ${current + 1} de ${questions.length}</div>
+      <span class="q-emoji">${q.emoji}</span>
+      <div class="q-text">${q.text}</div>
+      <div class="options" id="opts">
+        ${q.options.map((o, i) => `
+          <div class="opt" onclick="selectOption(${i}, '${o.profile}')" id="opt-${i}">
+            <div class="opt-letter">${letters[i]}</div>
+            <div class="opt-text">${o.text}</div>
+          </div>`).join('')}
+      </div>
+      <div class="next-wrap">
+        <button class="btn-next" id="btnNext" onclick="nextQuestion()">
+          ${current < questions.length - 1 ? 'Siguiente →' : 'Ver mi resultado →'}
+        </button>
+      </div>
+    </div>`;
+}
+
+function selectOption(idx, profile) {
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  document.getElementById('opt-' + idx).classList.add('selected');
+  document.getElementById('btnNext').classList.add('active');
+  answers[current] = { idx, profile };
+}
+
+function nextQuestion() {
+  if (!answers[current]) return;
+  scores[answers[current].profile]++;
+  current++;
+  if (current < questions.length) {
+    renderQuestion();
+  } else {
+    showEmailGate();
+  }
+}
+
+function updateProgress() {
+  const pct = Math.round(((current) / questions.length) * 100);
+  document.getElementById('progBar').style.width = Math.max(pct, 5) + '%';
+  document.getElementById('progText').textContent = `Pregunta ${current + 1} de ${questions.length}`;
+}
+
+function showEmailGate() {
+  document.getElementById('progressWrap').style.display = 'none';
+  document.getElementById('quizContent').innerHTML = `
+    <div class="email-gate">
+      <span class="eg-emoji">🎯</span>
+      <h2 class="eg-h">¡Tu perfil está listo!</h2>
+      <p class="eg-sub">Deja tu nombre y email para ver tu resultado completo — y recibe también tu guía gratis de las 3 cuentas.</p>
+      <div class="eg-form">
+        <input type="text" id="egName" class="eg-input" placeholder="¿Cómo te llamas?" />
+        <input type="email" id="egEmail" class="eg-input" placeholder="tu@email.com" />
+        <button class="eg-btn" onclick="showResult()">Ver mi resultado →</button>
+        <div class="eg-note">🔒 Sin spam. Solo tu resultado y recursos útiles.</div>
+      </div>
+    </div>`;
+}
+
+function showResult() {
+  const nameInput = document.getElementById('egName');
+  const emailInput = document.getElementById('egEmail');
+  if (nameInput) userName = nameInput.value.split(' ')[0] || '';
+
+  // Find winning profile
+  const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+  const p = profiles[winner];
+  const otherKeys = Object.keys(profiles).filter(k => k !== winner);
+
+  document.getElementById('quizContent').innerHTML = `
+    <div class="result-card">
+      <div class="result-hero ${p.heroClass}">
+        <span class="result-emoji">${p.emoji}</span>
+        <div class="result-label">${userName ? userName + ', eres...' : 'Tu perfil es...'}</div>
+        <div class="result-name">${p.name}<em>${p.subtitle}</em></div>
+      </div>
+
+      <div class="result-body">
+        <p class="rb-desc">${p.desc}</p>
+        
+        <div class="rb-h">Patrones que reconocerás</div>
+        <div class="rb-items">
+          ${p.patterns.map(pt => `<div class="rb-item">${pt}</div>`).join('')}
+        </div>
+
+        <div class="rb-h">Tus fortalezas</div>
+        <div class="rb-strengths">
+          ${p.strengths.map(s => `<div class="rb-str">${s}</div>`).join('')}
+        </div>
+      </div>
+
+      <div class="result-cta">
+        <div class="rc-h">¿Lista para <em>cambiar tu historia</em> con el dinero?</div>
+        <div class="rc-sub">El primer paso es entenderte. El segundo es tener un sistema. Yo te ayudo con los dos.</div>
+        <div class="rc-btns">
+          <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="btn-cta-primary">Agendar sesión gratuita →</a>
+          <a href="https://thefinancialclarity.github.io/thefinancialclarity.github.io#lm" class="btn-cta-secondary">Quiero la guía de las 3 cuentas</a>
+        </div>
+      </div>
+
+      <div class="share-row">
+        <button class="share-btn" onclick="copyResult('${winner}','${p.name}')">📋 Copiar resultado</button>
+        <button class="share-btn" onclick="retakeQuiz()">🔄 Hacer el test de nuevo</button>
+      </div>
+
+      <div class="other-profiles">
+        <div class="op-h">Otros perfiles</div>
+        <div class="op-grid">
+          ${otherKeys.map(k => `
+            <div class="op-card" onclick="showProfileDetail('${k}')">
+              <span class="op-emoji">${profiles[k].emoji}</span>
+              <div class="op-name">${profiles[k].name} ${profiles[k].subtitle}</div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function copyResult(key, name) {
+  const text = `Hice el test de The Financial Clarity y soy "${name}" — descubre tu perfil en @thefinancialclarity 🧠💰`;
+  navigator.clipboard.writeText(text).then(() => {
+    alert('¡Copiado! Pégalo en tus stories 📱');
+  }).catch(() => {
+    prompt('Copia este texto:', text);
+  });
+}
+
+function retakeQuiz() {
+  current = 0; answers = []; scores = {gastador:0,evitador:0,ambicioso:0,acumulador:0}; userName='';
+  document.getElementById('progressWrap').style.display='block';
+  renderQuestion();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showProfileDetail(key) {
+  const p = profiles[key];
+  alert(`${p.emoji} ${p.name} ${p.subtitle}\n\n${p.desc}`);
+}
+
+init();
+</script>
+</body>
+</html>
