@@ -26,14 +26,14 @@ body{background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif;f
 
 /* NAV */
 nav{position:fixed;top:34px;left:0;right:0;z-index:200;padding:18px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
-nav.scrolled{background:rgba(253,252,249,.98);backdrop-filter:blur(20px);padding:14px 52px;border-bottom:1px solid rgba(26,43,56,.07);box-shadow:0 2px 20px rgba(26,43,56,.04);}
+nav.scrolled{background:rgba(253,252,249,.95);backdrop-filter:blur(20px);padding:14px 52px;border-bottom:1px solid rgba(26,43,56,.07);box-shadow:0 2px 20px rgba(26,43,56,.04);}
 .nav-logo{font-family:'Lora',serif;font-size:19px;font-weight:600;text-decoration:none;color:white;transition:color .3s;}
 nav.scrolled .nav-logo{color:var(--ink);}
 .nav-logo span{color:var(--sage3);font-style:italic;}
 nav.scrolled .nav-logo span{color:var(--sage);}
 .nav-links{display:flex;gap:28px;list-style:none;}
-.nav-links a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:color .2s;color:rgba(255,255,255,.95);}
-nav.scrolled .nav-links a{color:var(--ink);font-weight:400;}
+.nav-links a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:color .2s;color:rgba(255,255,255,.65);}
+nav.scrolled .nav-links a{color:var(--ink3);}
 .nav-links a:hover{color:var(--sage3)!important;}
 .nav-cta{padding:10px 22px!important;border-radius:100px!important;background:var(--sage)!important;color:white!important;letter-spacing:1.5px;}
 nav.scrolled .nav-cta{background:var(--ink)!important;color:white!important;}
@@ -55,19 +55,19 @@ nav.scrolled .nav-toggle span{background:var(--ink);}
 @keyframes float{0%,100%{transform:translate(0,0);}50%{transform:translate(20px,-30px);}}
 
 .hero-inner{position:relative;z-index:1;max-width:1060px;margin:0 auto;width:100%;}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(74,124,111,.2);border:1px solid rgba(157,196,184,.25);border-radius:100px;padding:6px 16px 6px 10px;margin-bottom:32px;animation:up .8s ease forwards .1s;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(74,124,111,.2);border:1px solid rgba(157,196,184,.25);border-radius:100px;padding:6px 16px 6px 10px;margin-bottom:32px;opacity:0;animation:up .8s ease forwards .1s;}
 .hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--sage3);}
 .hero-tag-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage3);}
 
-.hero-h1{font-family:'Lora',serif;font-size:clamp(42px,5.5vw,78px);font-weight:700;line-height:1.02;color:white;margin-bottom:10px;animation:up .8s ease forwards .2s;}
+.hero-h1{font-family:'Lora',serif;font-size:clamp(42px,5.5vw,78px);font-weight:700;line-height:1.02;color:white;margin-bottom:10px;opacity:0;animation:up .8s ease forwards .2s;}
 .hero-h1 em{font-style:italic;color:var(--sage3);display:block;}
-.hero-subtitle{font-family:'Lora',serif;font-size:clamp(18px,2vw,26px);font-weight:400;font-style:italic;color:rgba(255,255,255,.4);margin-bottom:28px;animation:up .8s ease forwards .35s;}
+.hero-subtitle{font-family:'Lora',serif;font-size:clamp(18px,2vw,26px);font-weight:400;font-style:italic;color:rgba(255,255,255,.4);margin-bottom:28px;opacity:0;animation:up .8s ease forwards .35s;}
 
-.hero-pain{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;animation:up .8s ease forwards .45s;}
+.hero-pain{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;opacity:0;animation:up .8s ease forwards .45s;}
 .pain-item{display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,.72);line-height:1.5;}
 .pain-check{width:20px;height:20px;border-radius:50%;background:rgba(74,124,111,.25);border:1px solid rgba(157,196,184,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;}
 
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:up .8s ease forwards .6s;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:up .8s ease forwards .6s;}
 .btn-sage{padding:14px 28px;border-radius:100px;background:var(--sage);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;transition:all .25s;display:inline-block;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
 .btn-sage:hover{background:var(--sage2);transform:translateY(-2px);}
 .btn-outline{padding:14px 28px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s;display:inline-block;}
@@ -104,7 +104,7 @@ nav.scrolled .nav-toggle span{background:var(--ink);}
 .housel-points{display:flex;flex-direction:column;gap:18px;}
 .hp{display:flex;gap:16px;align-items:flex-start;}
 .hp-icon{width:42px;height:42px;border-radius:12px;background:rgba(74,124,111,.2);border:1px solid rgba(157,196,184,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.hp-text{font-size:14px;color:rgba(255,255,255,.85);line-height:1.7;}
+.hp-text{/* */font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;}
 .hp-text strong{display:block;color:white;font-size:15px;margin-bottom:3px;font-weight:500;}
 
 /* ABOUT */
@@ -148,11 +148,11 @@ nav.scrolled .nav-toggle span{background:var(--ink);}
 .svc.dk .svc-name{color:white;}
 .svc.lt .svc-name,.svc.gr .svc-name{color:var(--ink);}
 .svc-desc{font-size:13px;line-height:1.8;margin-bottom:18px;}
-.svc.dk .svc-desc{color:rgba(255,255,255,.82);}
+.svc.dk .svc-desc{color:rgba(255,255,255,.55);}
 .svc.lt .svc-desc,.svc.gr .svc-desc{color:var(--ink3);}
 .svc-list{display:flex;flex-direction:column;gap:7px;margin-bottom:20px;}
 .svc-item{font-size:13px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
-.svc.dk .svc-item{color:rgba(255,255,255,.85);}
+.svc.dk .svc-item{color:rgba(255,255,255,.65);}
 .svc.lt .svc-item,.svc.gr .svc-item{color:var(--ink3);}
 .svc-item::before{content:'→';flex-shrink:0;margin-top:1px;}
 .svc.dk .svc-item::before{color:var(--sage3);}
@@ -178,9 +178,9 @@ nav.scrolled .nav-toggle span{background:var(--ink);}
 .lm-tag::before{content:'';width:20px;height:1px;background:rgba(255,255,255,.3);}
 .lm-h{font-family:'Lora',serif;font-size:clamp(26px,3.5vw,44px);font-weight:700;color:white;line-height:1.1;margin-bottom:12px;}
 .lm-h em{font-style:italic;color:rgba(255,255,255,.6);}
-.lm-d{font-size:15px;color:rgba(255,255,255,.9);line-height:1.85;margin-bottom:24px;}
+.lm-d{font-size:15px;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:24px;}
 .lm-qs{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
-.lmq{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.95);}
+.lmq{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.75);}
 .lmq::before{content:'✓';color:white;font-weight:700;flex-shrink:0;margin-top:1px;}
 .lm-prev{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:13px;}
 .lmp-ic{font-size:28px;}
@@ -251,14 +251,14 @@ footer{background:#E8E9E0;padding:48px 52px 24px;border-top:2px solid #4A7C6F;}
 .ft{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:40px;}
 .f-logo{font-family:'Lora',serif;font-size:20px;font-weight:600;color:white;margin-bottom:7px;}
 .f-logo span{color:var(--sage3);font-style:italic;}
-.f-tag{font-size:13px;color:rgba(255,255,255,.75);line-height:1.6;max-width:200px;}
+.f-tag{font-size:13px;color:rgba(255,255,255,.28);line-height:1.6;max-width:200px;}
 .f-links{display:flex;gap:40px;flex-wrap:wrap;}
 .flg-t{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage3);margin-bottom:12px;}
 .flg-l{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.flg-l a{font-size:13px;color:rgba(255,255,255,.78);text-decoration:none;transition:color .2s;}
+.flg-l a{font-size:13px;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s;}
 .flg-l a:hover{color:var(--sage3);}
 .fb-row{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-.f-copy{font-size:12px;color:rgba(255,255,255,.65);}
+.f-copy{font-size:12px;color:rgba(255,255,255,.25);}
 .f-ig{font-size:12px;color:var(--sage3);text-decoration:none;}
 .f-ig:hover{color:var(--sage2);}
 
@@ -291,12 +291,15 @@ footer{background:#E8E9E0;padding:48px 52px 24px;border-top:2px solid #4A7C6F;}
   .f-links{flex-direction:column;gap:18px;}
 }
 
+/* HERO FORCE VISIBLE */
+.hp-h, .hp-text, .hp-ctas, .hp-tag, .hp-scroll { opacity: 1 !important; }
+
 /* FOOTER FORCE DARK TEXT */
 footer, footer * { color: #1A2B38 !important; }
 footer .f-logo span { color: #4A7C6F !important; }
-footer .flg-t { color: #4A7C6F !important; }
-footer .f-ig { color: #4A7C6F !important; }
+footer .flg-t { color: #4A7C6F !important; font-size:10px; letter-spacing:2px; text-transform:uppercase; }
 footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
+footer a:hover { color: #4A7C6F !important; }
 </style>
 </head>
 <body>
@@ -389,7 +392,7 @@ footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
     </div>
       <div style="text-align:center;margin-top:36px;" class="reveal">
         <p style="font-size:14px;color:var(--ink3);margin-bottom:14px;" data-es="¿Te identificaste? Descubre tu perfil financiero exacto." data-en="Sound familiar? Find your exact financial profile.">¿Te identificaste? Descubre tu perfil financiero exacto.</p>
-        <a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" style="display:inline-block;padding:13px 28px;border-radius:100px;background:var(--ink);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;" data-es="→ Hacer el test gratis (3 min)" data-en="→ Take the free quiz (3 min)">→ Hacer el test gratis (3 min)</a>
+        <a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" style="display:inline-block;padding:13px 28px;border-radius:100px;background:#1A2B38;color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;" data-es="→ Hacer el test gratis (3 min)" data-en="→ Take the free quiz (3 min)">→ Hacer el test gratis (3 min)</a>
       </div>
   </div>
 </section>
@@ -503,7 +506,7 @@ footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
           <div class="svc-item" data-es="Trabajo en creencias y sesgos del dinero" data-en="Work on money beliefs and biases">Trabajo en creencias y sesgos del dinero</div>
         </div>
         <div class="svc-price">$297<span class="svc-unit" data-es="/ mes" data-en="/ month">/ mes</span></div>
-        <a href="#contact" class="svc-cta" data-es="Quiero empezar" data-en="I want to start">Quiero empezar</a>
+        <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="svc-cta" data-es="Quiero empezar" data-en="I want to start">Quiero empezar</a>
       </div>
       <div class="svc gr reveal">
         <div class="svc-tag" data-es="Programa grupal" data-en="Group program">Programa grupal</div>
@@ -517,7 +520,7 @@ footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
           <div class="svc-item" data-es="Máximo 12 personas" data-en="Max 12 people">Máximo 12 personas</div>
         </div>
         <div class="svc-price">$147<span class="svc-unit" data-es="/ programa" data-en="/ program">/ programa</span></div>
-        <a href="#contact" class="svc-cta" data-es="Lista de espera" data-en="Join waitlist">Lista de espera</a>
+        <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="svc-cta" data-es="Lista de espera" data-en="Join waitlist">Lista de espera</a>
       </div>
     </div>
   </div>
@@ -567,7 +570,7 @@ footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
   <div style="max-width:1060px;margin:0 auto;">
     <div class="sec-tag" data-es="Testimonios" data-en="Testimonials">Testimonios</div>
     <h2 class="sec-h"><span data-es="Lo que dicen <em>nuestros clientes</em>" data-en="What our <em>clients say</em>">Lo que dicen <em>nuestros clientes</em></span></h2>
-    <div class="test-grid">
+    <div class="test-grid" style="grid-template-columns:repeat(2,1fr);">
       <div class="tc feat reveal">
         <div class="t-oq">"</div>
         <div class="t-stars">★★★★★</div>
@@ -580,9 +583,45 @@ footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
         <div class="t-q" data-es='"La parte de psicología me sorprendió. Nunca pensé que mis decisiones financieras tuvieran tanto que ver con cómo me sentía."' data-en='"The psychology part surprised me. I never thought my financial decisions had so much to do with how I was feeling."'>"La parte de psicología me sorprendió. Nunca pensé que mis decisiones financieras tuvieran tanto que ver con cómo me sentía."</div>
         <div class="t-p"><div class="t-av">👨‍🎨</div><div><div class="t-name">Carlos M.</div><div class="t-role" data-es="Fotógrafo · Emprendedor" data-en="Photographer · Entrepreneur">Fotógrafo · Emprendedor</div></div></div>
       </div>
-      <div class="t-ph reveal">
-        <div class="tph-ic">💬</div>
-        <div class="tph-t"><strong data-es="Tu próximo testimonio aquí" data-en="Your next testimonial here">Tu próximo testimonio aquí</strong><span data-es="Aquí va el feedback de tus primeras sesiones." data-en="Here goes feedback from your first sessions.">Aquí va el feedback de tus primeras sesiones.</span></div>
+      <div class="tc reveal" style="background:linear-gradient(135deg,#f0f7f5,#e8f4f0);border:1.5px solid #9DC4B8;position:relative;overflow:visible;">
+        <div style="position:absolute;top:-12px;left:24px;background:#4A7C6F;color:white;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;" data-es="Historia real" data-en="Real story">Historia real</div>
+        <div class="t-oq" style="color:#4A7C6F;">"</div>
+        <div class="t-stars">★★★★★</div>
+        <div class="t-q" data-es='"Me ayudó a crear un presupuesto tan sencillo que por fin lo seguí de verdad. Por primera vez en mi vida tengo ahorrado el equivalente a 2 meses de mi salario — y sigo sumando."' data-en='"She helped me build a budget so simple I actually stuck to it. For the first time in my life I have saved 2 months of salary — and I keep going."'>"Me ayudó a crear un presupuesto tan sencillo que por fin lo seguí de verdad. Por primera vez en mi vida tengo ahorrado el equivalente a 2 meses de mi salario — y sigo sumando."</div>
+        <div class="t-p"><div class="t-av" style="background:#D4EDE7;">🌿</div><div><div class="t-name">Ana Carolina R.</div><div class="t-role" data-es="Asistente Administrativa · Monterrey, MX" data-en="Administrative Assistant · Monterrey, Mexico">Asistente Administrativa · Monterrey, MX</div></div></div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(74,124,111,.15);display:flex;gap:16px;">
+          <div style="text-align:center;"><div style="font-family:'Lora',serif;font-size:22px;font-weight:700;color:#4A7C6F;">2 meses</div><div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#4A6B7A;" data-es="de salario ahorrado" data-en="of salary saved">de salario ahorrado</div></div>
+          <div style="width:1px;background:rgba(74,124,111,.2);"></div>
+          <div style="text-align:center;"><div style="font-family:'Lora',serif;font-size:22px;font-weight:700;color:#4A7C6F;">100%</div><div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#4A6B7A;" data-es="control de gastos" data-en="expense control">control de gastos</div></div>
+        </div>
+      </div>
+      <div class="tc reveal" style="background:linear-gradient(135deg,#f4f0f8,#ede8f4);border:1.5px solid #B09DC4;position:relative;overflow:visible;">
+        <div style="position:absolute;top:-12px;left:24px;background:#2B5A8C;color:white;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;" data-es="Historia real" data-en="Real story">Historia real</div>
+        <div class="t-oq" style="color:#2B5A8C;">"</div>
+        <div class="t-stars">★★★★★</div>
+        <div class="t-q"
+          data-es='"Estaba a punto de mudarme con mi pareja y no teníamos ni idea de cuánto necesitábamos ni cómo dividir los gastos. La asesoría nos dio claridad total: renta, ahorro, retiro, todo. Hoy nos sentimos seguros y construyendo algo juntos de verdad."'
+          data-en='"We were about to move in together and had no idea how much we needed or how to split expenses. The coaching gave us complete clarity: rent, savings, retirement, everything. Today we feel secure and truly building something together."'>
+          "Estaba a punto de mudarme con mi pareja y no teníamos ni idea de cuánto necesitábamos ni cómo dividir los gastos. La asesoría nos dio claridad total: renta, ahorro, retiro, todo. Hoy nos sentimos seguros y construyendo algo juntos de verdad."
+        </div>
+        <div class="t-p">
+          <div class="t-av" style="background:#E8E0F4;">🏡</div>
+          <div>
+            <div class="t-name">María José Torres</div>
+            <div class="t-role" data-es="Profesora · San Antonio, Texas" data-en="Teacher · San Antonio, Texas">Profesora · San Antonio, Texas</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(43,90,140,.12);display:flex;gap:16px;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:#2B5A8C;">Plan claro</div>
+            <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#4A6B7A;" data-es="para el hogar nuevo" data-en="for the new home">para el hogar nuevo</div>
+          </div>
+          <div style="width:1px;background:rgba(43,90,140,.15);"></div>
+          <div style="text-align:center;">
+            <div style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:#2B5A8C;">Retiro</div>
+            <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#4A6B7A;" data-es="ya en su presupuesto" data-en="already in her budget">ya en su presupuesto</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -629,7 +668,7 @@ footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
       <div class="f-links">
         <div><div class="flg-t" data-es="Navegar" data-en="Navigate">Navegar</div><ul class="flg-l"><li><a href="#pain" data-es="¿Te suena?" data-en="Sound familiar?">¿Te suena?</a></li><li><a href="#about" data-es="Sobre mí" data-en="About Me">Sobre mí</a></li><li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li><li><a href="#lm" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li><li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li></ul></div>
         <div><div class="flg-t" data-es="Servicios" data-en="Services">Servicios</div><ul class="flg-l"><li><a href="#services" data-es="Sesión Diagnóstico" data-en="Diagnostic Session">Sesión Diagnóstico</a></li><li><a href="#services" data-es="Coaching 1:1" data-en="1:1 Coaching">Coaching 1:1</a></li><li><a href="#services" data-es="Programa Grupal" data-en="Group Program">Programa Grupal</a></li>
-<li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test: Tu relación con el dinero" data-en="Quiz: Your money relationship">Test: Tu relación con el dinero</a></li></ul></div>
+<li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test gratis" data-en="Free Quiz">Test gratis</a></li></ul></div>
       </div>
     </div>
     <div class="fb-row">
@@ -647,10 +686,8 @@ function setLang(l){
   document.getElementById('btn-en').classList.toggle('active',l==='en');
   document.querySelectorAll('[data-es]').forEach(el=>{
     if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')return;
-    const val=el.getAttribute('data-'+l);
-    if(!val)return;
-    if(el.children.length===0){el.textContent=val;}
-    else{el.innerHTML=val;}
+    if(el.tagName==='BUTTON'||el.tagName==='A'){if(el.children.length===0){el.textContent=el.getAttribute('data-'+l)||el.textContent;}return;}
+    el.innerHTML=el.getAttribute('data-'+l)||el.innerHTML;
   });
   document.querySelectorAll('[data-ph-es]').forEach(el=>{el.placeholder=el.getAttribute('data-ph-'+l)||el.placeholder;});
 }
