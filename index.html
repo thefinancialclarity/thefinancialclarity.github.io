@@ -300,6 +300,19 @@ footer .f-logo span { color: #4A7C6F !important; }
 footer .flg-t { color: #4A7C6F !important; font-size:10px; letter-spacing:2px; text-transform:uppercase; }
 footer .fb-row { border-top: 1px solid rgba(26,43,56,.15) !important; }
 footer a:hover { color: #4A7C6F !important; }
+
+.geo-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(74,124,111,.12);
+  border:1px solid rgba(74,124,111,.3);color:#2E6057;border-radius:100px;
+  padding:5px 14px;font-size:11px;font-weight:600;letter-spacing:.5px;
+  margin-bottom:20px;cursor:pointer;transition:background .2s;}
+.geo-badge:hover{background:rgba(74,124,111,.2);}
+
+.svc-price{font-family:'Lora',serif;font-size:28px;font-weight:700;display:flex;flex-direction:column;gap:4px;}
+.price-row{display:flex;align-items:baseline;gap:6px;line-height:1.2;}
+.price-row .svc-unit{font-size:11px;font-family:'DM Sans',sans-serif;font-weight:300;opacity:.45;}
+.price-flag{font-size:16px;line-height:1;}
+.price-mx{font-size:22px;opacity:.75;}
+.price-us{font-size:28px;}
 </style>
 </head>
 <body>
@@ -475,6 +488,7 @@ footer a:hover { color: #4A7C6F !important; }
 <section id="services" style="background:var(--cream2);padding:88px 52px;">
   <div style="max-width:1060px;margin:0 auto;">
     <div class="sec-tag" data-es="Servicios" data-en="Services">Servicios</div>
+    <div id="geo-badge" class="geo-badge" onclick="showGeoPicker()" title="Cambiar región" style="display:none;"></div>
     <h2 class="sec-h"><span data-es="Elige cómo quieres <em>trabajar juntos</em>" data-en="Choose how you want to <em>work together</em>">Elige cómo quieres <em>trabajar juntos</em></span></h2>
     <p class="sec-p" data-es="Finanzas reales + psicología del comportamiento. Entendemos juntos por qué tus patrones con el dinero son como son, y los cambiamos." data-en="Real finance + behavioral psychology. We understand together why your money patterns are what they are, and we change them.">Finanzas reales + psicología del comportamiento. Entendemos juntos por qué tus patrones con el dinero son como son, y los cambiamos.</p>
     <div class="svc-grid">
@@ -490,7 +504,7 @@ footer a:hover { color: #4A7C6F !important; }
           <div class="svc-item" data-es="Plan de acción concreto" data-en="Concrete action plan">Plan de acción concreto</div>
           <div class="svc-item" data-es="Grabación incluida" data-en="Recording included">Grabación incluida</div>
         </div>
-        <div class="svc-price">$97<span class="svc-unit" data-es="/ sesión" data-en="/ session">/ sesión</span></div>
+        <div class="svc-price" id="price-diag"><span id="price-diag-amt">$97</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ sesión" data-en="/ session"> / sesión</span></div>
         <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="svc-cta" data-es="Agendar sesión" data-en="Book session">Agendar sesión</a>
       </div>
       <div class="svc dk reveal">
@@ -505,7 +519,7 @@ footer a:hover { color: #4A7C6F !important; }
           <div class="svc-item" data-es="Plan financiero personalizado" data-en="Personalized financial plan">Plan financiero personalizado</div>
           <div class="svc-item" data-es="Trabajo en creencias y sesgos del dinero" data-en="Work on money beliefs and biases">Trabajo en creencias y sesgos del dinero</div>
         </div>
-        <div class="svc-price">$297<span class="svc-unit" data-es="/ mes" data-en="/ month">/ mes</span></div>
+        <div class="svc-price" id="price-coach"><span id="price-coach-amt">$297</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ mes" data-en="/ month"> / mes</span></div>
         <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="svc-cta" data-es="Quiero empezar" data-en="I want to start">Quiero empezar</a>
       </div>
       <div class="svc gr reveal">
@@ -519,7 +533,7 @@ footer a:hover { color: #4A7C6F !important; }
           <div class="svc-item" data-es="Material completo del programa" data-en="Full program materials">Material completo del programa</div>
           <div class="svc-item" data-es="Máximo 12 personas" data-en="Max 12 people">Máximo 12 personas</div>
         </div>
-        <div class="svc-price">$147<span class="svc-unit" data-es="/ programa" data-en="/ program">/ programa</span></div>
+        <div class="svc-price" id="price-cohort"><span id="price-cohort-amt">$147</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ programa" data-en="/ program"> / programa</span></div>
         <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="svc-cta" data-es="Lista de espera" data-en="Join waitlist">Lista de espera</a>
       </div>
     </div>
@@ -680,6 +694,8 @@ footer a:hover { color: #4A7C6F !important; }
 
 <script>
 let lang='es';
+let currentGeo='default';
+
 function setLang(l){
   lang=l;
   document.getElementById('btn-es').classList.toggle('active',l==='es');
@@ -690,7 +706,6 @@ function setLang(l){
     el.innerHTML=el.getAttribute('data-'+l)||el.innerHTML;
   });
   document.querySelectorAll('[data-ph-es]').forEach(el=>{el.placeholder=el.getAttribute('data-ph-'+l)||el.placeholder;});
-  // Update quiz links to pass language
   var quizBase='https://thefinancialclarity.github.io/test-relacion-dinero.html';
   var quizUrl=l==='en'?quizBase+'?lang=en':quizBase;
   ['nav-quiz-link','pain-quiz-link','footer-quiz-link'].forEach(function(id){
@@ -698,15 +713,84 @@ function setLang(l){
     if(el)el.href=quizUrl;
   });
 }
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+
+function applyPricing(geo){
+  currentGeo=geo;
+  var prices={
+    mx:{diag:'$997',coach:'$2,997',cohort:'$1,497',currency:'MXN'},
+    us:{diag:'$97',coach:'$297',cohort:'$147',currency:'USD'},
+    default:{diag:'$97',coach:'$297',cohort:'$147',currency:'USD'}
+  };
+  var p=prices[geo]||prices.default;
+  document.getElementById('price-diag-amt').textContent=p.diag;
+  document.getElementById('price-coach-amt').textContent=p.coach;
+  document.getElementById('price-cohort-amt').textContent=p.cohort;
+  document.querySelectorAll('.price-currency').forEach(function(el){el.textContent=p.currency;});
+  var badge=document.getElementById('geo-badge');
+  if(badge){
+    var labels={mx:'🇲🇽 Precios en MXN',us:'🇺🇸 Prices in USD',default:''};
+    badge.textContent=labels[geo]||'';
+    badge.style.display=labels[geo]?'inline-flex':'none';
+  }
+}
+
+function detectGeo(){
+  fetch('https://ipapi.co/json/')
+    .then(function(r){return r.json();})
+    .then(function(data){
+      var country=(data.country_code||'').toUpperCase();
+      if(country==='MX')applyPricing('mx');
+      else if(country==='US')applyPricing('us');
+      else applyPricing('default');
+    })
+    .catch(function(){applyPricing('default');});
+}
+detectGeo();
+
+function showGeoPicker(){
+  var existing=document.getElementById('geo-modal');
+  if(existing){existing.remove();return;}
+  var modal=document.createElement('div');
+  modal.id='geo-modal';
+  modal.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:16px;padding:28px 32px;box-shadow:0 20px 60px rgba(0,0,0,.18);z-index:9999;min-width:260px;';
+  var title=lang==='en'?'Select your region':'Selecciona tu región';
+  var opts=[
+    {geo:'mx',label:'🇲🇽 México'},
+    {geo:'us',label:'🇺🇸 United States'},
+    {geo:'default',label:'🌎 Otro país / Other'}
+  ];
+  var btns='';
+  for(var i=0;i<opts.length;i++){
+    var o=opts[i];
+    var bg=currentGeo===o.geo?'#E8F4F0':'#f8f6f0';
+    var bc=currentGeo===o.geo?'#4A7C6F':'#e0ddd7';
+    var geo=o.geo;
+    btns+='<button data-geo="'+geo+'" style="display:block;width:100%;text-align:left;background:'+bg+';border:1px solid '+bc+';border-radius:10px;padding:10px 16px;margin-bottom:8px;cursor:pointer;font-size:14px;font-family:inherit;">'+o.label+'</button>';
+  }
+  var closeBtn='<button id="geo-close" style="margin-top:4px;background:none;border:none;color:#999;font-size:13px;cursor:pointer;width:100%;text-align:center;">✕ Cerrar / Close</button>';
+  modal.innerHTML='<p style="font-weight:700;font-size:15px;margin-bottom:16px;color:#1A2B38;">'+title+'</p>'+btns+closeBtn;
+  document.body.appendChild(modal);
+  modal.querySelectorAll('[data-geo]').forEach(function(btn){
+    btn.addEventListener('click',function(){applyPricing(btn.getAttribute('data-geo'));modal.remove();});
+  });
+  var closeEl=document.getElementById('geo-close');
+  if(closeEl)closeEl.addEventListener('click',function(){modal.remove();});
+  setTimeout(function(){
+    document.addEventListener('click',function handler(e){
+      if(!modal.contains(e.target)&&e.target.id!=='geo-badge'){modal.remove();document.removeEventListener('click',handler);}
+    });
+  },100);
+}
+
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>60);});
 function tm(){document.getElementById('mobMenu').classList.toggle('open');}
 function cm(){document.getElementById('mobMenu').classList.remove('open');}
 function doForm(btn,type){
-  const ok={guide:{es:'¡Listo! Revisa tu email 📩',en:'Done! Check your inbox 📩'},contact:{es:'¡Enviado! ✓',en:'Sent! ✓'}};
+  var ok={guide:{es:'¡Listo! Revisa tu email 📩',en:'Done! Check your inbox 📩'},contact:{es:'¡Enviado! ✓',en:'Sent! ✓'}};
   btn.textContent=ok[type][lang];btn.style.background='var(--sage)';btn.disabled=true;
 }
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.07});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 </script>
 </body>
 </html>
