@@ -19,13 +19,13 @@ html{scroll-behavior:smooth;}
 body{background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
 
 /* LANG BAR */
-.lang-bar{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--ink);padding:7px 52px;display:flex;justify-content:flex-end;gap:8px;}
+.lang-bar{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--ink);padding:7px 52px;display:flex;justify-content:flex-end;gap:8px;}
 .lb{padding:4px 16px;border-radius:100px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.4);background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
 .lb.active{background:var(--sage);color:white;border-color:var(--sage);}
 .lb:hover:not(.active){color:white;border-color:rgba(255,255,255,.4);}
 
 /* NAV */
-nav{position:fixed;top:34px;left:0;right:0;z-index:200;padding:18px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+nav{position:fixed;top:34px;left:0;right:0;z-index:400;padding:18px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
 nav.scrolled{background:rgba(253,252,249,.95);backdrop-filter:blur(20px);padding:14px 52px;border-bottom:1px solid rgba(26,43,56,.07);box-shadow:0 2px 20px rgba(26,43,56,.04);}
 .nav-logo{font-family:'Lora',serif;font-size:19px;font-weight:600;text-decoration:none;color:white;transition:color .3s;}
 nav.scrolled .nav-logo{color:var(--ink);}
@@ -41,7 +41,7 @@ nav.scrolled .nav-cta{background:var(--ink)!important;color:white!important;}
 .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
 .nav-toggle span{width:22px;height:1.5px;display:block;transition:all .3s;background:white;}
 nav.scrolled .nav-toggle span{background:var(--ink);}
-.mob-menu{position:fixed;inset:0;background:var(--ink);z-index:199;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .4s ease;}
+.mob-menu{position:fixed;inset:0;background:var(--ink);z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .4s ease;}
 .mob-menu.open{transform:translateX(0);}
 .mob-menu a{font-family:'Lora',serif;font-size:30px;font-weight:500;color:white;text-decoration:none;}
 .mob-menu a:hover{color:var(--sage3);}
@@ -318,16 +318,16 @@ footer a:hover { color: #4A7C6F !important; }
 <body>
 
 <div class="lang-bar">
-  <button class="lb active" id="btn-es" onclick="setLang('es')">🇲🇽 Español</button>
-  <button class="lb" id="btn-en" onclick="setLang('en')">🇺🇸 English</button>
+  <button class="lb active" id="btn-es">🇲🇽 Español</button>
+  <button class="lb" id="btn-en">🇺🇸 English</button>
 </div>
 
 <div class="mob-menu" id="mobMenu">
-  <a href="#pain"   onclick="cm()" data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a>
-  <a href="#about"  onclick="cm()" data-es="Sobre mí"    data-en="About Me">Sobre mí</a>
-  <a href="#services" onclick="cm()" data-es="Servicios" data-en="Services">Servicios</a>
-  <a href="#lm"     onclick="cm()" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a>
-  <a href="#contact" onclick="cm()" data-es="Contacto"   data-en="Contact">Contacto</a>
+  <a href="#pain"    id="mm-pain"    data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a>
+  <a href="#about"   id="mm-about"   data-es="Sobre mí"    data-en="About Me">Sobre mí</a>
+  <a href="#services" id="mm-svc"    data-es="Servicios"   data-en="Services">Servicios</a>
+  <a href="#lm"      id="mm-lm"      data-es="Guía gratis" data-en="Free Guide">Guía gratis</a>
+  <a href="#contact" id="mm-contact" data-es="Contacto"    data-en="Contact">Contacto</a>
 </div>
 
 <nav id="nav">
@@ -340,7 +340,7 @@ footer a:hover { color: #4A7C6F !important; }
     <li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test gratis" data-en="Free Quiz" id="nav-quiz-link">Test gratis</a></li>
     <li><a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="nav-cta" data-es="Agendar sesión" data-en="Book Session">Agendar sesión</a></li>
   </ul>
-  <button class="nav-toggle" id="navT" onclick="tm()"><span></span><span></span><span></span></button>
+  <button class="nav-toggle" id="navT"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- ══ HERO ══ -->
@@ -652,7 +652,7 @@ footer a:hover { color: #4A7C6F !important; }
         <p class="sec-p" data-es="Escríbeme por donde te sea más cómodo. Respondo en menos de 24 horas hábiles." data-en="Reach out wherever is most convenient. I respond within 24 business hours.">Escríbeme por donde te sea más cómodo. Respondo en menos de 24 horas hábiles.</p>
         <div class="c-methods">
           <a href="https://instagram.com/thefinancialclarity" target="_blank" class="cm"><div class="cm-ic">📱</div><div><div class="cm-l">Instagram</div><div class="cm-v">@thefinancialclarity</div></div></a>
-          <a href="/cdn-cgi/l/email-protection#0a626f6666654a7e626f6c63646b6469636b6669666b78637e732465786d" class="cm"><div class="cm-ic">✉️</div><div><div class="cm-l" data-es="Email" data-en="Email">Email</div><div class="cm-v"><span class="__cf_email__" data-cfemail="ff979a939390bf8b979a9996919e919c969e939c939e8d968b86d1908d98">[email&#160;protected]</span></div></div></a>
+          <a href="mailto:hello@thefinancialclarity.com" class="cm"><div class="cm-ic">✉️</div><div><div class="cm-l" data-es="Email" data-en="Email">Email</div><div class="cm-v">hello@thefinancialclarity.com</div></div></a>
           <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="cm"><div class="cm-ic">📅</div><div><div class="cm-l" data-es="Agenda directa" data-en="Direct booking">Agenda directa</div><div class="cm-v" data-es="Agenda tu sesión" data-en="Book your session">Agenda tu sesión</div></div></a>
         </div>
       </div>
@@ -691,7 +691,7 @@ footer a:hover { color: #4A7C6F !important; }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 let lang='es';
 let currentGeo='default';
 
@@ -782,8 +782,23 @@ function showGeoPicker(){
 }
 
 window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>60);});
-function tm(){document.getElementById('mobMenu').classList.toggle('open');}
-function cm(){document.getElementById('mobMenu').classList.remove('open');}
+
+// Mobile menu toggle
+document.getElementById('navT').addEventListener('click',function(e){
+  e.stopPropagation();
+  document.getElementById('mobMenu').classList.toggle('open');
+});
+
+// Close mobile menu when any link inside it is clicked
+document.getElementById('mobMenu').querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click',function(){
+    document.getElementById('mobMenu').classList.remove('open');
+  });
+});
+
+// Language buttons
+document.getElementById('btn-es').addEventListener('click',function(){setLang('es');});
+document.getElementById('btn-en').addEventListener('click',function(){setLang('en');});
 function doForm(btn,type){
   var ok={guide:{es:'¡Listo! Revisa tu email 📩',en:'Done! Check your inbox 📩'},contact:{es:'¡Enviado! ✓',en:'Sent! ✓'}};
   btn.textContent=ok[type][lang];btn.style.background='var(--sage)';btn.di
