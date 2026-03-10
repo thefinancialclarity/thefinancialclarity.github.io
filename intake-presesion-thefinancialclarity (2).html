@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario Pre-Sesión · The Financial Clarity</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A2B38;--ink2:#2E4A5C;--ink3:#4A6B7A;
+  --sage:#4A7C6F;--sage2:#6A9E8F;--sage3:#9DC4B8;--sage4:#D4EDE7;
+  --cream:#F8F6F0;--cream2:#EFF0E8;
+  --gold:#8B6914;--gold2:#B8922A;--gold3:#E8C96A;
+  --white:#FDFCF9;
+  --red:#C0392B;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;}
+
+/* TOP BAR */
+.top-bar{background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Lora',serif;font-size:16px;font-weight:600;color:white;}
+.logo span{color:var(--sage3);font-style:italic;}
+.top-tag{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage3);opacity:.8;}
+
+/* HERO HEADER */
+.form-header{padding:52px 24px 40px;text-align:center;position:relative;}
+.form-header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(157,196,184,.4));}
+.fh-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(74,124,111,.18);border:1px solid rgba(157,196,184,.2);border-radius:100px;padding:5px 16px;margin-bottom:20px;}
+.fh-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--sage3);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.fh-tag-text{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sage3);}
+.fh-h1{font-family:'Lora',serif;font-size:clamp(26px,5vw,38px);font-weight:700;line-height:1.15;margin-bottom:10px;}
+.fh-h1 em{font-style:italic;color:var(--sage3);}
+.fh-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.7;max-width:440px;margin:0 auto 24px;}
+.fh-time{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;}
+.fh-time::before{content:'⏱';}
+
+/* PROGRESS BAR */
+.progress-wrap{padding:0 24px 32px;max-width:680px;margin:0 auto;}
+.progress-steps{display:flex;align-items:center;gap:0;margin-bottom:10px;}
+.ps{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;}
+.ps:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:1px;background:rgba(255,255,255,.1);z-index:0;}
+.ps.done::after{background:var(--sage);}
+.ps-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,.3);position:relative;z-index:1;background:var(--ink);transition:all .3s;}
+.ps.active .ps-dot{border-color:var(--sage);color:var(--sage);background:rgba(74,124,111,.15);}
+.ps.done .ps-dot{border-color:var(--sage);background:var(--sage);color:white;}
+.ps-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.25);text-align:center;}
+.ps.active .ps-label{color:var(--sage3);}
+.ps.done .ps-label{color:rgba(157,196,184,.6);}
+
+/* FORM SECTIONS */
+.form-wrap{max-width:680px;margin:0 auto;padding:0 24px 80px;}
+.section{display:none;animation:fadeIn .4s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+.sec-header{margin-bottom:32px;}
+.sec-num{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sage3);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.sec-num::before{content:'';width:16px;height:1px;background:var(--sage3);}
+.sec-title{font-family:'Lora',serif;font-size:22px;font-weight:700;line-height:1.2;margin-bottom:6px;}
+.sec-title em{font-style:italic;color:var(--sage3);}
+.sec-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;}
+
+/* FIELDS */
+.field-group{margin-bottom:20px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+label{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;}
+label .req{color:var(--sage3);}
+input,textarea,select{width:100%;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:white;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:300;outline:none;transition:border-color .25s,background .25s;-webkit-appearance:none;appearance:none;}
+input:focus,textarea:focus,select:focus{border-color:var(--sage);background:rgba(74,124,111,.08);}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.2);}
+textarea{resize:vertical;min-height:88px;line-height:1.6;}
+select option{background:var(--ink);color:white;}
+.field-hint{font-size:11px;color:rgba(255,255,255,.25);margin-top:6px;line-height:1.5;}
+
+/* RADIO / CHECK GROUPS */
+.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;}
+.option-grid.cols-3{grid-template-columns:1fr 1fr 1fr;}
+.option-grid.cols-1{grid-template-columns:1fr;}
+.opt{position:relative;}
+.opt input[type=radio],.opt input[type=checkbox]{position:absolute;opacity:0;width:0;height:0;}
+.opt label{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-size:13px;font-weight:300;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.65);margin:0;}
+.opt label:hover{border-color:rgba(157,196,184,.4);background:rgba(74,124,111,.08);}
+.opt input:checked+label{border-color:var(--sage);background:rgba(74,124,111,.15);color:white;}
+.opt-icon{font-size:16px;flex-shrink:0;}
+.opt-text{flex:1;line-height:1.35;}
+.opt-sub{font-size:11px;color:rgba(255,255,255,.35);display:block;margin-top:2px;}
+
+/* RANGE SLIDER */
+.range-wrap{padding:8px 0;}
+.range-labels{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3);margin-bottom:8px;}
+input[type=range]{padding:0;background:transparent;border:none;}
+input[type=range]:focus{border:none;background:transparent;}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.12);outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--sage);cursor:pointer;border:2px solid rgba(255,255,255,.3);}
+.range-val{text-align:center;font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--sage3);margin-top:10px;}
+
+/* SCALE BUTTONS */
+.scale-row{display:flex;gap:6px;margin-top:4px;}
+.scale-btn{flex:1;padding:10px 4px;border-radius:8px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:rgba(255,255,255,.4);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;text-align:center;}
+.scale-btn:hover{border-color:rgba(157,196,184,.4);color:rgba(255,255,255,.8);}
+.scale-btn.selected{border-color:var(--sage);background:rgba(74,124,111,.15);color:white;}
+.scale-ends{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.25);margin-top:6px;letter-spacing:.5px;}
+
+/* DIVIDER */
+.field-divider{height:1px;background:rgba(255,255,255,.06);margin:28px 0;}
+
+/* CARD HIGHLIGHT */
+.insight-card{background:rgba(74,124,111,.1);border:1px solid rgba(157,196,184,.2);border-radius:14px;padding:18px 20px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start;}
+.insight-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.insight-text{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;}
+.insight-text strong{color:var(--sage3);font-weight:500;}
+
+/* NAV BUTTONS */
+.form-nav{display:flex;gap:12px;margin-top:36px;align-items:center;}
+.btn-back{padding:13px 24px;border-radius:100px;border:1.5px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.45);font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.btn-back:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7);}
+.btn-next{flex:1;padding:14px 28px;border-radius:100px;background:var(--sage);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;}
+.btn-next:hover{background:var(--sage2);transform:translateY(-1px);}
+
+/* CONFIRMATION */
+.confirm-screen{text-align:center;padding:40px 0 60px;}
+.confirm-icon{font-size:52px;margin-bottom:20px;animation:bounceIn .6s ease;}
+@keyframes bounceIn{0%{transform:scale(0.5);opacity:0;}70%{transform:scale(1.1);}100%{transform:scale(1);opacity:1;}}
+.confirm-title{font-family:'Lora',serif;font-size:28px;font-weight:700;margin-bottom:10px;}
+.confirm-title em{font-style:italic;color:var(--sage3);}
+.confirm-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.7;max-width:400px;margin:0 auto 32px;}
+.confirm-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;text-align:left;margin-bottom:24px;}
+.cb-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.cb-row:last-child{border:none;}
+.cb-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.cb-val{font-size:13px;color:rgba(255,255,255,.8);font-weight:500;}
+.btn-print{padding:13px 28px;border-radius:100px;border:1.5px solid rgba(157,196,184,.3);background:transparent;color:var(--sage3);font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-right:10px;}
+.btn-print:hover{background:rgba(74,124,111,.15);}
+.btn-cal{padding:13px 28px;border-radius:100px;background:var(--sage);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;text-decoration:none;display:inline-block;}
+.btn-cal:hover{background:var(--sage2);}
+
+/* VALIDATION */
+.field-error{font-size:11px;color:#E07070;margin-top:5px;display:none;}
+.field-wrap.error input,.field-wrap.error textarea,.field-wrap.error select{border-color:#C0392B;}
+.field-wrap.error .field-error{display:block;}
+
+@media(max-width:600px){
+  .field-row{grid-template-columns:1fr;}
+  .option-grid.cols-3{grid-template-columns:1fr 1fr;}
+  .form-nav{flex-wrap:wrap;}
+  .btn-back{order:2;flex:1;}
+  .btn-next{order:1;width:100%;}
+}
+
+@media print{
+  body{background:white;color:#1A2B38;}
+  .top-bar,.form-header,.progress-wrap,.form-nav{display:none;}
+  .section.active{display:block;}
+  input,textarea,select{border:1px solid #ccc;background:white;color:#1A2B38;}
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="logo">The Financial<span>Clarity</span></div>
+  <div class="top-tag">Formulario Pre-Sesión</div>
+</div>
+
+<div class="form-header">
+  <div class="fh-tag">
+    <div class="fh-tag-dot"></div>
+    <span class="fh-tag-text">Sesión Diagnóstico · 90 min</span>
+  </div>
+  <h1 class="fh-h1">Cuéntame sobre <em>ti</em> antes<br>de nuestra sesión</h1>
+  <p class="fh-sub">Tus respuestas me ayudan a preparar una sesión completamente personalizada. No hay respuestas correctas o incorrectas — solo sé honesta/o.</p>
+  <div class="fh-time">~8 minutos · Confidencial</div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-steps">
+    <div class="ps active" id="ps1">
+      <div class="ps-dot">1</div>
+      <div class="ps-label">Perfil</div>
+    </div>
+    <div class="ps" id="ps2">
+      <div class="ps-dot">2</div>
+      <div class="ps-label">Dinero</div>
+    </div>
+    <div class="ps" id="ps3">
+      <div class="ps-dot">3</div>
+      <div class="ps-label">Emociones</div>
+    </div>
+    <div class="ps" id="ps4">
+      <div class="ps-dot">4</div>
+      <div class="ps-label">Metas</div>
+    </div>
+    <div class="ps" id="ps5">
+      <div class="ps-dot">✓</div>
+      <div class="ps-label">Listo</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-wrap">
+
+  <!-- ═══ SECCIÓN 1: PERFIL ═══ -->
+  <div class="section active" id="sec1">
+    <div class="sec-header">
+      <div class="sec-num">01 · Perfil personal</div>
+      <h2 class="sec-title">Antes de empezar,<br><em>cuéntame quién eres</em></h2>
+      <p class="sec-desc">Información básica para personalizar tu sesión.</p>
+    </div>
+
+    <div class="field-row">
+      <div class="field-wrap" id="fw-nombre">
+        <label>Nombre <span class="req">*</span></label>
+        <input type="text" id="f-nombre" placeholder="Tu nombre">
+        <div class="field-error">Por favor ingresa tu nombre</div>
+      </div>
+      <div class="field-wrap" id="fw-edad">
+        <label>Edad <span class="req">*</span></label>
+        <input type="number" id="f-edad" placeholder="Ej. 28" min="18" max="80">
+        <div class="field-error">Por favor ingresa tu edad</div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-wrap" id="fw-email">
+        <label>Email <span class="req">*</span></label>
+        <input type="email" id="f-email" placeholder="tu@email.com">
+        <div class="field-error">Por favor ingresa un email válido</div>
+      </div>
+      <div class="field-group">
+        <label>País / Ciudad</label>
+        <input type="text" id="f-ciudad" placeholder="Ej. Ciudad de México">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Cuál es tu situación laboral actual? <span class="req">*</span></label>
+      <div class="option-grid" id="fw-trabajo">
+        <div class="opt">
+          <input type="radio" name="trabajo" id="t1" value="Freelancer / Independiente">
+          <label for="t1"><span class="opt-icon">💻</span><span class="opt-text">Freelancer / Independiente</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="trabajo" id="t2" value="Empleado tiempo completo">
+          <label for="t2"><span class="opt-icon">🏢</span><span class="opt-text">Empleado tiempo completo</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="trabajo" id="t3" value="Emprendedor / Dueño de negocio">
+          <label for="t3"><span class="opt-icon">🚀</span><span class="opt-text">Emprendedor / Dueño de negocio</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="trabajo" id="t4" value="Mixto (empleo + proyectos)">
+          <label for="t4"><span class="opt-icon">🔀</span><span class="opt-text">Mixto (empleo + proyectos)</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Estado civil / Situación de hogar</label>
+      <div class="option-grid">
+        <div class="opt">
+          <input type="radio" name="estado" id="e1" value="Soltero/a">
+          <label for="e1"><span class="opt-text">Soltero/a</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="estado" id="e2" value="En pareja / Casado/a">
+          <label for="e2"><span class="opt-text">En pareja / Casado/a</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="estado" id="e3" value="Con dependientes (hijos, familia)">
+          <label for="e3"><span class="opt-text">Con dependientes</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="estado" id="e4" value="Otro">
+          <label for="e4"><span class="opt-text">Otro</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-next" onclick="goTo(2)">Siguiente → Situación financiera</button>
+    </div>
+  </div>
+
+  <!-- ═══ SECCIÓN 2: DINERO ═══ -->
+  <div class="section" id="sec2">
+    <div class="sec-header">
+      <div class="sec-num">02 · Tu situación financiera</div>
+      <h2 class="sec-title">Hablemos de <em>números</em></h2>
+      <p class="sec-desc">Esta información es completamente confidencial y me permite llegar a la sesión ya con un diagnóstico inicial.</p>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-icon">🔒</div>
+      <div class="insight-text">Todo lo que compartas aquí es <strong>100% confidencial</strong>. Solo lo uso para preparar tu sesión. Nunca se comparte con terceros.</div>
+    </div>
+
+    <div class="field-group">
+      <label>Rango de ingreso mensual aproximado <span class="req">*</span></label>
+      <div class="option-grid cols-1" id="fw-ingreso">
+        <div class="opt">
+          <input type="radio" name="ingreso" id="i1" value="Menos de $10,000 MXN / $500 USD">
+          <label for="i1"><span class="opt-text">Menos de $10,000 MXN / $500 USD</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="ingreso" id="i2" value="$10,000–$25,000 MXN / $500–$1,300 USD">
+          <label for="i2"><span class="opt-text">$10,000–$25,000 MXN / $500–$1,300 USD</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="ingreso" id="i3" value="$25,000–$50,000 MXN / $1,300–$2,600 USD">
+          <label for="i3"><span class="opt-text">$25,000–$50,000 MXN / $1,300–$2,600 USD</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="ingreso" id="i4" value="$50,000–$100,000 MXN / $2,600–$5,200 USD">
+          <label for="i4"><span class="opt-text">$50,000–$100,000 MXN / $2,600–$5,200 USD</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="ingreso" id="i5" value="Más de $100,000 MXN / $5,200 USD">
+          <label for="i5"><span class="opt-text">Más de $100,000 MXN / +$5,200 USD</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="ingreso" id="i6" value="Prefiero no decirlo">
+          <label for="i6"><span class="opt-text">Prefiero no decirlo</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-divider"></div>
+
+    <div class="field-group">
+      <label>¿Tienes presupuesto mensual definido?</label>
+      <div class="option-grid">
+        <div class="opt">
+          <input type="radio" name="presupuesto" id="p1" value="Sí, lo sigo consistentemente">
+          <label for="p1"><span class="opt-text">Sí, lo sigo consistentemente</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="presupuesto" id="p2" value="Lo tengo pero no lo sigo">
+          <label for="p2"><span class="opt-text">Lo tengo pero no lo sigo</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="presupuesto" id="p3" value="Lo estoy creando">
+          <label for="p3"><span class="opt-text">Lo estoy creando</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="presupuesto" id="p4" value="No tengo presupuesto">
+          <label for="p4"><span class="opt-text">No tengo presupuesto</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Tienes deudas activas?</label>
+      <div class="option-grid">
+        <div class="opt">
+          <input type="checkbox" id="d1" value="Tarjeta de crédito">
+          <label for="d1"><span class="opt-icon">💳</span><span class="opt-text">Tarjeta de crédito</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="d2" value="Préstamo personal">
+          <label for="d2"><span class="opt-icon">🏦</span><span class="opt-text">Préstamo personal</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="d3" value="Crédito hipotecario">
+          <label for="d3"><span class="opt-icon">🏠</span><span class="opt-text">Crédito hipotecario</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="d4" value="Crédito de auto">
+          <label for="d4"><span class="opt-icon">🚗</span><span class="opt-text">Crédito de auto</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="d5" value="Deudas familiares">
+          <label for="d5"><span class="opt-icon">👨‍👩‍👧</span><span class="opt-text">Deudas familiares</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="d6" value="Sin deudas">
+          <label for="d6"><span class="opt-icon">✅</span><span class="opt-text">Sin deudas</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Tienes fondo de emergencia?</label>
+      <div class="option-grid cols-3">
+        <div class="opt">
+          <input type="radio" name="emergencia" id="em1" value="Sí, 3+ meses">
+          <label for="em1"><span class="opt-text">Sí, 3+ meses</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="emergencia" id="em2" value="Parcial (1-2 meses)">
+          <label for="em2"><span class="opt-text">Parcial (1–2 meses)</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="emergencia" id="em3" value="No tengo">
+          <label for="em3"><span class="opt-text">No tengo</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Estás ahorrando o invirtiendo actualmente?</label>
+      <div class="option-grid">
+        <div class="opt">
+          <input type="radio" name="ahorro" id="a1" value="Sí, de forma consistente">
+          <label for="a1"><span class="opt-text">Sí, consistentemente</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="ahorro" id="a2" value="A veces, cuando sobra">
+          <label for="a2"><span class="opt-text">A veces, cuando sobra</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="ahorro" id="a3" value="No logro ahorrar">
+          <label for="a3"><span class="opt-text">No logro ahorrar</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="ahorro" id="a4" value="Quisiera empezar">
+          <label for="a4"><span class="opt-text">Quisiera empezar</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(1)">← Atrás</button>
+      <button class="btn-next" onclick="goTo(3)">Siguiente → Relación con el dinero</button>
+    </div>
+  </div>
+
+  <!-- ═══ SECCIÓN 3: EMOCIONES / PSICOLOGÍA ═══ -->
+  <div class="section" id="sec3">
+    <div class="sec-header">
+      <div class="sec-num">03 · Psicología del dinero</div>
+      <h2 class="sec-title">Tu <em>relación emocional</em><br>con las finanzas</h2>
+      <p class="sec-desc">Esta es la parte más importante. El dinero no es solo matemática — es emoción, historia y creencias.</p>
+    </div>
+
+    <div class="field-group">
+      <label>¿Cómo describirías tu relación actual con el dinero? <span class="req">*</span></label>
+      <div class="option-grid cols-1" id="fw-relacion">
+        <div class="opt">
+          <input type="radio" name="relacion" id="r1" value="Ansiosa — el dinero me genera estrés y preocupación constante">
+          <label for="r1"><span class="opt-icon">😰</span><span class="opt-text">Ansiosa — me genera estrés y preocupación constante</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="relacion" id="r2" value="Evasiva — prefiero no pensar en mis finanzas">
+          <label for="r2"><span class="opt-icon">🙈</span><span class="opt-text">Evasiva — prefiero no pensar en mis finanzas</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="relacion" id="r3" value="Controlada — tengo orden pero siento que podría mejorar">
+          <label for="r3"><span class="opt-icon">📊</span><span class="opt-text">Controlada — tengo orden pero podría mejorar</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="relacion" id="r4" value="Impulsiva — gasto sin pensar y luego me arrepiento">
+          <label for="r4"><span class="opt-icon">🛍️</span><span class="opt-text">Impulsiva — gasto sin pensar y luego me arrepiento</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="relacion" id="r5" value="Estancada — sé lo que debo hacer pero no lo hago">
+          <label for="r5"><span class="opt-icon">🔄</span><span class="opt-text">Estancada — sé qué hacer pero no lo hago</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-divider"></div>
+
+    <div class="field-group">
+      <label>Del 1 al 10, ¿cuánto estrés financiero sientes actualmente?</label>
+      <div class="scale-row" id="stress-scale">
+        <button class="scale-btn" data-val="1" onclick="selectScale(this,'stress')">1</button>
+        <button class="scale-btn" data-val="2" onclick="selectScale(this,'stress')">2</button>
+        <button class="scale-btn" data-val="3" onclick="selectScale(this,'stress')">3</button>
+        <button class="scale-btn" data-val="4" onclick="selectScale(this,'stress')">4</button>
+        <button class="scale-btn" data-val="5" onclick="selectScale(this,'stress')">5</button>
+        <button class="scale-btn" data-val="6" onclick="selectScale(this,'stress')">6</button>
+        <button class="scale-btn" data-val="7" onclick="selectScale(this,'stress')">7</button>
+        <button class="scale-btn" data-val="8" onclick="selectScale(this,'stress')">8</button>
+        <button class="scale-btn" data-val="9" onclick="selectScale(this,'stress')">9</button>
+        <button class="scale-btn" data-val="10" onclick="selectScale(this,'stress')">10</button>
+      </div>
+      <div class="scale-ends"><span>Sin estrés</span><span>Estrés máximo</span></div>
+      <input type="hidden" id="f-stress">
+    </div>
+
+    <div class="field-group">
+      <label>¿Cuál de estas frases te suena más familiar?</label>
+      <div class="option-grid cols-1">
+        <div class="opt">
+          <input type="radio" name="creencia" id="c1" value="El dinero no alcanza para todo">
+          <label for="c1"><span class="opt-text">"El dinero no alcanza para todo"</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="creencia" id="c2" value="El dinero es para gastarse, no para guardarse">
+          <label for="c2"><span class="opt-text">"El dinero es para gastarse, no para guardarse"</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="creencia" id="c3" value="Hablar de dinero es de mala educación">
+          <label for="c3"><span class="opt-text">"Hablar de dinero es de mala educación"</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="creencia" id="c4" value="Nunca voy a tener suficiente">
+          <label for="c4"><span class="opt-text">"Nunca voy a tener suficiente"</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="creencia" id="c5" value="Los ricos son afortunados o deshonestos">
+          <label for="c5"><span class="opt-text">"Los ricos son afortunados o deshonestos"</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="creencia" id="c6" value="Ninguna me identifica">
+          <label for="c6"><span class="opt-text">Ninguna me identifica</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Qué aprendiste sobre el dinero en tu familia?</label>
+      <textarea id="f-familia" placeholder="Ej. En mi casa nunca se hablaba de dinero, siempre había tensión cuando faltaba, mi papá era muy ahorrativo pero mi mamá gastaba sin control..."></textarea>
+      <div class="field-hint">Esta pregunta me ayuda a entender tus patrones más profundos. No hay respuesta incorrecta.</div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Hay alguna situación financiera específica que te genera vergüenza o culpa?</label>
+      <textarea id="f-culpa" placeholder="Opcional — comparte solo si te sientes cómoda/o..."></textarea>
+      <div class="field-hint">Esto me ayuda a abordar los temas con más sensibilidad durante la sesión.</div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(2)">← Atrás</button>
+      <button class="btn-next" onclick="goTo(4)">Siguiente → Metas y expectativas</button>
+    </div>
+  </div>
+
+  <!-- ═══ SECCIÓN 4: METAS ═══ -->
+  <div class="section" id="sec4">
+    <div class="sec-header">
+      <div class="sec-num">04 · Metas y expectativas</div>
+      <h2 class="sec-title">¿Qué quieres <em>lograr?</em></h2>
+      <p class="sec-desc">Esto me ayuda a enfocar la sesión en lo que más te importa ahora mismo.</p>
+    </div>
+
+    <div class="field-group">
+      <label>¿Por qué agendaste esta sesión hoy? <span class="req">*</span></label>
+      <textarea id="f-porq" placeholder="Cuéntame qué está pasando en tu vida financiera que te hizo buscar ayuda ahora..."></textarea>
+      <div class="field-hint">No hay respuesta corta o larga — escribe lo que sientas.</div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Cuáles son tus 3 metas financieras más importantes ahora?</label>
+      <div class="option-grid cols-1">
+        <div class="opt">
+          <input type="checkbox" id="m1" value="Crear un presupuesto que realmente funcione">
+          <label for="m1"><span class="opt-icon">📝</span><span class="opt-text">Crear un presupuesto que realmente funcione</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="m2" value="Eliminar deudas">
+          <label for="m2"><span class="opt-icon">💳</span><span class="opt-text">Eliminar deudas</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="m3" value="Empezar a ahorrar / aumentar mis ahorros">
+          <label for="m3"><span class="opt-icon">🏦</span><span class="opt-text">Empezar a ahorrar / aumentar mis ahorros</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="m4" value="Planear la compra de una casa">
+          <label for="m4"><span class="opt-icon">🏠</span><span class="opt-text">Planear la compra de una casa</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="m5" value="Empezar a invertir">
+          <label for="m5"><span class="opt-icon">📈</span><span class="opt-text">Empezar a invertir</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="m6" value="Planear mi retiro">
+          <label for="m6"><span class="opt-icon">🌅</span><span class="opt-text">Planear mi retiro</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="m7" value="Entender cómo cobrar mejor / subir mis precios">
+          <label for="m7"><span class="opt-icon">💡</span><span class="opt-text">Entender cómo cobrar mejor / subir precios</span></label>
+        </div>
+        <div class="opt">
+          <input type="checkbox" id="m8" value="Mejorar mi relación emocional con el dinero">
+          <label for="m8"><span class="opt-icon">🧠</span><span class="opt-text">Mejorar mi relación emocional con el dinero</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-divider"></div>
+
+    <div class="field-group">
+      <label>¿En cuánto tiempo quieres ver resultados concretos?</label>
+      <div class="option-grid cols-3">
+        <div class="opt">
+          <input type="radio" name="tiempo" id="ti1" value="1 mes">
+          <label for="ti1"><span class="opt-text">1 mes</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="tiempo" id="ti2" value="3 meses">
+          <label for="ti2"><span class="opt-text">3 meses</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="tiempo" id="ti3" value="6 meses">
+          <label for="ti3"><span class="opt-text">6 meses</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="tiempo" id="ti4" value="1 año">
+          <label for="ti4"><span class="opt-text">1 año</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="tiempo" id="ti5" value="Largo plazo (+1 año)">
+          <label for="ti5"><span class="opt-text">Largo plazo</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="tiempo" id="ti6" value="No lo sé aún">
+          <label for="ti6"><span class="opt-text">No lo sé aún</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Has trabajado antes con un coach financiero o asesor?</label>
+      <div class="option-grid cols-3">
+        <div class="opt">
+          <input type="radio" name="previo" id="pr1" value="Sí, tuve buena experiencia">
+          <label for="pr1"><span class="opt-text">Sí, buena experiencia</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="previo" id="pr2" value="Sí, pero no funcionó">
+          <label for="pr2"><span class="opt-text">Sí, no funcionó</span></label>
+        </div>
+        <div class="opt">
+          <input type="radio" name="previo" id="pr3" value="No, primera vez">
+          <label for="pr3"><span class="opt-text">Primera vez</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>¿Hay algo más que quieras que sepa antes de la sesión?</label>
+      <textarea id="f-extra" placeholder="Cualquier cosa que quieras agregar — contexto, preguntas que tengas, algo que te preocupe especialmente..."></textarea>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(3)">← Atrás</button>
+      <button class="btn-next" onclick="submitForm()">Enviar formulario ✓</button>
+    </div>
+  </div>
+
+  <!-- ═══ CONFIRMACIÓN ═══ -->
+  <div class="section" id="sec5">
+    <div class="confirm-screen">
+      <div class="confirm-icon">🌿</div>
+      <h2 class="confirm-title">¡Listo, <em id="conf-nombre">!</em></h2>
+      <p class="confirm-sub">Recibí tu formulario. Lo revisaré antes de nuestra sesión para llegar ya preparada y aprovechar cada minuto juntas/os.</p>
+      
+      <div class="confirm-box">
+        <div class="cb-row">
+          <span class="cb-label">Sesión</span>
+          <span class="cb-val">Diagnóstico Financiero · 90 min</span>
+        </div>
+        <div class="cb-row">
+          <span class="cb-label">Coach</span>
+          <span class="cb-val">The Financial Clarity</span>
+        </div>
+        <div class="cb-row">
+          <span class="cb-label">Siguiente paso</span>
+          <span class="cb-val">Confirma tu horario en Calendly</span>
+        </div>
+      </div>
+
+      <div>
+        <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+        <a class="btn-cal" href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank">Agendar mi sesión →</a>
+      </div>
+
+      <p style="margin-top:28px;font-size:12px;color:rgba(255,255,255,.25);">¿Preguntas? Escríbeme a hello@thefinancialclarity.com</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var scaleValues = {};
+
+function goTo(n) {
+  // Validate before moving forward
+  var current = parseInt(document.querySelector('.section.active').id.replace('sec',''));
+  if (n > current && !validateSection(current)) return;
+
+  // Update sections
+  document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('sec'+n).classList.add('active');
+
+  // Update progress steps
+  for (var i = 1; i <= 5; i++) {
+    var ps = document.getElementById('ps'+i);
+    ps.classList.remove('active','done');
+    if (i < n) ps.classList.add('done');
+    else if (i === n) ps.classList.add('active');
+  }
+
+  // Mark done checkmark
+  document.querySelectorAll('.ps.done .ps-dot').forEach(function(d){ d.textContent = '✓'; });
+  
+  // Scroll to top
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function validateSection(n) {
+  var valid = true;
+
+  if (n === 1) {
+    var nombre = document.getElementById('f-nombre').value.trim();
+    var edad = document.getElementById('f-edad').value.trim();
+    var email = document.getElementById('f-email').value.trim();
+    var trabajo = document.querySelector('input[name="trabajo"]:checked');
+
+    setError('fw-nombre', !nombre);
+    setError('fw-edad', !edad);
+    setError('fw-email', !email || !email.includes('@'));
+    
+    if (!nombre || !edad || !email || !email.includes('@')) valid = false;
+  }
+
+  if (n === 2) {
+    var ingreso = document.querySelector('input[name="ingreso"]:checked');
+    var fw = document.getElementById('fw-ingreso');
+    if (!ingreso) {
+      fw.style.outline = '2px solid #C0392B';
+      fw.style.borderRadius = '10px';
+      valid = false;
+    } else {
+      fw.style.outline = '';
+    }
+  }
+
+  if (n === 3) {
+    var relacion = document.querySelector('input[name="relacion"]:checked');
+    var fw = document.getElementById('fw-relacion');
+    if (!relacion) {
+      fw.style.outline = '2px solid #C0392B';
+      fw.style.borderRadius = '10px';
+      valid = false;
+    } else {
+      fw.style.outline = '';
+    }
+  }
+
+  if (n === 4) {
+    var porq = document.getElementById('f-porq').value.trim();
+    if (!porq) {
+      document.getElementById('f-porq').style.borderColor = '#C0392B';
+      valid = false;
+    } else {
+      document.getElementById('f-porq').style.borderColor = '';
+    }
+  }
+
+  return valid;
+}
+
+function setError(id, hasError) {
+  var fw = document.getElementById(id);
+  if (fw) {
+    fw.classList.toggle('error', hasError);
+  }
+}
+
+function selectScale(btn, key) {
+  var container = btn.parentElement;
+  container.querySelectorAll('.scale-btn').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  scaleValues[key] = btn.getAttribute('data-val');
+  var input = document.getElementById('f-'+key);
+  if (input) input.value = btn.getAttribute('data-val');
+}
+
+function submitForm() {
+  if (!validateSection(4)) return;
+
+  var nombre = document.getElementById('f-nombre').value.trim();
+
+  // Collect all checkboxes (deudas, metas)
+  var deudas = [];
+  ['d1','d2','d3','d4','d5','d6'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el && el.checked) deudas.push(el.value);
+  });
+  var metas = [];
+  ['m1','m2','m3','m4','m5','m6','m7','m8'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el && el.checked) metas.push(el.value);
+  });
+
+  function val(id){ var el=document.getElementById(id); return el?el.value.trim():''; }
+  function radio(name){ var el=document.querySelector('input[name="'+name+'"]:checked'); return el?el.value:''; }
+
+  var data = {
+    '01 Nombre':           val('f-nombre'),
+    '02 Edad':             val('f-edad'),
+    '03 Email cliente':    val('f-email'),
+    '04 Ciudad':           val('f-ciudad'),
+    '05 Situación laboral': radio('trabajo'),
+    '06 Estado civil':     radio('estado'),
+    '07 Ingreso mensual':  radio('ingreso'),
+    '08 Presupuesto':      radio('presupuesto'),
+    '09 Deudas':           deudas.join(', ') || 'No indicó',
+    '10 Fondo emergencia': radio('emergencia'),
+    '11 Ahorro':           radio('ahorro'),
+    '12 Relación con dinero': radio('relacion'),
+    '13 Estrés financiero (1-10)': val('f-stress') || 'No indicó',
+    '14 Creencia del dinero': radio('creencia'),
+    '15 Aprendizaje familiar': val('f-familia') || 'No respondió',
+    '16 Vergüenza / culpa': val('f-culpa') || 'No respondió',
+    '17 Por qué agendó':   val('f-porq'),
+    '18 Metas':            metas.join(', ') || 'No indicó',
+    '19 Tiempo para resultados': radio('tiempo'),
+    '20 Experiencia previa coach': radio('previo'),
+    '21 Notas adicionales': val('f-extra') || 'Ninguna',
+    '_subject': '📋 Nuevo intake pre-sesión — ' + nombre
+  };
+
+  // Show loading state
+  var btn = document.querySelector('#sec4 .btn-next');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/mjgaypdn', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function(res){
+    if(res.ok){
+      goTo(5);
+      var confNombre = document.getElementById('conf-nombre');
+      if(confNombre) confNombre.textContent = nombre + '!';
+    } else {
+      btn.textContent = 'Error — intenta de nuevo';
+      btn.disabled = false;
+    }
+  })
+  .catch(function(){
+    btn.textContent = 'Error de conexión — intenta de nuevo';
+    btn.disabled = false;
+  });
+}
+
+// Restore step numbers on init
+document.addEventListener('DOMContentLoaded', function(){
+  for (var i = 1; i <= 4; i++) {
+    var dot = document.querySelector('#ps'+i+' .ps-dot');
+    if (dot && !dot.classList.contains('done')) dot.textContent = i;
+  }
+});
+</script>
+</body>
+</html>
