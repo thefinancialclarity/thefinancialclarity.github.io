@@ -19,13 +19,13 @@ html{scroll-behavior:smooth;}
 body{background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
 
 /* LANG BAR */
-.lang-bar{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--ink);padding:7px 52px;display:flex;justify-content:flex-end;gap:8px;}
+.lang-bar{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--ink);padding:7px 52px;display:flex;justify-content:flex-end;gap:8px;}
 .lb{padding:4px 16px;border-radius:100px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.4);background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
 .lb.active{background:var(--sage);color:white;border-color:var(--sage);}
 .lb:hover:not(.active){color:white;border-color:rgba(255,255,255,.4);}
 
 /* NAV */
-nav{position:fixed;top:34px;left:0;right:0;z-index:400;padding:18px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+nav{position:fixed;top:34px;left:0;right:0;z-index:200;padding:18px 52px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
 nav.scrolled{background:rgba(253,252,249,.95);backdrop-filter:blur(20px);padding:14px 52px;border-bottom:1px solid rgba(26,43,56,.07);box-shadow:0 2px 20px rgba(26,43,56,.04);}
 .nav-logo{font-family:'Lora',serif;font-size:19px;font-weight:600;text-decoration:none;color:white;transition:color .3s;}
 nav.scrolled .nav-logo{color:var(--ink);}
@@ -41,7 +41,7 @@ nav.scrolled .nav-cta{background:var(--ink)!important;color:white!important;}
 .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
 .nav-toggle span{width:22px;height:1.5px;display:block;transition:all .3s;background:white;}
 nav.scrolled .nav-toggle span{background:var(--ink);}
-.mob-menu{position:fixed;inset:0;background:var(--ink);z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .4s ease;}
+.mob-menu{position:fixed;inset:0;background:var(--ink);z-index:199;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .4s ease;}
 .mob-menu.open{transform:translateX(0);}
 .mob-menu a{font-family:'Lora',serif;font-size:30px;font-weight:500;color:white;text-decoration:none;}
 .mob-menu a:hover{color:var(--sage3);}
@@ -318,29 +318,29 @@ footer a:hover { color: #4A7C6F !important; }
 <body>
 
 <div class="lang-bar">
-  <button class="lb active" id="btn-es">🇲🇽 Español</button>
-  <button class="lb" id="btn-en">🇺🇸 English</button>
+  <button class="lb active" id="btn-es" onclick="setLang('es')">🇲🇽 Español</button>
+  <button class="lb" id="btn-en" onclick="setLang('en')">🇺🇸 English</button>
 </div>
 
 <div class="mob-menu" id="mobMenu">
-  <a href="#pain"    id="mm-pain"    data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a>
-  <a href="#about"   id="mm-about"   data-es="Sobre mí"    data-en="About Me">Sobre mí</a>
-  <a href="#services" id="mm-svc"    data-es="Servicios"   data-en="Services">Servicios</a>
-  <a href="#lm"      id="mm-lm"      data-es="Guía gratis" data-en="Free Guide">Guía gratis</a>
-  <a href="#contact" id="mm-contact" data-es="Contacto"    data-en="Contact">Contacto</a>
+  <a href="#pain"   onclick="cm()" data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a>
+  <a href="#about"  onclick="cm()" data-es="Sobre mí"    data-en="About Me">Sobre mí</a>
+  <a href="#services" onclick="cm()" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="#lm"     onclick="cm()" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a>
+  <a href="#contact" onclick="cm()" data-es="Contacto"   data-en="Contact">Contacto</a>
 </div>
 
 <nav id="nav">
   <a class="nav-logo" href="#hero">The Financial<span>Clarity</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#pain"    data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a></li>
-    <li><a href="#about"   data-es="Sobre mí"    data-en="About Me">Sobre mí</a></li>
+    <li><a href="#psicologia" data-es="Psicología" data-en="Psychology">Psicología</a></li>
     <li><a href="#services" data-es="Servicios"  data-en="Services">Servicios</a></li>
-    <li><a href="#lm" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li>
+    <li><a href="blog.html" data-es="Blog" data-en="Blog">Blog</a></li>
     <li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test gratis" data-en="Free Quiz" id="nav-quiz-link">Test gratis</a></li>
     <li><a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="nav-cta" data-es="Agendar sesión" data-en="Book Session">Agendar sesión</a></li>
   </ul>
-  <button class="nav-toggle" id="navT"><span></span><span></span><span></span></button>
+  <button class="nav-toggle" id="navT" onclick="tm()"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- ══ HERO ══ -->
@@ -444,6 +444,82 @@ footer a:hover { color: #4A7C6F !important; }
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PSICOLOGÍA FINANCIERA ══ -->
+<section id="psicologia" style="background:var(--cream);padding:88px 52px;">
+  <div style="max-width:1060px;margin:0 auto;">
+    <div class="reveal">
+      <div class="sec-tag" data-es="Psicología & Finanzas" data-en="Psychology & Finance">Psicología &amp; Finanzas</div>
+      <h2 class="sec-h" style="margin-bottom:14px;">
+        <span data-es="Lo que <em>Cómo Piensan los Ricos</em> nos enseña sobre el dinero" data-en="What <em>The Psychology of Money</em> teaches us about wealth">Lo que <em>Cómo Piensan los Ricos</em> nos enseña sobre el dinero</span>
+      </h2>
+      <p class="sec-p" style="margin-bottom:48px;" data-es="Morgan Housel demostró que la riqueza no es resultado de la inteligencia, sino del comportamiento. Estas son las ideas clave — y cómo las trabajo contigo en cada sesión." data-en="Morgan Housel showed that wealth isn't a result of intelligence, but of behavior. These are the key ideas — and how I work through them with you in every session.">Morgan Housel demostró que la riqueza no es resultado de la inteligencia, sino del comportamiento. Estas son las ideas clave — y cómo las trabajo contigo en cada sesión.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;" class="reveal">
+
+      <!-- Concepto 1 -->
+      <div style="background:white;border-radius:18px;padding:28px 24px;border:1px solid rgba(26,43,56,.07);transition:transform .3s,box-shadow .3s;cursor:default;" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(26,43,56,.09)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:44px;height:44px;background:var(--sage4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">💡</div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:8px;font-weight:500;" data-es="Principio #1" data-en="Principle #1">Principio #1</div>
+        <div style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:10px;" data-es="Nadie es irracional con el dinero" data-en="Nobody is irrational with money">Nadie es irracional con el dinero</div>
+        <div style="font-size:13px;color:var(--ink3);line-height:1.75;margin-bottom:14px;" data-es="Cada decisión financiera tiene sentido para quien la tomó, dado lo que vivió. Tu historia con el dinero no es un defecto — es un punto de partida." data-en="Every financial decision makes sense to the person who made it, given what they've lived. Your money history isn't a flaw — it's a starting point.">Cada decisión financiera tiene sentido para quien la tomó, dado lo que vivió. Tu historia con el dinero no es un defecto — es un punto de partida.</div>
+        <div style="font-size:11px;color:var(--sage);font-style:italic;padding-top:10px;border-top:1px solid rgba(74,124,111,.12);" data-es="Cómo lo aplico: Antes de cualquier plan, exploramos tus creencias heredadas sobre el dinero." data-en="How I apply it: Before any plan, we explore your inherited beliefs about money.">→ <em data-es="Antes de cualquier plan, exploramos tus creencias heredadas sobre el dinero." data-en="Before any plan, we explore your inherited beliefs about money.">Antes de cualquier plan, exploramos tus creencias heredadas sobre el dinero.</em></div>
+      </div>
+
+      <!-- Concepto 2 -->
+      <div style="background:var(--ink);border-radius:18px;padding:28px 24px;transition:transform .3s,box-shadow .3s;cursor:default;" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(26,43,56,.18)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:44px;height:44px;background:rgba(74,124,111,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">🧲</div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--sage3);margin-bottom:8px;font-weight:500;" data-es="Principio #2" data-en="Principle #2">Principio #2</div>
+        <div style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:white;line-height:1.2;margin-bottom:10px;" data-es="El interés compuesto es paciencia, no magia" data-en="Compound interest is patience, not magic">El interés compuesto es paciencia, no magia</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:14px;" data-es="El 96% de la fortuna de Warren Buffett llegó después de sus 65 años. El tiempo es el ingrediente más poderoso — y el más ignorado por las personas con ingresos irregulares." data-en="96% of Warren Buffett's fortune arrived after age 65. Time is the most powerful ingredient — and the most ignored by people with irregular income.">El 96% de la fortuna de Warren Buffett llegó después de sus 65 años. El tiempo es el ingrediente más poderoso — y el más ignorado por las personas con ingresos irregulares.</div>
+        <div style="font-size:11px;color:var(--sage3);font-style:italic;padding-top:10px;border-top:1px solid rgba(157,196,184,.15);" data-es="Cómo lo aplico: Construimos un plan de inversión constante, aunque tus ingresos varíen cada mes." data-en="How I apply it: We build a consistent investment plan, even when your income varies each month.">→ <em data-es="Construimos un plan de inversión constante, aunque tus ingresos varíen cada mes." data-en="We build a consistent investment plan, even when your income varies each month.">Construimos un plan de inversión constante, aunque tus ingresos varíen cada mes.</em></div>
+      </div>
+
+      <!-- Concepto 3 -->
+      <div style="background:white;border-radius:18px;padding:28px 24px;border:1px solid rgba(26,43,56,.07);transition:transform .3s,box-shadow .3s;cursor:default;" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(26,43,56,.09)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:44px;height:44px;background:var(--blue4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">🛡️</div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--blue2);margin-bottom:8px;font-weight:500;" data-es="Principio #3" data-en="Principle #3">Principio #3</div>
+        <div style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:10px;" data-es="La riqueza es lo que no ves" data-en="Wealth is what you don't see">La riqueza es lo que no ves</div>
+        <div style="font-size:13px;color:var(--ink3);line-height:1.75;margin-bottom:14px;" data-es="El auto lujoso y la ropa de marca son ingresos gastados. La verdadera riqueza son los activos no exhibidos. Construir patrimonio silencioso es la estrategia más poderosa." data-en="The luxury car and designer clothes are income spent. Real wealth is unspent assets. Building silent net worth is the most powerful strategy.">El auto lujoso y la ropa de marca son ingresos gastados. La verdadera riqueza son los activos no exhibidos. Construir patrimonio silencioso es la estrategia más poderosa.</div>
+        <div style="font-size:11px;color:var(--blue2);font-style:italic;padding-top:10px;border-top:1px solid rgba(43,90,140,.1);" data-es="Cómo lo aplico: Redefinimos lo que significa 'ganar' para que las decisiones diarias alineen con tus metas reales." data-en="How I apply it: We redefine what 'winning' means so daily decisions align with your real goals.">→ <em data-es="Redefinimos lo que significa 'ganar' para que las decisiones diarias alineen con tus metas reales." data-en="We redefine what 'winning' means so daily decisions align with your real goals.">Redefinimos lo que significa 'ganar' para que las decisiones diarias alineen con tus metas reales.</em></div>
+      </div>
+
+      <!-- Concepto 4 -->
+      <div style="background:linear-gradient(135deg,var(--sage4),#C8E8DF);border-radius:18px;padding:28px 24px;border:1px solid rgba(74,124,111,.15);transition:transform .3s,box-shadow .3s;cursor:default;" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(26,43,56,.09)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:44px;height:44px;background:white;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;opacity:.85;">⏰</div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:8px;font-weight:500;" data-es="Principio #4" data-en="Principle #4">Principio #4</div>
+        <div style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:10px;" data-es="Ahorra sin una razón específica" data-en="Save without a specific reason">Ahorra sin una razón específica</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.75;margin-bottom:14px;" data-es="El ahorro más valioso no es para algo concreto — es para lo inesperado. La flexibilidad financiera es el activo más subestimado de todos." data-en="The most valuable savings isn't for something specific — it's for the unexpected. Financial flexibility is the most underrated asset of all.">El ahorro más valioso no es para algo concreto — es para lo inesperado. La flexibilidad financiera es el activo más subestimado de todos.</div>
+        <div style="font-size:11px;color:var(--sage);font-style:italic;padding-top:10px;border-top:1px solid rgba(74,124,111,.18);" data-es="Cómo lo aplico: Diseñamos tu fondo de libertad — no de emergencia, de libertad." data-en="How I apply it: We design your freedom fund — not an emergency fund, a freedom fund.">→ <em data-es="Diseñamos tu fondo de libertad — no de emergencia, de libertad." data-en="We design your freedom fund — not an emergency fund, a freedom fund.">Diseñamos tu fondo de libertad — no de emergencia, de libertad.</em></div>
+      </div>
+
+      <!-- Concepto 5 -->
+      <div style="background:white;border-radius:18px;padding:28px 24px;border:1px solid rgba(26,43,56,.07);transition:transform .3s,box-shadow .3s;cursor:default;" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(26,43,56,.09)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:44px;height:44px;background:var(--cream2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">🎭</div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;font-weight:500;" data-es="Principio #5" data-en="Principle #5">Principio #5</div>
+        <div style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:10px;" data-es="El ego es el mayor enemigo financiero" data-en="Ego is the biggest financial enemy">El ego es el mayor enemigo financiero</div>
+        <div style="font-size:13px;color:var(--ink3);line-height:1.75;margin-bottom:14px;" data-es="Muchas decisiones financieras no buscan seguridad — buscan aprobación social. Cuando gastas para impresionar a otros, estás pagando un precio altísimo por su opinión." data-en="Many financial decisions don't seek security — they seek social approval. When you spend to impress others, you're paying a very high price for their opinion.">Muchas decisiones financieras no buscan seguridad — buscan aprobación social. Cuando gastas para impresionar a otros, estás pagando un precio altísimo por su opinión.</div>
+        <div style="font-size:11px;color:var(--gold2);font-style:italic;padding-top:10px;border-top:1px solid rgba(139,105,20,.1);" data-es="Cómo lo aplico: Trabajamos los sesgos del ego para que tus gastos reflejen tus valores, no tu imagen." data-en="How I apply it: We work on ego biases so your spending reflects your values, not your image.">→ <em data-es="Trabajamos los sesgos del ego para que tus gastos reflejen tus valores, no tu imagen." data-en="We work on ego biases so your spending reflects your values, not your image.">Trabajamos los sesgos del ego para que tus gastos reflejen tus valores, no tu imagen.</em></div>
+      </div>
+
+      <!-- Concepto 6 — CTA -->
+      <div style="background:var(--ink);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;">
+        <div>
+          <div style="font-family:'Lora',serif;font-size:22px;font-weight:700;font-style:italic;color:white;line-height:1.3;margin-bottom:12px;" data-es='"La finanza personal es más personal que financiera."' data-en='"Personal finance is more personal than finance."'>"La finanza personal es más personal que financiera."</div>
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage3);opacity:.7;">— Morgan Housel</div>
+        </div>
+        <div style="margin-top:28px;">
+          <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:20px;" data-es="Por eso cada sesión empieza por entenderte a ti, no por darte un presupuesto." data-en="That's why every session starts by understanding you, not by giving you a budget.">Por eso cada sesión empieza por entenderte a ti, no por darte un presupuesto.</p>
+          <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="btn-sage" style="display:inline-block;font-size:11px;padding:12px 24px;" data-es="Agenda tu sesión →" data-en="Book your session →">Agenda tu sesión →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -652,7 +728,7 @@ footer a:hover { color: #4A7C6F !important; }
         <p class="sec-p" data-es="Escríbeme por donde te sea más cómodo. Respondo en menos de 24 horas hábiles." data-en="Reach out wherever is most convenient. I respond within 24 business hours.">Escríbeme por donde te sea más cómodo. Respondo en menos de 24 horas hábiles.</p>
         <div class="c-methods">
           <a href="https://instagram.com/thefinancialclarity" target="_blank" class="cm"><div class="cm-ic">📱</div><div><div class="cm-l">Instagram</div><div class="cm-v">@thefinancialclarity</div></div></a>
-          <a href="/cdn-cgi/l/email-protection#f29a979e9e9db2869a97949b9c939c919b939e919e93809b868bdc919d9f" class="cm"><div class="cm-ic">✉️</div><div><div class="cm-l" data-es="Email" data-en="Email">Email</div><div class="cm-v"><span class="__cf_email__" data-cfemail="147c7178787b54607c71727d7a757a777d7578777875667d606d3a777b79">[email&#160;protected]</span></div></div></a>
+          <a href="/cdn-cgi/l/email-protection#e78f828b8b88a7938f82818e898689848e868b848b86958e939ec984888a" class="cm"><div class="cm-ic">✉️</div><div><div class="cm-l" data-es="Email" data-en="Email">Email</div><div class="cm-v"><span class="__cf_email__" data-cfemail="9df5f8f1f1f2dde9f5f8fbf4f3fcf3fef4fcf1fef1fceff4e9e4b3fef2f0">[email&#160;protected]</span></div></div></a>
           <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="cm"><div class="cm-ic">📅</div><div><div class="cm-l" data-es="Agenda directa" data-en="Direct booking">Agenda directa</div><div class="cm-v" data-es="Agenda tu sesión" data-en="Book your session">Agenda tu sesión</div></div></a>
         </div>
       </div>
@@ -679,7 +755,7 @@ footer a:hover { color: #4A7C6F !important; }
         <div class="f-tag" data-es="Tu dinero, tu tranquilidad. Finanzas reales + psicología del comportamiento." data-en="Your money, your peace of mind. Real finance + behavioral psychology.">Tu dinero, tu tranquilidad. Finanzas reales + psicología del comportamiento.</div>
       </div>
       <div class="f-links">
-        <div><div class="flg-t" data-es="Navegar" data-en="Navigate">Navegar</div><ul class="flg-l"><li><a href="#pain" data-es="¿Te suena?" data-en="Sound familiar?">¿Te suena?</a></li><li><a href="#about" data-es="Sobre mí" data-en="About Me">Sobre mí</a></li><li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li><li><a href="#lm" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li><li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li></ul></div>
+        <div><div class="flg-t" data-es="Navegar" data-en="Navigate">Navegar</div><ul class="flg-l"><li><a href="#pain" data-es="¿Te suena?" data-en="Sound familiar?">¿Te suena?</a></li><li><a href="#psicologia" data-es="Psicología" data-en="Psychology">Psicología</a></li><li><a href="blog.html" data-es="Blog" data-en="Blog">Blog</a></li><li><a href="#about" data-es="Sobre mí" data-en="About Me">Sobre mí</a></li><li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li><li><a href="#lm" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li><li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li></ul></div>
         <div><div class="flg-t" data-es="Servicios" data-en="Services">Servicios</div><ul class="flg-l"><li><a href="#services" data-es="Sesión Diagnóstico" data-en="Diagnostic Session">Sesión Diagnóstico</a></li><li><a href="#services" data-es="Coaching 1:1" data-en="1:1 Coaching">Coaching 1:1</a></li><li><a href="#services" data-es="Programa Grupal" data-en="Group Program">Programa Grupal</a></li>
 <li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test gratis" data-en="Free Quiz" id="nav-quiz-link">Test gratis</a></li></ul></div>
       </div>
@@ -691,7 +767,7 @@ footer a:hover { color: #4A7C6F !important; }
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 let lang='es';
 let currentGeo='default';
 
@@ -782,32 +858,5 @@ function showGeoPicker(){
 }
 
 window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>60);});
-
-document.addEventListener('DOMContentLoaded',function(){
-  // Mobile menu toggle
-  var navT=document.getElementById('navT');
-  var mobMenu=document.getElementById('mobMenu');
-  if(navT){
-    navT.addEventListener('click',function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      mobMenu.classList.toggle('open');
-    });
-  }
-  // Close mobile menu when any link inside it is clicked
-  if(mobMenu){
-    mobMenu.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click',function(){
-        mobMenu.classList.remove('open');
-      });
-    });
-  }
-  // Language buttons
-  var btnEs=document.getElementById('btn-es');
-  var btnEn=document.getElementById('btn-en');
-  if(btnEs) btnEs.addEventListener('click',function(){setLang('es');});
-  if(btnEn) btnEn.addEventListener('click',function(){setLang('en');});
-});
-</script>
-</body>
-</html>
+function tm(){document.getElementById('mobMenu').classList.toggle('open');}
+function cm(){document.getElementById('mobMenu'
