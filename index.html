@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <title>The Financial Clarity · Tu dinero, tu tranquilidad</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -15,8 +15,8 @@
   --white:#FDFCF9;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%;max-width:100%;}
+body{background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;width:100%;max-width:100%;position:relative;}
 
 /* LANG BAR */
 .lang-bar{position:fixed;top:0;left:0;right:0;z-index:500;background:var(--ink);padding:7px 52px;display:flex;justify-content:flex-end;gap:8px;}
@@ -773,21 +773,19 @@ let lang='es';
 let currentGeo='default';
 
 function setLang(l){
+  // handled by full setLang below
   lang=l;
   document.getElementById('btn-es').classList.toggle('active',l==='es');
   document.getElementById('btn-en').classList.toggle('active',l==='en');
-  document.querySelectorAll('[data-es]').forEach(el=>{
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    var val=el.getAttribute('data-'+l);if(!val)return;
     if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')return;
-    if(el.tagName==='BUTTON'||el.tagName==='A'){if(el.children.length===0){el.textContent=el.getAttribute('data-'+l)||el.textContent;} else {el.innerHTML=el.getAttribute('data-'+l)||el.innerHTML;}return;}
-    el.innerHTML=el.getAttribute('data-'+l)||el.innerHTML;
+    el.innerHTML=val;
   });
-  document.querySelectorAll('[data-ph-es]').forEach(el=>{el.placeholder=el.getAttribute('data-ph-'+l)||el.placeholder;});
+  document.querySelectorAll('[data-ph-es]').forEach(function(el){var ph=el.getAttribute('data-ph-'+l);if(ph)el.placeholder=ph;});
   var quizBase='https://thefinancialclarity.github.io/test-relacion-dinero.html';
   var quizUrl=l==='en'?quizBase+'?lang=en':quizBase;
-  ['nav-quiz-link','pain-quiz-link','footer-quiz-link'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el)el.href=quizUrl;
-  });
+  ['nav-quiz-link','pain-quiz-link','footer-quiz-link'].forEach(function(id){var el=document.getElementById(id);if(el)el.href=quizUrl;});
 }
 
 function applyPricing(geo){
@@ -858,6 +856,42 @@ function showGeoPicker(){
   },100);
 }
 
-window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>60);});
-function tm(){document.getElementById('mobMenu').classList.toggle('open');document.body.classList.toggle('menu-open');}
-function cm(){document.body.classList.remove('menu-open');document.getElementById('mobMenu')
+
+
+// ── Mobile menu toggle ──
+function tm() {
+  var menu = document.getElementById('mobMenu');
+  var isOpen = menu.classList.toggle('open');
+  document.body.classList.toggle('menu-open', isOpen);
+}
+function cm() {
+  document.getElementById('mobMenu').classList.remove('open');
+  document.body.classList.remove('menu-open');
+}
+
+// ── Form submit handler ──
+function doForm(btn, type) {
+  var form = btn.closest('form') || btn.parentElement;
+  var inputs = form ? form.querySelectorAll('input,textarea') : [];
+  var ok = true;
+  inputs.forEach(function(i){ if(i.required && !i.value.trim()) ok = false; });
+  if (!ok) { alert(lang==='en'?'Please fill all fields.':'Por favor completa todos los campos.'); return; }
+  btn.textContent = lang==='en'?'Sent ✓':'Enviado ✓';
+  btn.disabled = true;
+  if(inputs) inputs.forEach(function(i){ i.value=''; });
+}
+
+// ── Scroll nav ──
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── Reveal on scroll ──
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+
+</script>
+</body>
+</html>
