@@ -19,6 +19,11 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+.lang-bar{position:fixed;top:0;left:0;right:0;z-index:500;background:var(--plum-deep);padding:7px 24px;display:flex;justify-content:flex-end;gap:8px;}
+.lb{padding:4px 14px;border-radius:100px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.4);background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.lb.active{background:var(--plum);color:white;border-color:var(--plum);}
+.lb:hover:not(.active){color:white;border-color:rgba(255,255,255,.4);}
+#hero{padding-top:120px;}
 
 /* ── HERO ── */
 #hero{
@@ -317,7 +322,10 @@ footer{background:linear-gradient(135deg,#2A1A35,#1E1428);padding:32px 52px;text
 </style>
 </head>
 <body>
-
+<div class="lang-bar">
+  <button class="lb active" id="btn-es" onclick="setLang('es')">🇲🇽 ES</button>
+  <button class="lb" id="btn-en" onclick="setLang('en')">🇺🇸 EN</button>
+</div>
 <!-- ── HERO ── -->
 <section id="hero">
   <div class="hero-dots"></div>
@@ -326,54 +334,51 @@ footer{background:linear-gradient(135deg,#2A1A35,#1E1428);padding:32px 52px;text
   <div class="hero-inner">
     <div class="hero-badge">
       <div class="badge-dot"></div>
-      <span class="badge-text">The Financial Clarity · Para Creadores</span>
+      <span class="badge-text" id="badge-text">The Financial Clarity · Para Creadores</span>
     </div>
-    <h1 class="hero-h1">
-      Tu perfil financiero<br>
-      <em>como creador de contenido</em>
-    </h1>
-    <p class="hero-sub">Cómo tu relación con el dinero está afectando tu negocio — sin que te des cuenta</p>
+    <h1 class="hero-h1" id="hero-h1">Tu perfil financiero<br><em id="hero-h1-em">como creador de contenido</em></h1>
+    <p class="hero-sub" id="hero-sub">Cómo tu relación con el dinero está afectando tu negocio — sin que te des cuenta</p>
     <div class="hero-stats">
       <div class="stat">
         <div class="stat-num">8</div>
-        <div class="stat-label">preguntas</div>
+        <div class="stat-label" id="stat-preguntas">preguntas</div>
       </div>
       <div class="stat">
         <div class="stat-num">4</div>
-        <div class="stat-label">perfiles de creador</div>
+        <div class="stat-label" id="stat-perfiles">perfiles de creador</div>
       </div>
       <div class="stat">
         <div class="stat-num">3 min</div>
-        <div class="stat-label">para completarlo</div>
+        <div class="stat-label" id="stat-tiempo">para completarlo</div>
       </div>
     </div>
-    <button class="hero-cta" onclick="scrollToQuiz()">Descubrir mi perfil →</button>
+    <button class="hero-cta" id="hero-cta" onclick="scrollToQuiz()">Descubrir mi perfil →</button>
   </div>
 </section>
 
 <!-- ── INTRO ── -->
 <section id="intro">
   <div class="intro-inner">
-    <div class="section-tag">Por qué esto importa</div>
-    <h2 class="intro-h2">El mayor saboteador de tu negocio<br><em>no está en tu estrategia de contenido</em></h2>
-    <p class="intro-p">Tienes los seguidores. Tienes los brand deals. Sabes crear contenido que conecta. Pero algo con el dinero no termina de cuadrar — y la mayoría de los creadores culpan a los algoritmos, a los clientes o a los impuestos.</p>
-    <p class="intro-p">La verdad, respaldada por la psicología financiera y conceptos del libro <em>Cómo piensan los ricos</em> de Morgan Housel, es que el 80% de nuestras decisiones de dinero son emocionales, no lógicas. Y los creadores de contenido tienen patrones muy específicos — porque nuestro modelo de negocio activa sesgos que el trabajo tradicional no activa.</p>
+    <div class="section-tag" id="intro-tag">Por qué esto importa</div>
+    <h2 class="intro-h2"><span id="intro-h2">El mayor saboteador de tu negocio</span><br><em id="intro-h2-em">no está en tu estrategia de contenido</em></h2>
+    <p class="intro-p" id="intro-p1">Tienes los seguidores. Tienes los brand deals. Sabes crear contenido que conecta. Pero algo con el dinero no termina de cuadrar — y la mayoría de los creadores culpan a los algoritmos, a los clientes o a los impuestos.</p>
+    <p class="intro-p" id="intro-p2">La verdad, respaldada por la psicología financiera y conceptos del libro <em>Cómo piensan los ricos</em> de Morgan Housel, es que el 80% de nuestras decisiones de dinero son emocionales, no lógicas. Y los creadores de contenido tienen patrones muy específicos — porque nuestro modelo de negocio activa sesgos que el trabajo tradicional no activa.</p>
 
     <div class="truth-cards">
       <div class="truth-card">
         <div class="truth-icon">📈</div>
-        <div class="truth-title">Ingresos variables = decisiones erráticas</div>
-        <div class="truth-desc">El cerebro responde diferente al dinero "irregular". Activa sesgos de escasez y abundancia que no existen en un sueldo fijo.</div>
+        <div class="truth-title" id="tc1-title">Ingresos variables = decisiones erráticas</div>
+        <div class="truth-desc" id="tc1-desc">El cerebro responde diferente al dinero "irregular". Activa sesgos de escasez y abundancia que no existen en un sueldo fijo.</div>
       </div>
       <div class="truth-card">
         <div class="truth-icon">🎯</div>
-        <div class="truth-title">El brand deal activa el efecto del dinero inesperado</div>
-        <div class="truth-desc">Cada pago grande dispara patrones psicológicos distintos. Saber cuál es el tuyo determina si ese dinero trabaja para ti o desaparece.</div>
+        <div class="truth-title" id="tc2-title">El brand deal activa el efecto del dinero inesperado</div>
+        <div class="truth-desc" id="tc2-desc">Cada pago grande dispara patrones psicológicos distintos. Saber cuál es el tuyo determina si ese dinero trabaja para ti o desaparece.</div>
       </div>
       <div class="truth-card">
         <div class="truth-icon">🧠</div>
-        <div class="truth-title">Tu audiencia amplifica tu relación con el dinero</div>
-        <div class="truth-desc">Los creadores que evitan hablar de dinero en su negocio — y en su contenido — suelen tener el perfil del evitador financiero.</div>
+        <div class="truth-title" id="tc3-title">Tu audiencia amplifica tu relación con el dinero</div>
+        <div class="truth-desc" id="tc3-desc">Los creadores que evitan hablar de dinero en su negocio — y en su contenido — suelen tener el perfil del evitador financiero.</div>
       </div>
     </div>
   </div>
@@ -383,8 +388,8 @@ footer{background:linear-gradient(135deg,#2A1A35,#1E1428);padding:32px 52px;text
 <section id="quiz">
   <div class="quiz-inner">
     <div class="quiz-header">
-      <div class="section-tag">El quiz</div>
-      <h2 class="quiz-h2">¿Cuál es tu perfil financiero<br><em>como creador?</em></h2>
+      <div class="section-tag" id="quiz-tag">El quiz</div>
+      <h2 class="quiz-h2"><span id="quiz-h2">¿Cuál es tu perfil financiero</span><br><em id="quiz-h2-em">como creador?</em></h2>
     </div>
 
     <div id="quiz-body">
@@ -402,12 +407,12 @@ footer{background:linear-gradient(135deg,#2A1A35,#1E1428);padding:32px 52px;text
 
     <div id="gate">
       <div class="gate-card">
-        <h3 class="gate-h3">Tu perfil está <em>listo</em></h3>
-        <p class="gate-p">Déjame tu nombre y email para ver tu resultado completo — incluyendo cómo este perfil afecta específicamente tu negocio como creador.</p>
+        <h3 class="gate-h3"><span id="gate-h3">Tu perfil está</span> <em id="gate-h3-em">listo</em></h3>
+        <p class="gate-p" id="gate-p">Déjame tu nombre y email para ver tu resultado completo — incluyendo cómo este perfil afecta específicamente tu negocio como creador.</p>
         <input class="gate-input" id="gate-name" type="text" placeholder="Tu nombre">
         <input class="gate-input" id="gate-email" type="email" placeholder="tu@email.com">
-        <button class="gate-btn" onclick="showResult()">Ver mi perfil de creador →</button>
-        <p class="gate-note">🔒 Sin spam. Solo tu resultado y recursos útiles para creadores.</p>
+        <button class="gate-btn" id="gate-btn" onclick="showResult()">Ver mi perfil de creador →</button>
+        <p class="gate-note" id="gate-note">🔒 Sin spam. Solo tu resultado y recursos útiles para creadores.</p>
       </div>
     </div>
   </div>
@@ -419,25 +424,25 @@ footer{background:linear-gradient(135deg,#2A1A35,#1E1428);padding:32px 52px;text
 
     <div class="result-hero" id="result-hero">
       <div class="result-emoji" id="result-emoji"></div>
-      <div class="result-youare">Eres...</div>
+      <div class="result-youare" id="result-youare">Eres...</div>
       <div class="result-name" id="result-name"></div>
       <div class="result-desc" id="result-desc"></div>
     </div>
 
     <!-- Creator-specific impact -->
     <div class="creator-impact">
-      <h3>Cómo esto afecta <em>tu negocio como creador</em></h3>
+      <h3><span id="impact-h3">Cómo esto afecta</span> <em id="impact-h3-em">tu negocio como creador</em></h3>
       <div class="impact-grid" id="impact-grid"></div>
     </div>
 
     <!-- Patterns / Strengths -->
     <div class="result-cols">
       <div class="result-block">
-        <div class="rb-title">Patrones que reconocerás</div>
+        <div class="rb-title" id="rb-patterns-title">Patrones que reconocerás</div>
         <ul class="rb-list" id="rb-patterns"></ul>
       </div>
       <div class="result-block">
-        <div class="rb-title">Tus fortalezas reales</div>
+        <div class="rb-title" id="rb-strengths-title">Tus fortalezas reales</div>
         <ul class="rb-list" id="rb-strengths"></ul>
       </div>
     </div>
@@ -447,22 +452,22 @@ footer{background:linear-gradient(135deg,#2A1A35,#1E1428);padding:32px 52px;text
 
     <!-- CTA -->
     <div class="next-step">
-      <div class="ns-tag">Tu siguiente paso</div>
-      <h3 class="ns-h3">El perfil es el <em>punto de partida</em></h3>
+      <div class="ns-tag" id="ns-tag">Tu siguiente paso</div>
+      <h3 class="ns-h3"><span id="ns-h3">El perfil es el</span> <em id="ns-h3-em">punto de partida</em></h3>
       <p class="ns-p" id="ns-p">Conocer tu arquetipo es el 50% del trabajo. El otro 50% es tener un sistema financiero que funcione específicamente para cómo tú te relacionas con el dinero como creador.</p>
       <div class="ns-btns">
-        <a href="https://thefinancialclarity.com" class="btn-primary">Agendar sesión gratuita →</a>
-        <button class="btn-secondary" onclick="retake()">Repetir el quiz</button>
+        <a href="https://thefinancialclarity.com" class="btn-primary" id="btn-session">Agendar sesión gratuita →</a>
+        <button class="btn-secondary" id="btn-retake" onclick="retake()">Repetir el quiz</button>
       </div>
     </div>
 
     <div class="share-row">
       <button class="share-btn" id="share-btn" onclick="copyShare()">📋 Copiar para stories</button>
-      <button class="share-btn" onclick="retake()">🔄 Empezar de nuevo</button>
+      <button class="share-btn" id="btn-restart" onclick="retake()">🔄 Empezar de nuevo</button>
     </div>
 
     <div class="other-profiles">
-      <div class="op-title">Los otros perfiles de creador</div>
+      <div class="op-title" id="op-title">Los otros perfiles de creador</div>
       <div class="op-grid" id="op-grid"></div>
     </div>
 
@@ -471,7 +476,7 @@ footer{background:linear-gradient(135deg,#2A1A35,#1E1428);padding:32px 52px;text
 
 <footer>
   <div class="footer-logo">The Financial <span>Clarity</span></div>
-  <div class="footer-sub">Psicología del dinero para creadores de contenido · thefinancialclarity.com</div>
+  <div class="footer-sub" id="footer-sub">Psicología del dinero para creadores de contenido · thefinancialclarity.com</div>
 </footer>
 
 <script>
@@ -808,6 +813,373 @@ function scrollToQuiz(){
 
 // start
 initQuiz();
+
+// ── BILINGUAL SYSTEM ──
+var LANG = 'es';
+
+var T = {
+  es:{
+    badge:"The Financial Clarity · Para Creadores",
+    heroH:"Tu perfil financiero",heroHEm:"como creador de contenido",
+    heroSub:"Cómo tu relación con el dinero está afectando tu negocio — sin que te des cuenta",
+    statQ:"preguntas",statP:"perfiles de creador",statT:"para completarlo",
+    heroCta:"Descubrir mi perfil →",
+    introTag:"Por qué esto importa",
+    introH:"El mayor saboteador de tu negocio",introHEm:"no está en tu estrategia de contenido",
+    introP1:"Tienes los seguidores. Tienes los brand deals. Sabes crear contenido que conecta. Pero algo con el dinero no termina de cuadrar — y la mayoría de los creadores culpan a los algoritmos, a los clientes o a los impuestos.",
+    introP2:"La verdad, respaldada por la psicología financiera, es que el 80% de nuestras decisiones de dinero son emocionales, no lógicas. Y los creadores de contenido tienen patrones muy específicos — porque nuestro modelo de negocio activa sesgos que el trabajo tradicional no activa.",
+    tc1T:"Ingresos variables = decisiones erráticas",tc1D:"El cerebro responde diferente al dinero irregular. Activa sesgos de escasez y abundancia que no existen en un sueldo fijo.",
+    tc2T:"El brand deal activa el efecto del dinero inesperado",tc2D:"Cada pago grande dispara patrones psicológicos distintos. Saber cuál es el tuyo determina si ese dinero trabaja para ti o desaparece.",
+    tc3T:"Tu audiencia amplifica tu relación con el dinero",tc3D:"Los creadores que evitan hablar de dinero en su negocio — y en su contenido — suelen tener el perfil del evitador financiero.",
+    quizTag:"El quiz",quizH:"¿Cuál es tu perfil financiero",quizHEm:"como creador?",
+    gateH:"Tu perfil está",gateHEm:"listo",
+    gateP:"Déjame tu nombre y email para ver tu resultado completo — incluyendo cómo este perfil afecta específicamente tu negocio como creador.",
+    gatePh:"Tu nombre",gateBtn:"Ver mi perfil de creador →",gateNote:"🔒 Sin spam. Solo tu resultado y recursos útiles para creadores.",
+    youAre:"Eres...",impactH:"Cómo esto afecta",impactHEm:"tu negocio como creador",
+    patternsTitle:"Patrones que reconocerás",strengthsTitle:"Tus fortalezas reales",
+    nsTag:"Tu siguiente paso",nsH:"El perfil es el",nsHEm:"punto de partida",
+    btnSession:"Agendar sesión gratuita →",btnRetake:"Repetir el quiz",
+    shareBtn:"📋 Copiar para stories",shareCopied:"✓ Copiado para stories",
+    btnRestart:"🔄 Empezar de nuevo",
+    opTitle:"Los otros perfiles de creador",
+    footerSub:"Psicología del dinero para creadores de contenido · thefinancialclarity.com",
+    qCounter:"Pregunta",qOf:"de",qNext:"Siguiente →",seeRes:"Ver mi resultado →",
+    shareMsg:"Hice el quiz de @thefinancialclarity y soy \"{n}\" como creador/a. ¿Cuál eres tú? 🧠💰",
+    bookTitle:"Lo que veo en creadores con este perfil"
+  },
+  en:{
+    badge:"The Financial Clarity · For Creators",
+    heroH:"Your financial profile",heroHEm:"as a content creator",
+    heroSub:"How your relationship with money is affecting your business — without you realizing it",
+    statQ:"questions",statP:"creator profiles",statT:"to complete",
+    heroCta:"Discover my profile →",
+    introTag:"Why this matters",
+    introH:"The biggest saboteur of your business",introHEm:"is not in your content strategy",
+    introP1:"You have the followers. You have the brand deals. You know how to create content that connects. But something with money never quite adds up — and most creators blame the algorithm, their clients, or taxes.",
+    introP2:"The truth, backed by financial psychology, is that 80% of our money decisions are emotional, not logical. And content creators have very specific patterns — because our business model activates biases that traditional employment does not.",
+    tc1T:"Variable income = erratic decisions",tc1D:"The brain responds differently to irregular money. It activates scarcity and abundance biases that do not exist with a fixed salary.",
+    tc2T:"The brand deal triggers the windfall effect",tc2D:"Each big payment fires different psychological patterns. Knowing yours determines whether that money works for you or disappears.",
+    tc3T:"Your audience amplifies your relationship with money",tc3D:"Creators who avoid talking about money in their business tend to have the financial avoider profile.",
+    quizTag:"The quiz",quizH:"What is your financial profile",quizHEm:"as a creator?",
+    gateH:"Your profile is",gateHEm:"ready",
+    gateP:"Leave your name and email to see your full result — including how this profile specifically affects your creator business.",
+    gatePh:"Your name",gateBtn:"See my creator profile →",gateNote:"🔒 No spam. Just your result and useful resources for creators.",
+    youAre:"You are...",impactH:"How this affects",impactHEm:"your creator business",
+    patternsTitle:"Patterns you will recognize",strengthsTitle:"Your real strengths",
+    nsTag:"Your next step",nsH:"The profile is the",nsHEm:"starting point",
+    btnSession:"Book a free session →",btnRetake:"Retake the quiz",
+    shareBtn:"📋 Copy for stories",shareCopied:"Copied for stories ✓",
+    btnRestart:"🔄 Start over",
+    opTitle:"The other creator profiles",
+    footerSub:"Money psychology for content creators · thefinancialclarity.com",
+    qCounter:"Question",qOf:"of",qNext:"Next →",seeRes:"See my result →",
+    shareMsg:"I took the @thefinancialclarity quiz and I am the \"{n}\" as a creator. Which one are you? 🧠💰",
+    bookTitle:"What I see in creators with this profile"
+  }
+};
+
+var QS_EN = [
+  {e:"💸",q:"A brand deal arrives — double your usual fee. What happens first?",o:[
+    {t:"I treat myself to something I have been wanting. I earned it.",p:"gastador"},
+    {t:"I put it in an account and barely touch it. You never know what can happen.",p:"acumulador"},
+    {t:"I leave it in my main account and figure it out later.",p:"evitador"},
+    {t:"I think about investing it or buying tools for my channel, but the month passes and it is gone.",p:"ambicioso"}
+  ]},
+  {e:"📊",q:"How often do you review your actual creator income — what comes in, from where, and what is left?",o:[
+    {t:"Almost never. I prefer not to see the exact numbers.",p:"evitador"},
+    {t:"All the time. I have everything tracked and calculated.",p:"acumulador"},
+    {t:"When I remember, which is not that often.",p:"ambicioso"},
+    {t:"Only when I need to know if I can spend something.",p:"gastador"}
+  ]},
+  {e:"😤",q:"You had a slow month — few views, no deals closed. How do you react with money?",o:[
+    {t:"I buy something to feel better. A small or big treat.",p:"gastador"},
+    {t:"I shut down and avoid checking my accounts or making any financial decisions.",p:"evitador"},
+    {t:"I obsessively calculate how much I have and how long I can last.",p:"acumulador"},
+    {t:"I think about opening another income stream, but do not start.",p:"ambicioso"}
+  ]},
+  {e:"🤝",q:"Someone offers you a brand deal below your usual rate. What do you do?",o:[
+    {t:"I take it. Something is something, and I do not like losing the deal.",p:"gastador"},
+    {t:"I decline, but I am left with the anxiety of having said no.",p:"acumulador"},
+    {t:"I leave it on read and think about it later. I end up not responding.",p:"evitador"},
+    {t:"I know I should negotiate but I do not have a clearly defined rate.",p:"ambicioso"}
+  ]},
+  {e:"💰",q:"When you think about setting aside a percentage of each payment for taxes and savings...",o:[
+    {t:"I plan to but there is always something urgent that needs that money first.",p:"gastador"},
+    {t:"I already do it. Non-negotiable.",p:"acumulador"},
+    {t:"I would rather not think about it now. I will sort it out when I have more.",p:"evitador"},
+    {t:"I know exactly how I should do it. I just have not implemented it.",p:"ambicioso"}
+  ]},
+  {e:"🚀",q:"You have been talking for 6 months about monetizing with your own product. Where are you?",o:[
+    {t:"I already launched it. Or I spent the budget on new equipment before launching.",p:"gastador"},
+    {t:"Still at the it is not the perfect moment yet stage.",p:"ambicioso"},
+    {t:"I am not even thinking about it. Brand deals are enough.",p:"evitador"},
+    {t:"I have the money saved to produce it but have not used it.",p:"acumulador"}
+  ]},
+  {e:"📱",q:"Someone at your follower level posts their monthly income and it is triple yours. How does it affect you?",o:[
+    {t:"It motivates me to spend on upgrading my setup and strategy now.",p:"gastador"},
+    {t:"It gives me anxiety. I feel like I will never get to that level.",p:"acumulador"},
+    {t:"I prefer not to see that type of content. It makes me uncomfortable.",p:"evitador"},
+    {t:"I know I could get there, but I do not have a concrete plan.",p:"ambicioso"}
+  ]},
+  {e:"🎯",q:"Which phrase best describes how you think about financial freedom as a creator?",o:[
+    {t:"The future will come. Right now I want to enjoy what I earn.",p:"gastador"},
+    {t:"I think about it with anxiety. What happens when I am no longer relevant?",p:"acumulador"},
+    {t:"I do not think about it. It is too far and uncertain.",p:"evitador"},
+    {t:"I have it very clear in theory. In practice I have not started.",p:"ambicioso"}
+  ]}
+];
+
+var PROFILES_EN = {
+  gastador:{
+    emoji:"🌊",name:"The <em>High Tide</em> Creator",heroClass:"rh-gastador",
+    desc:"Your money rises and falls exactly like your energy level. Explosive month — you spend at that pace. Slow month — expenses do not drop but anxiety rises. It is not that you do not care about money. It is that no one taught you that unexpected income activates a very specific mechanism in your brain — and that mechanism makes decisions before you can.",
+    impact:[
+      {label:"Brand deals",text:"The advance feels like extra money, not business income. That is why it gets spent differently — and faster."},
+      {label:"Good months",text:"Your lifestyle immediately adjusts upward and never comes back down when the next month is slower. That is the trap."},
+      {label:"Slow months",text:"Expenses do not drop because your lifestyle already adjusted to the peak. That is where real financial pressure starts."},
+      {label:"Monetization",text:"You launch with energy, invest in production before validating. The creativity is there — the system to sustain it is not."}
+    ],
+    patterns:["Your bank account reflects how the month went emotionally, not how much you worked","There is always a valid reason for the expense — and you always find it","When a big payment arrives, your first thought is not to save it"],
+    strengths:["Your energy and generosity are genuine — and your audience feels them","When you connect saving to a real emotional goal, you execute with the same intensity you spend","You are the profile that transforms their situation fastest when they have the right system"],
+    book:"What you describe is not a character flaw — it is a learned pattern. I have worked with dozens of creators with this profile and the change does not come from more discipline, but from redesigning how money comes in and gets distributed before your brain registers it as available. That is the work we do together.",
+    cta:"In the diagnostic session we analyze exactly at which points in your month the High Tide pattern appears — and we build a system that works with your personality, not against it."
+  },
+  evitador:{
+    emoji:"🌫️",name:"The <em>Financial Fog</em> Creator",heroClass:"rh-evitador",
+    desc:"It is not that you do not know about money. It is that at some point you learned that looking at it hurts — and since then you have been avoiding it. The problem is the business grows but financial clarity does not grow with it. And that gap becomes more costly the bigger your channel gets.",
+    impact:[
+      {label:"Brand deals",text:"Without a clearly defined rate, every negotiation starts from scratch. Almost always from a disadvantage."},
+      {label:"Taxes and deductions",text:"Without income tracking you cannot take advantage of the tax strategies available to you as an independent creator."},
+      {label:"Growth",text:"You cannot make investment decisions for your business when you do not have clarity on what comes in and where it comes from."},
+      {label:"Monetization",text:"You postpone launching your own products because you first need to organize the basics — which never arrives on its own."}
+    ],
+    patterns:["There is always an approximate number, never an exact one","Financial decisions wait until urgency forces them","When things stabilize I will get organized — and stability does not arrive on its own"],
+    strengths:["When you decide to face something, you do it with a seriousness few people have","Your business intuition is good — it just needs real numbers to confirm it","Once you take the first step, your progress is among the fastest I have seen"],
+    book:"What I find most when working with profiles like yours is this: the fog is not ignorance — it is protection. When the space is safe and non-judgmental, it clears much faster than you think. I have seen creators go from not knowing how much they earned to having total clarity in less than two sessions.",
+    cta:"The diagnostic session is made for you: no intimidating spreadsheets, no judgment, no you should have done this sooner. Just clarity on where you are today and the three next steps."
+  },
+  ambicioso:{
+    emoji:"📋",name:"The <em>Eternal Draft</em> Creator",heroClass:"rh-ambicioso",
+    desc:"You have the knowledge. You have the mindset. You know exactly what you should do — and that is precisely the most frustrating part. The gap between knowing and doing is not a lack of information or motivation. It is that without an external system to sustain execution, your present self always beats your future self.",
+    impact:[
+      {label:"Brand deals",text:"You know what to charge but do not have a process to negotiate it consistently. Every deal is improvised."},
+      {label:"Own product",text:"The course, membership, ebook — they have been in drafts for months. The plan exists. The launch does not."},
+      {label:"Investments",text:"You consume a lot of financial content. You rarely execute. The perfect moment never arrives."},
+      {label:"Systems",text:"You researched the best tools for your business. You implemented them halfway or not at all."}
+    ],
+    patterns:["You consume finance and investment content — applying 10% would already change everything","You start with a lot of energy, consistency breaks because the system depended on willpower","I need to get better organized — and that has been true for a while"],
+    strengths:["You already have the right mindset — that is 50% of the real work","You learn fast and one visible first result can unlock everything","With external structure your execution is solid — you do not need more motivation, you need architecture"],
+    book:"What works best with this profile is not more information — it is turning intentions into structured commitments. In my experience working with Eternal Draft creators, the biggest change comes from a system that makes it harder not to execute than to execute. That is exactly what we build together.",
+    cta:"Your session starts by identifying the single system you need to implement right now — not ten, one. And we build the structure for it to run on its own."
+  },
+  acumulador:{
+    emoji:"🧱",name:"The <em>Bunker</em> Creator",heroClass:"rh-acumulador",
+    desc:"You have the savings. You have the control. And somehow the peace of mind never fully arrives. You save from fear of everything collapsing, not from confidence that you are building something solid. And that silent fear is costing you real opportunities — deals rejected, investments postponed, decisions avoided.",
+    impact:[
+      {label:"Brand deals",text:"You turn down good deals out of fear of committing or not delivering. The downside always outweighs the upside."},
+      {label:"Business investment",text:"You are slow to hire, delegate, buy equipment — even when you have the money. No moment ever feels safe enough."},
+      {label:"Rates",text:"Sometimes you charge too much out of anxiety or too little out of fear of rejection. The right rate is hard to maintain."},
+      {label:"Growth",text:"What if I am no longer relevant? is a question that lives with you and holds back business decisions more than you realize."}
+    ],
+    patterns:["Numbers are under control but the voice that says it is not enough does not go away","Decisions are made from fear of losing, not from real evaluation of the opportunity","The discipline that makes you strong in private makes you inflexible with calculated risk"],
+    strengths:["Your financial discipline is real and a huge advantage — the foundation most creators do not have","When you trust a validated external system, you can let go of control much more easily than you imagine","You have exactly what it takes to grow — it just needs to be redirected from protection toward movement"],
+    book:"The most interesting thing about working with Bunker profiles is that the work is not building discipline — you already have it. It is learning to distinguish when fear is protecting something real and when it is blocking something important. That clarity completely changes how you make business decisions.",
+    cta:"Your session works from what you have already built. The goal is not to spend more — it is for the money you already have to start working with you, not just sitting still just in case."
+  }
+};
+
+function setLang(l){
+  LANG = l;
+  document.getElementById('btn-es').className = 'lb'+(l==='es'?' active':'');
+  document.getElementById('btn-en').className = 'lb'+(l==='en'?' active':'');
+  var t = T[l];
+  var el = function(id){ return document.getElementById(id); };
+
+  el('badge-text').textContent = t.badge;
+  el('hero-h1').childNodes[0].textContent = t.heroH;
+  el('hero-h1-em').textContent = t.heroHEm;
+  el('hero-sub').textContent = t.heroSub;
+  el('stat-preguntas').textContent = t.statQ;
+  el('stat-perfiles').textContent = t.statP;
+  el('stat-tiempo').textContent = t.statT;
+  el('hero-cta').textContent = t.heroCta;
+  el('intro-tag').textContent = t.introTag;
+  el('intro-h2').textContent = t.introH;
+  el('intro-h2-em').textContent = t.introHEm;
+  el('intro-p1').textContent = t.introP1;
+  el('intro-p2').textContent = t.introP2;
+  el('tc1-title').textContent = t.tc1T; el('tc1-desc').textContent = t.tc1D;
+  el('tc2-title').textContent = t.tc2T; el('tc2-desc').textContent = t.tc2D;
+  el('tc3-title').textContent = t.tc3T; el('tc3-desc').textContent = t.tc3D;
+  el('quiz-tag').textContent = t.quizTag;
+  el('quiz-h2').textContent = t.quizH;
+  el('quiz-h2-em').textContent = t.quizHEm;
+  el('footer-sub').textContent = t.footerSub;
+
+  // Gate (update if visible)
+  el('gate-h3').textContent = t.gateH;
+  el('gate-h3-em').textContent = t.gateHEm;
+  el('gate-p').textContent = t.gateP;
+  el('gate-name').placeholder = t.gatePh;
+  el('gate-btn').textContent = t.gateBtn;
+  el('gate-note').textContent = t.gateNote;
+
+  // Result labels
+  if(el('result-youare')) el('result-youare').textContent = t.youAre;
+  if(el('impact-h3')) el('impact-h3').textContent = t.impactH;
+  if(el('impact-h3-em')) el('impact-h3-em').textContent = t.impactHEm;
+  if(el('rb-patterns-title')) el('rb-patterns-title').textContent = t.patternsTitle;
+  if(el('rb-strengths-title')) el('rb-strengths-title').textContent = t.strengthsTitle;
+  if(el('ns-tag')) el('ns-tag').textContent = t.nsTag;
+  if(el('ns-h3')) el('ns-h3').textContent = t.nsH;
+  if(el('ns-h3-em')) el('ns-h3-em').textContent = t.nsHEm;
+  if(el('btn-session')) el('btn-session').textContent = t.btnSession;
+  if(el('btn-retake')) el('btn-retake').textContent = t.btnRetake;
+  if(el('share-btn')) el('share-btn').textContent = t.shareBtn;
+  if(el('btn-restart')) el('btn-restart').textContent = t.btnRestart;
+  if(el('op-title')) el('op-title').textContent = t.opTitle;
+
+  // Re-render current question
+  var qs = l === 'en' ? QS_EN : QS;
+  var qbody = el('quiz-body');
+  if(qbody && qbody.style.display !== 'none' && currentQ < qs.length){
+    renderQLang(currentQ, qs, t);
+  }
+}
+
+function renderQLang(i, qs, t){
+  var q = qs[i];
+  var counter = document.getElementById('q-counter');
+  if(counter) counter.textContent = t.qCounter+' '+(i+1)+' '+t.qOf+' '+qs.length;
+  var emoji = document.getElementById('q-emoji');
+  if(emoji) emoji.textContent = q.e;
+  var text = document.getElementById('q-text');
+  if(text) text.textContent = q.q;
+  var opts = document.getElementById('q-options');
+  if(!opts) return;
+  opts.innerHTML = '';
+  var letters = ['A','B','C','D'];
+  q.o.forEach(function(o,j){
+    var btn = document.createElement('button');
+    btn.className = 'q-opt'+(o.p === selectedOpt?' selected':'');
+    btn.dataset.p = o.p;
+    btn.innerHTML = '<span class="q-opt-letter">'+letters[j]+'</span>'+o.t;
+    btn.onclick = function(){ selectOpt(btn, o.p); };
+    opts.appendChild(btn);
+  });
+  var nextBtn = document.getElementById('q-next');
+  if(nextBtn){
+    var isLast = (i === qs.length - 1);
+    nextBtn.textContent = isLast ? t.seeRes : t.qNext;
+  }
+}
+
+// Override nextQ to support bilingual
+var _nextQ_orig = nextQ;
+nextQ = function(){
+  if(!selectedOpt) return;
+  scores[selectedOpt]++;
+  currentQ++;
+  var qs = LANG === 'en' ? QS_EN : QS;
+  var t = T[LANG];
+  if(currentQ < qs.length){
+    renderQLang(currentQ, qs, t);
+    document.getElementById('q-next').disabled = true;
+    selectedOpt = null;
+    for(var k=0; k<currentQ; k++){
+      var s = document.getElementById('prog-'+k);
+      if(s) s.classList.add('done');
+    }
+  } else {
+    showGate();
+    document.getElementById('gate-h3').textContent = t.gateH;
+    document.getElementById('gate-h3-em').textContent = t.gateHEm;
+    document.getElementById('gate-p').textContent = t.gateP;
+    document.getElementById('gate-name').placeholder = t.gatePh;
+    document.getElementById('gate-btn').textContent = t.gateBtn;
+    document.getElementById('gate-note').textContent = t.gateNote;
+  }
+};
+
+// Override showResult for bilingual
+showResult = function(){
+  var name = document.getElementById('gate-name').value.trim() || (LANG==='en'?'Creator':'Creador');
+  userName = name;
+  var winner = Object.keys(scores).reduce(function(a,b){ return scores[a]>=scores[b]?a:b; });
+  var P = LANG === 'en' ? PROFILES_EN[winner] : PROFILES[winner];
+  var t = T[LANG];
+
+  document.getElementById('quiz').style.display = 'none';
+  var rs = document.getElementById('result');
+  rs.style.display = 'block';
+
+  var rh = document.getElementById('result-hero');
+  rh.className = 'result-hero '+P.heroClass;
+  document.getElementById('result-emoji').textContent = P.emoji;
+  document.getElementById('result-youare').textContent = t.youAre;
+  document.getElementById('result-name').innerHTML = name+', '+P.name;
+  document.getElementById('result-desc').textContent = P.desc;
+
+  document.getElementById('impact-h3').textContent = t.impactH;
+  document.getElementById('impact-h3-em').textContent = t.impactHEm;
+
+  var ig = document.getElementById('impact-grid');
+  ig.innerHTML = '';
+  P.impact.forEach(function(item){
+    ig.innerHTML += '<div class="impact-item"><div class="impact-label">'+item.label+'</div><div class="impact-text">'+item.text+'</div></div>';
+  });
+
+  var rp = document.getElementById('rb-patterns');
+  rp.innerHTML = '';
+  P.patterns.forEach(function(p){ rp.innerHTML += '<li>'+p+'</li>'; });
+
+  var rs2 = document.getElementById('rb-strengths');
+  rs2.innerHTML = '';
+  P.strengths.forEach(function(s){ rs2.innerHTML += '<li>'+s+'</li>'; });
+
+  document.getElementById('book-callout').innerHTML = '<div class="book-icon">💬</div><div><div class="book-title">'+t.bookTitle+'</div><div class="book-text">'+P.book+'</div></div>';
+  document.getElementById('ns-p').textContent = P.cta;
+  document.getElementById('ns-tag').textContent = t.nsTag;
+  document.getElementById('ns-h3').textContent = t.nsH;
+  document.getElementById('ns-h3-em').textContent = t.nsHEm;
+  document.getElementById('btn-session').textContent = t.btnSession;
+  document.getElementById('btn-retake').textContent = t.btnRetake;
+  document.getElementById('share-btn').textContent = t.shareBtn;
+  document.getElementById('btn-restart').textContent = t.btnRestart;
+  document.getElementById('rb-patterns-title').textContent = t.patternsTitle;
+  document.getElementById('rb-strengths-title').textContent = t.strengthsTitle;
+  document.getElementById('op-title').textContent = t.opTitle;
+
+  var og = document.getElementById('op-grid');
+  og.innerHTML = '';
+  var allProfiles = LANG==='en' ? PROFILES_EN : PROFILES;
+  Object.keys(allProfiles).filter(function(k){ return k!==winner; }).forEach(function(k){
+    var pr = allProfiles[k];
+    og.innerHTML += '<div class="op-card"><div class="op-card-emoji">'+pr.emoji+'</div><div class="op-card-name">'+pr.name+'</div></div>';
+  });
+
+  rs.scrollIntoView({behavior:'smooth'});
+};
+
+// Override copyShare for bilingual
+copyShare = function(){
+  var winner = Object.keys(scores).reduce(function(a,b){ return scores[a]>=scores[b]?a:b; });
+  var P = LANG==='en' ? PROFILES_EN[winner] : PROFILES[winner];
+  var name = P.name.replace(/<em>|<\/em>/g,'');
+  var text = T[LANG].shareMsg.replace('{n}',name);
+  navigator.clipboard.writeText(text).catch(function(){});
+  var btn = document.getElementById('share-btn');
+  btn.textContent = T[LANG].shareCopied;
+  btn.classList.add('copied');
+  setTimeout(function(){ btn.textContent = T[LANG].shareBtn; btn.classList.remove('copied'); }, 2500);
+};
+
+// Auto-detect lang from URL param
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if(params.get('lang')==='en') setLang('en');
+})();
+
 </script>
 </body>
 </html>
