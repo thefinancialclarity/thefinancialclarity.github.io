@@ -13,7 +13,6 @@
   --cream:#F8F6F0;--cream2:#EFF0E8;--cream3:#E4E8DE;
   --gold:#8B6914;--gold2:#B8922A;--gold3:#E8C96A;
   --white:#FDFCF9;
-  --plum:#6B4F7A;--plum2:#9B7AAE;--plum3:#C4A8D4;--plum4:#EDE0F5;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -39,11 +38,6 @@ nav.scrolled .nav-links a{color:var(--ink3);}
 .nav-cta{padding:10px 22px!important;border-radius:100px!important;background:var(--sage)!important;color:white!important;letter-spacing:1.5px;}
 nav.scrolled .nav-cta{background:var(--ink)!important;color:white!important;}
 .nav-cta:hover{opacity:.85!important;}
-/* Creadores pill — malva */
-.nav-plum{padding:7px 16px!important;border-radius:100px!important;border:1px solid rgba(196,168,212,.35)!important;color:var(--plum3)!important;background:rgba(107,79,122,.18)!important;letter-spacing:1.5px;transition:all .25s!important;}
-.nav-plum:hover{background:rgba(107,79,122,.32)!important;border-color:var(--plum3)!important;color:white!important;}
-nav.scrolled .nav-plum{background:var(--plum4)!important;border-color:var(--plum3)!important;color:var(--plum)!important;}
-nav.scrolled .nav-plum:hover{background:var(--plum)!important;color:white!important;border-color:var(--plum)!important;}
 .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
 .nav-toggle span{width:22px;height:1.5px;display:block;transition:all .3s;background:white;}
 nav.scrolled .nav-toggle span{background:var(--ink);}
@@ -52,8 +46,6 @@ nav.scrolled .nav-toggle span{background:var(--ink);}
 body.menu-open nav{z-index:460;}
 .mob-menu a{font-family:'Lora',serif;font-size:30px;font-weight:500;color:white;text-decoration:none;}
 .mob-menu a:hover{color:var(--sage3);}
-.mob-link-plum{color:var(--plum3)!important;}
-.mob-link-plum:hover{color:var(--plum2)!important;}
 
 /* HERO */
 #hero{min-height:100vh;background:var(--ink);display:flex;align-items:center;padding:140px 52px 80px;position:relative;overflow:hidden;}
@@ -180,60 +172,8 @@ body.menu-open nav{z-index:460;}
 .svc.gr .svc-cta{background:var(--sage);color:white;}
 .svc.gr .svc-cta:hover{background:var(--ink);}
 
-/* INFLUENCER SECTION */
-#influencers{background:linear-gradient(160deg,#1E1624 0%,#2A1F35 50%,#1E2430 100%);padding:88px 52px;position:relative;overflow:hidden;}
-#influencers::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(155,122,174,.08) 1px,transparent 1px);background-size:36px 36px;opacity:1;}
-.infl-glow1{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(107,79,122,.25) 0%,transparent 65%);top:-100px;right:-80px;pointer-events:none;}
-.infl-glow2{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(43,90,140,.15) 0%,transparent 65%);bottom:-60px;left:-40px;pointer-events:none;}
-.infl-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
-
-.infl-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:56px;}
-.infl-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(107,79,122,.25);border:1px solid rgba(196,168,212,.2);border-radius:100px;padding:5px 16px 5px 10px;margin-bottom:20px;}
-.infl-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--plum3);}
-.infl-badge-text{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--plum3);}
-.infl-h{font-family:'Lora',serif;font-size:clamp(28px,3.5vw,46px);font-weight:700;line-height:1.08;color:white;margin-bottom:12px;}
-.infl-h em{font-style:italic;color:var(--plum3);}
-.infl-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.85;margin-bottom:22px;}
-.infl-cta-row{display:flex;gap:10px;flex-wrap:wrap;}
-.btn-plum{padding:13px 26px;border-radius:100px;background:var(--plum);color:white;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;text-decoration:none;transition:all .25s;display:inline-block;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.btn-plum:hover{background:var(--plum2);transform:translateY(-2px);}
-.btn-plum-outline{padding:13px 26px;border-radius:100px;border:1px solid rgba(196,168,212,.3);color:rgba(255,255,255,.65);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s;display:inline-block;}
-.btn-plum-outline:hover{border-color:var(--plum3);color:var(--plum3);transform:translateY(-2px);}
-
-.infl-pains{display:flex;flex-direction:column;gap:14px;}
-.infl-pain{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(196,168,212,.1);}
-.infl-pain-ic{width:36px;height:36px;border-radius:10px;background:rgba(107,79,122,.25);border:1px solid rgba(196,168,212,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.infl-pain-t{font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;}
-.infl-pain-t strong{display:block;font-size:14px;color:white;font-weight:500;margin-bottom:2px;}
-
-.infl-profiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:48px;}
-.infl-profile{border-radius:18px;padding:24px;background:rgba(255,255,255,.04);border:1px solid rgba(196,168,212,.1);transition:transform .3s,border-color .3s,background .3s;}
-.infl-profile:hover{transform:translateY(-4px);border-color:rgba(196,168,212,.25);background:rgba(107,79,122,.12);}
-.ip-emoji{font-size:24px;margin-bottom:10px;}
-.ip-name{font-family:'Lora',serif;font-size:17px;font-weight:600;color:white;margin-bottom:6px;}
-.ip-name em{font-style:italic;color:var(--plum3);}
-.ip-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:12px;}
-.ip-tag{display:inline-block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--plum3);background:rgba(107,79,122,.2);padding:3px 10px;border-radius:100px;}
-
-.infl-quiz-block{background:rgba(107,79,122,.18);border:1px solid rgba(196,168,212,.18);border-radius:20px;padding:32px 36px;display:flex;align-items:center;gap:32px;}
-.iqb-left{flex:1;}
-.iqb-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--plum3);margin-bottom:8px;}
-.iqb-h{font-family:'Lora',serif;font-size:22px;font-weight:600;color:white;margin-bottom:8px;line-height:1.3;}
-.iqb-h em{font-style:italic;color:var(--plum3);}
-.iqb-p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;}
-.iqb-right{text-align:center;flex-shrink:0;}
-.iqb-stats{display:flex;gap:24px;margin-bottom:16px;}
-.iqb-stat{text-align:center;}
-.iqb-num{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--plum3);}
-.iqb-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:2px;}
-
-@media(max-width:760px){
-  .infl-top{grid-template-columns:1fr;gap:32px;}
-  .infl-profiles{grid-template-columns:1fr;}
-  .infl-quiz-block{flex-direction:column;gap:20px;padding:24px;}
-  .iqb-stats{justify-content:center;}
-}
-
+/* LEAD MAGNET */
+#lm{background:var(--sage);padding:88px 52px;}
 .lm-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
 .lm-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .lm-tag::before{content:'';width:20px;height:1px;background:rgba(255,255,255,.3);}
@@ -379,17 +319,16 @@ footer a:hover { color: #4A7C6F !important; }
 <body>
 
 <div class="lang-bar">
-  <button class="lb active" id="btn-es">🇲🇽 Español</button>
-  <button class="lb" id="btn-en">🇺🇸 English</button>
+  <button class="lb active" id="btn-es" onclick="setLang('es')">🇲🇽 Español</button>
+  <button class="lb" id="btn-en" onclick="setLang('en')">🇺🇸 English</button>
 </div>
 
 <div class="mob-menu" id="mobMenu">
-  <a href="#pain"        class="mob-link" data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a>
-  <a href="#about"       class="mob-link" data-es="Sobre mí"    data-en="About Me">Sobre mí</a>
-  <a href="#services"    class="mob-link" data-es="Servicios"   data-en="Services">Servicios</a>
-  <a href="#influencers" class="mob-link mob-link-plum" data-es="✦ Creadores" data-en="✦ Creators">✦ Creadores</a>
-  <a href="#lm"          class="mob-link" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a>
-  <a href="#contact"     class="mob-link" data-es="Contacto"    data-en="Contact">Contacto</a>
+  <a href="#pain"   onclick="cm()" data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a>
+  <a href="#about"  onclick="cm()" data-es="Sobre mí"    data-en="About Me">Sobre mí</a>
+  <a href="#services" onclick="cm()" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="#lm"     onclick="cm()" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a>
+  <a href="#contact" onclick="cm()" data-es="Contacto"   data-en="Contact">Contacto</a>
 </div>
 
 <nav id="nav">
@@ -398,12 +337,11 @@ footer a:hover { color: #4A7C6F !important; }
     <li><a href="#pain"    data-es="¿Te suena?"  data-en="Sound familiar?">¿Te suena?</a></li>
     <li><a href="#psicologia" data-es="Psicología" data-en="Psychology">Psicología</a></li>
     <li><a href="#services" data-es="Servicios"  data-en="Services">Servicios</a></li>
-    <li><a href="#influencers" class="nav-plum" data-es="✦ Creadores" data-en="✦ Creators">✦ Creadores</a></li>
     <li><a href="blog.html" data-es="Blog" data-en="Blog">Blog</a></li>
     <li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test gratis" data-en="Free Quiz" id="nav-quiz-link">Test gratis</a></li>
     <li><a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="nav-cta" data-es="Agendar sesión" data-en="Book Session">Agendar sesión</a></li>
   </ul>
-  <button class="nav-toggle" id="navT"><span></span><span></span><span></span></button>
+  <button class="nav-toggle" id="navT" onclick="tm()"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- ══ HERO ══ -->
@@ -482,7 +420,7 @@ footer a:hover { color: #4A7C6F !important; }
       <div>
         <div class="sec-tag" style="color:var(--sage3);" data-es="La psicología del dinero" data-en="The psychology of money">La psicología del dinero</div>
         <div class="housel-quote" data-es="La gestión financiera no tiene que ver con cuánto sabes — tiene que ver con cómo te comportas." data-en="Financial management is not about how much you know — it's about how you behave.">"La gestión financiera no tiene que ver con cuánto sabes — tiene que ver con cómo te comportas."</div>
-        <div class="housel-attr" data-es="— Psicología del comportamiento financiero" data-en="— Behavioral financial psychology">— Psicología del comportamiento financiero</div>
+        <div class="housel-attr">— Morgan Housel, La Psicología del Dinero</div>
       </div>
       <div class="housel-points">
         <div class="hp">
@@ -519,9 +457,9 @@ footer a:hover { color: #4A7C6F !important; }
     <div class="reveal">
       <div class="sec-tag" data-es="Psicología & Finanzas" data-en="Psychology & Finance">Psicología &amp; Finanzas</div>
       <h2 class="sec-h" style="margin-bottom:14px;">
-        <span data-es="Por qué el dinero es <em>más psicología</em> que matemática" data-en="Why money is <em>more psychology</em> than math">Por qué el dinero es <em>más psicología</em> que matemática</span>
+        <span data-es="Lo que <em>Cómo Piensan los Ricos</em> nos enseña sobre el dinero" data-en="What <em>The Psychology of Money</em> teaches us about wealth">Lo que <em>Cómo Piensan los Ricos</em> nos enseña sobre el dinero</span>
       </h2>
-      <p class="sec-p" style="margin-bottom:48px;" data-es="La investigación en psicología financiera y economía del comportamiento es clara: el 80% de nuestras decisiones con el dinero son emocionales. Mi enfoque combina finanzas reales con herramientas de psicología para que el cambio sea duradero." data-en="Research in financial psychology and behavioral economics is clear: 80% of our money decisions are emotional. My approach combines real finance with psychology tools so the change actually lasts.">La investigación en psicología financiera y economía del comportamiento es clara: el 80% de nuestras decisiones con el dinero son emocionales. Mi enfoque combina finanzas reales con herramientas de psicología para que el cambio sea duradero.</p>
+      <p class="sec-p" style="margin-bottom:48px;" data-es="Morgan Housel demostró que la riqueza no es resultado de la inteligencia, sino del comportamiento. Estas son las ideas clave — y cómo las trabajo contigo en cada sesión." data-en="Morgan Housel showed that wealth isn't a result of intelligence, but of behavior. These are the key ideas — and how I work through them with you in every session.">Morgan Housel demostró que la riqueza no es resultado de la inteligencia, sino del comportamiento. Estas son las ideas clave — y cómo las trabajo contigo en cada sesión.</p>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;" class="reveal">
@@ -575,7 +513,7 @@ footer a:hover { color: #4A7C6F !important; }
       <div style="background:var(--ink);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;">
         <div>
           <div style="font-family:'Lora',serif;font-size:22px;font-weight:700;font-style:italic;color:white;line-height:1.3;margin-bottom:12px;" data-es='"La finanza personal es más personal que financiera."' data-en='"Personal finance is more personal than finance."'>"La finanza personal es más personal que financiera."</div>
-          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage3);opacity:.7;" data-es="— Psicología financiera aplicada" data-en="— Applied financial psychology">— Psicología financiera aplicada</div>
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sage3);opacity:.7;">— Morgan Housel</div>
         </div>
         <div style="margin-top:28px;">
           <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:20px;" data-es="Por eso cada sesión empieza por entenderte a ti, no por darte un presupuesto." data-en="That's why every session starts by understanding you, not by giving you a budget.">Por eso cada sesión empieza por entenderte a ti, no por darte un presupuesto.</p>
@@ -626,172 +564,78 @@ footer a:hover { color: #4A7C6F !important; }
 <section id="services" style="background:var(--cream2);padding:88px 52px;">
   <div style="max-width:1060px;margin:0 auto;">
     <div class="sec-tag" data-es="Servicios" data-en="Services">Servicios</div>
-    <div id="geo-badge" class="geo-badge" title="Cambiar región" style="display:none;"></div>
+    <div id="geo-badge" class="geo-badge" onclick="showGeoPicker()" title="Cambiar región" style="display:none;"></div>
     <h2 class="sec-h"><span data-es="Elige cómo quieres <em>trabajar juntos</em>" data-en="Choose how you want to <em>work together</em>">Elige cómo quieres <em>trabajar juntos</em></span></h2>
     <p class="sec-p" data-es="Finanzas reales + psicología del comportamiento. Entendemos juntos por qué tus patrones con el dinero son como son, y los cambiamos." data-en="Real finance + behavioral psychology. We understand together why your money patterns are what they are, and we change them.">Finanzas reales + psicología del comportamiento. Entendemos juntos por qué tus patrones con el dinero son como son, y los cambiamos.</p>
     <div class="svc-grid">
+
+      <!-- SESIÓN DIAGNÓSTICO -->
       <div class="svc lt reveal">
         <div class="svc-badge bnew" data-es="Para empezar" data-en="To start">Para empezar</div>
         <div class="svc-tag" data-es="Sesión única" data-en="Single session">Sesión única</div>
         <div class="svc-ic">🔍</div>
         <div class="svc-name" data-es="Sesión Diagnóstico" data-en="Diagnostic Session">Sesión Diagnóstico</div>
-        <div class="svc-desc" data-es="90 minutos. Analizamos tu situación real y sales con un plan claro. Sin rodeos." data-en="90 minutes. We analyze your real situation and you leave with a clear plan. No fluff.">90 minutos. Analizamos tu situación real y sales con un plan claro. Sin rodeos.</div>
+        <div class="svc-desc" data-es="90 minutos para entender de dónde vienes, qué frena tu dinero y qué hacer diferente — desde hoy." data-en="90 minutes to understand where you're coming from, what's blocking your money, and what to do differently — starting today.">90 minutos para entender de dónde vienes, qué frena tu dinero y qué hacer diferente — desde hoy.</div>
+        <div class="svc-deliverable-label" data-es="Lo que recibes:" data-en="What you get:">Lo que recibes:</div>
         <div class="svc-list">
-          <div class="svc-item" data-es="Análisis de ingresos, gastos y deudas" data-en="Income, expenses and debt analysis">Análisis de ingresos, gastos y deudas</div>
-          <div class="svc-item" data-es="Tu perfil psicológico con el dinero" data-en="Your psychological money profile">Tu perfil psicológico con el dinero</div>
-          <div class="svc-item" data-es="Plan de acción concreto" data-en="Concrete action plan">Plan de acción concreto</div>
-          <div class="svc-item" data-es="Grabación incluida" data-en="Recording included">Grabación incluida</div>
+          <div class="svc-item" data-es="Mapa completo de tu situación real: ingresos, gastos, deudas y flujo de dinero" data-en="Full map of your real situation: income, expenses, debt and cash flow">Mapa completo de tu situación real: ingresos, gastos, deudas y flujo de dinero</div>
+          <div class="svc-item" data-es="Identificación de tus sesgos financieros — las decisiones automáticas que te cuestan sin que lo notes" data-en="Your financial biases identified — the automatic decisions that cost you without you noticing">Identificación de tus sesgos financieros — las decisiones automáticas que te cuestan sin que lo notes</div>
+          <div class="svc-item" data-es="Tu patrón emocional con el dinero: de dónde viene y cómo lo cambias" data-en="Your emotional money pattern: where it comes from and how to shift it">Tu patrón emocional con el dinero: de dónde viene y cómo lo cambias</div>
+          <div class="svc-item" data-es="Estructura de cuentas recomendada para tu perfil e ingresos" data-en="Recommended account structure for your profile and income type">Estructura de cuentas recomendada para tu perfil e ingresos</div>
+          <div class="svc-item" data-es="Plan de acción con prioridades claras para los próximos 30 días" data-en="Action plan with clear priorities for the next 30 days">Plan de acción con prioridades claras para los próximos 30 días</div>
+          <div class="svc-item" data-es="Documento escrito con resumen y próximos pasos (enviado en 24h)" data-en="Written summary with your next steps (sent within 24h)">Documento escrito con resumen y próximos pasos (enviado en 24h)</div>
         </div>
-        <div class="svc-price" id="price-diag"><span id="price-diag-amt">$97</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ sesión" data-en="/ session"> / sesión</span></div>
+        <div class="svc-price" id="price-diag"><span id="price-diag-amt">$37</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ sesión" data-en="/ session"> / sesión</span></div>
         <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="svc-cta" data-es="Agendar sesión" data-en="Book session">Agendar sesión</a>
       </div>
+
+      <!-- COACHING 1:1 -->
       <div class="svc dk reveal">
         <div class="svc-badge bpop" data-es="Más elegido" data-en="Most popular">Más elegido</div>
         <div class="svc-tag" data-es="Acompañamiento mensual" data-en="Monthly coaching">Acompañamiento mensual</div>
         <div class="svc-ic">🌱</div>
         <div class="svc-name" data-es="Coaching Financiero 1:1" data-en="1:1 Financial Coaching">Coaching Financiero 1:1</div>
-        <div class="svc-desc" data-es="Trabajo profundo mes a mes. Números + mentalidad. Para quienes quieren un cambio real y duradero." data-en="Deep work month by month. Numbers + mindset. For those who want real, lasting change.">Trabajo profundo mes a mes. Números + mentalidad. Para quienes quieren un cambio real y duradero.</div>
+        <div class="svc-desc" data-es="Cambiar tus finanzas no es solo aprender a ahorrar — es reprogramar cómo piensas y decides con el dinero. Trabajo profundo mes a mes, contigo." data-en="Changing your finances isn't just learning to save — it's reprogramming how you think and decide with money. Deep work month by month, with you.">Cambiar tus finanzas no es solo aprender a ahorrar — es reprogramar cómo piensas y decides con el dinero. Trabajo profundo mes a mes, contigo.</div>
+        <div class="svc-deliverable-label" data-es="Lo que recibes:" data-en="What you get:">Lo que recibes:</div>
         <div class="svc-list">
-          <div class="svc-item" data-es="4 sesiones mensuales de 60 min" data-en="4 monthly 60-min sessions">4 sesiones mensuales de 60 min</div>
-          <div class="svc-item" data-es="Seguimiento semanal por WhatsApp" data-en="Weekly WhatsApp check-ins">Seguimiento semanal por WhatsApp</div>
-          <div class="svc-item" data-es="Plan financiero personalizado" data-en="Personalized financial plan">Plan financiero personalizado</div>
-          <div class="svc-item" data-es="Trabajo en creencias y sesgos del dinero" data-en="Work on money beliefs and biases">Trabajo en creencias y sesgos del dinero</div>
+          <div class="svc-item" data-es="4 sesiones mensuales de 60 min — números y mentalidad en cada una" data-en="4 monthly 60-min sessions — numbers and mindset in every one">4 sesiones mensuales de 60 min — números y mentalidad en cada una</div>
+          <div class="svc-item" data-es="Seguimiento semanal por WhatsApp — nunca quedas solo/a entre sesiones" data-en="Weekly WhatsApp check-ins — you're never left alone between sessions">Seguimiento semanal por WhatsApp — nunca quedas solo/a entre sesiones</div>
+          <div class="svc-item" data-es="Hoja de ruta a 3, 6 y 12 meses con metas medibles y revisión mensual" data-en="3, 6 and 12-month roadmap with measurable goals and monthly review">Hoja de ruta a 3, 6 y 12 meses con metas medibles y revisión mensual</div>
+          <div class="svc-item" data-es="Presupuesto por valores — gastas en lo que realmente importa, no en categorías vacías" data-en="Values-based budget — spend on what truly matters, not empty categories">Presupuesto por valores — gastas en lo que realmente importa, no en categorías vacías</div>
+          <div class="svc-item" data-es="Plan de salida de deudas con orden de prioridad y estrategia real" data-en="Debt exit plan with clear priority order and real strategy">Plan de salida de deudas con orden de prioridad y estrategia real</div>
+          <div class="svc-item" data-es="Ejercicios de reprogramación de creencias limitantes específicas a tu historia con el dinero" data-en="Exercises to reprogram limiting beliefs specific to your money story">Ejercicios de reprogramación de creencias limitantes específicas a tu historia con el dinero</div>
+          <div class="svc-item" data-es="Marco de decisiones para compras grandes, inversiones o deudas importantes" data-en="Decision framework for big purchases, investments or major financial choices">Marco de decisiones para compras grandes, inversiones o deudas importantes</div>
+          <div class="svc-item" data-es="Protocolo para meses malos — cómo actuar cuando el ingreso cae sin entrar en pánico" data-en="Bad month protocol — how to respond when income drops without panicking">Protocolo para meses malos — cómo actuar cuando el ingreso cae sin entrar en pánico</div>
+          <div class="svc-item" data-es="Primer paso de inversión adaptado a tu tolerancia real al riesgo" data-en="First investment step adapted to your real risk tolerance">Primer paso de inversión adaptado a tu tolerancia real al riesgo</div>
+          <div class="svc-item" data-es="Acceso a recursos del programa: plantillas, guías y herramientas curadas" data-en="Access to program resources: templates, guides and curated tools">Acceso a recursos del programa: plantillas, guías y herramientas curadas</div>
         </div>
-        <div class="svc-price" id="price-coach"><span id="price-coach-amt">$297</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ mes" data-en="/ month"> / mes</span></div>
+        <div class="svc-price" id="price-coach"><span id="price-coach-amt">$197</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ mes" data-en="/ month"> / mes</span></div>
         <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="svc-cta" data-es="Quiero empezar" data-en="I want to start">Quiero empezar</a>
       </div>
+
+      <!-- COHORT CREADORES -->
       <div class="svc gr reveal">
         <div class="svc-tag" data-es="Programa grupal" data-en="Group program">Programa grupal</div>
         <div class="svc-ic">👥</div>
-        <div class="svc-name" data-es="Cohort: Finanzas Freelancer" data-en="Cohort: Freelancer Finance">Cohort: Finanzas Freelancer</div>
-        <div class="svc-desc" data-es="6 semanas con otros emprendedores. Metodología + comunidad. Próxima cohorte próximamente." data-en="6 weeks with other entrepreneurs. Methodology + community. Next cohort coming soon.">6 semanas con otros emprendedores. Metodología + comunidad. Próxima cohorte próximamente.</div>
+        <div class="svc-name" data-es="Cohort: Finanzas para Creadores" data-en="Cohort: Finance for Creators">Cohort: Finanzas para Creadores</div>
+        <div class="svc-desc" data-es="Para freelancers y creadores de contenido: 6 semanas para construir el sistema financiero que tu negocio creativo necesita — en comunidad." data-en="For freelancers and content creators: 6 weeks to build the financial system your creative business needs — in community.">Para freelancers y creadores de contenido: 6 semanas para construir el sistema financiero que tu negocio creativo necesita — en comunidad.</div>
+        <div class="svc-deliverable-label" data-es="Lo que recibes:" data-en="What you get:">Lo que recibes:</div>
         <div class="svc-list">
-          <div class="svc-item" data-es="6 sesiones grupales en vivo" data-en="6 live group sessions">6 sesiones grupales en vivo</div>
-          <div class="svc-item" data-es="Comunidad privada" data-en="Private community">Comunidad privada</div>
-          <div class="svc-item" data-es="Material completo del programa" data-en="Full program materials">Material completo del programa</div>
-          <div class="svc-item" data-es="Máximo 12 personas" data-en="Max 12 people">Máximo 12 personas</div>
+          <div class="svc-item" data-es="6 sesiones grupales en vivo — 1 por semana, 90 min cada una" data-en="6 live group sessions — 1 per week, 90 min each">6 sesiones grupales en vivo — 1 por semana, 90 min cada una</div>
+          <div class="svc-item" data-es="Módulo de comportamiento financiero: identifica qué decisiones tomas por emoción y cuáles por estrategia" data-en="Financial behavior module: identify which decisions come from emotion vs. strategy">Módulo de comportamiento financiero: identifica qué decisiones tomas por emoción y cuáles por estrategia</div>
+          <div class="svc-item" data-es="Sistema de 3 cuentas y estructura financiera adaptada a ingresos irregulares de creadores" data-en="3-account system and financial structure adapted to creators' irregular income">Sistema de 3 cuentas y estructura financiera adaptada a ingresos irregulares de creadores</div>
+          <div class="svc-item" data-es="Protocolo para meses malos — el plan que necesitas tener antes de que lleguen" data-en="Bad month protocol — the plan you need to have before they arrive">Protocolo para meses malos — el plan que necesitas tener antes de que lleguen</div>
+          <div class="svc-item" data-es="Trabajo en tu relación con el riesgo y el primer paso real hacia invertir" data-en="Work on your relationship with risk and the real first step toward investing">Trabajo en tu relación con el riesgo y el primer paso real hacia invertir</div>
+          <div class="svc-item" data-es="Estrategia para cobrar mejor, negociar branddeals y entender tus impuestos" data-en="Strategy to charge more, negotiate brand deals and understand your taxes">Estrategia para cobrar mejor, negociar branddeals y entender tus impuestos</div>
+          <div class="svc-item" data-es="Material completo: plantillas, calculadoras, guías y recursos descargables" data-en="Full materials: templates, calculators, guides and downloadable resources">Material completo: plantillas, calculadoras, guías y recursos descargables</div>
+          <div class="svc-item" data-es="Comunidad privada — creadores que hablan de dinero sin tabú" data-en="Private community — creators who talk about money without taboo">Comunidad privada — creadores que hablan de dinero sin tabú</div>
+          <div class="svc-item" data-es="Máximo 12 personas para atención real a cada caso" data-en="Max 12 people for real attention to each case">Máximo 12 personas para atención real a cada caso</div>
         </div>
-        <div class="svc-price" id="price-cohort"><span id="price-cohort-amt">$147</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ programa" data-en="/ program"> / programa</span></div>
+        <div class="svc-price" id="price-cohort"><span id="price-cohort-amt">$117</span><span class="svc-unit price-currency">USD</span><span class="svc-unit" data-es="/ programa" data-en="/ program"> / programa</span></div>
         <a href="https://calendly.com/hello-thefinancialclarity/30min" target="_blank" class="svc-cta" data-es="Lista de espera" data-en="Join waitlist">Lista de espera</a>
       </div>
+
     </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ INFLUENCERS / CREATORS ══ -->
-<section id="influencers">
-  <div class="infl-glow1"></div>
-  <div class="infl-glow2"></div>
-  <div class="infl-inner">
-
-    <div class="infl-top reveal">
-      <!-- Left: headline + pains -->
-      <div>
-        <div class="infl-badge">
-          <div class="infl-badge-dot"></div>
-          <span class="infl-badge-text" data-es="Para creadores de contenido" data-en="For content creators">Para creadores de contenido</span>
-        </div>
-        <h2 class="infl-h">
-          <span data-es="Tu negocio crece.<br><em>Tus finanzas, no.</em>" data-en="Your business is growing.<br><em>Your finances aren't.</em>">Tu negocio crece.<br><em>Tus finanzas, no.</em></span>
-        </h2>
-        <p class="infl-sub" data-es="Los creadores de contenido tienen el modelo de negocio más emocionante — y el más difícil de administrar financieramente. Ingresos variables, brand deals, impuestos que nadie te explicó. Todo eso activa patrones psicológicos muy específicos con el dinero." data-en="Content creators have the most exciting business model — and the hardest to manage financially. Variable income, brand deals, taxes nobody explained. All of that triggers very specific psychological patterns with money.">Los creadores de contenido tienen el modelo de negocio más emocionante — y el más difícil de administrar financieramente. Ingresos variables, brand deals, impuestos que nadie te explicó. Todo eso activa patrones psicológicos muy específicos con el dinero.</p>
-        <div class="infl-cta-row">
-          <a href="https://thefinancialclarity.github.io/perfil-financiero-creador.html" target="_blank" class="btn-plum" data-es="Descubrir mi perfil de creador" data-en="Find my creator profile" id="infl-quiz-link">Descubrir mi perfil de creador</a>
-          <a href="#contact" class="btn-plum-outline" data-es="Hablar con una experta" data-en="Talk to an expert">Hablar con una experta</a>
-        </div>
-      </div>
-      <!-- Right: pain points -->
-      <div class="infl-pains">
-        <div class="infl-pain">
-          <div class="infl-pain-ic">💸</div>
-          <div class="infl-pain-t">
-            <strong data-es="El brand deal llegó y desapareció" data-en="The brand deal came and went">El brand deal llegó y desapareció</strong>
-            <span data-es="Recibes un pago grande y en semanas no sabes a dónde fue. No es falta de disciplina — es psicología del dinero inesperado." data-en="You receive a big payment and in weeks you don't know where it went. It's not a lack of discipline — it's the psychology of unexpected money.">Recibes un pago grande y en semanas no sabes a dónde fue. No es falta de disciplina — es psicología del dinero inesperado.</span>
-          </div>
-        </div>
-        <div class="infl-pain">
-          <div class="infl-pain-ic">😰</div>
-          <div class="infl-pain-t">
-            <strong data-es="Los meses flojos te paralizan" data-en="Slow months paralyze you">Los meses flojos te paralizan</strong>
-            <span data-es="Sin fondo de emergencia, cada mes sin deals es una crisis. Y esa ansiedad afecta tu contenido y tus decisiones de negocio." data-en="Without an emergency fund, every month without deals is a crisis. That anxiety affects your content and business decisions.">Sin fondo de emergencia, cada mes sin deals es una crisis. Y esa ansiedad afecta tu contenido y tus decisiones de negocio.</span>
-          </div>
-        </div>
-        <div class="infl-pain">
-          <div class="infl-pain-ic">📊</div>
-          <div class="infl-pain-t">
-            <strong data-es="No sabes cuánto cobrar y siempre es poco" data-en="You don't know what to charge and it's always too little">No sabes cuánto cobrar y siempre es poco</strong>
-            <span data-es="Tu tarifa no es matemática — es psicológica. Lo que crees que vales determina lo que cobras, antes de que el mercado diga algo." data-en="Your rate isn't mathematical — it's psychological. What you believe you're worth determines what you charge, before the market says anything.">Tu tarifa no es matemática — es psicológica. Lo que crees que vales determina lo que cobras, antes de que el mercado diga algo.</span>
-          </div>
-        </div>
-        <div class="infl-pain">
-          <div class="infl-pain-ic">🧾</div>
-          <div class="infl-pain-t">
-            <strong data-es="Tu negocio tiene ventajas fiscales que probablemente no estás aprovechando" data-en="Your business has tax advantages you're probably not using">Tu negocio tiene ventajas fiscales que probablemente no estás aprovechando</strong>
-            <span data-es="Como creador independiente tienes deducciones, estructuras y estrategias que reducen tu carga fiscal — pero nadie te las enseñó, y dejarlas pasar sale caro." data-en="As an independent creator you have deductions, structures and strategies that reduce your tax burden — but nobody taught you them, and leaving them on the table is costly.">Como creador independiente tienes deducciones, estructuras y estrategias que reducen tu carga fiscal — pero nadie te las enseñó, y dejarlas pasar sale caro.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4 creator profiles -->
-    <div class="sec-tag" style="color:var(--plum3);" data-es="Los 4 perfiles del creador con el dinero" data-en="The 4 creator money profiles">Los 4 perfiles del creador con el dinero</div>
-    <div class="infl-profiles reveal">
-      <div class="infl-profile">
-        <div class="ip-emoji">🛍️</div>
-        <div class="ip-name"><em data-es="El Creador Emocional" data-en="The Emotional Creator">El Creador Emocional</em></div>
-        <div class="ip-desc" data-es="Gastas más cuando el canal va bien y te bloqueas cuando va mal. El dinero sube y baja con tus emociones — y eso lo controla todo." data-en="You spend more when the channel does well and freeze when it doesn't. Money rises and falls with your emotions — and that controls everything.">Gastas más cuando el canal va bien y te bloqueas cuando va mal. El dinero sube y baja con tus emociones — y eso lo controla todo.</div>
-        <span class="ip-tag" data-es="El más común en creadores" data-en="Most common in creators">El más común en creadores</span>
-      </div>
-      <div class="infl-profile">
-        <div class="ip-emoji">🙈</div>
-        <div class="ip-name"><em data-es="El Creador Evitador" data-en="The Avoiding Creator">El Creador Evitador</em></div>
-        <div class="ip-desc" data-es="Prefieres no ver los números. Sin tarifa clara, sin registro de ingresos, sin plan de impuestos. El negocio crece pero la claridad no." data-en="You prefer not to look at the numbers. No clear rate, no income record, no tax plan. The business grows but clarity doesn't.">Prefieres no ver los números. Sin tarifa clara, sin registro de ingresos, sin plan de impuestos. El negocio crece pero la claridad no.</div>
-        <span class="ip-tag" data-es="Gran potencial de mejora" data-en="High improvement potential">Gran potencial de mejora</span>
-      </div>
-      <div class="infl-profile">
-        <div class="ip-emoji">🚀</div>
-        <div class="ip-name"><em data-es="El Creador Ambicioso" data-en="The Ambitious Creator">El Creador Ambicioso</em></div>
-        <div class="ip-desc" data-es="Sabes exactamente qué deberías hacer — producto propio, inversiones, sistema de ahorro. La brecha entre saber y hacer es brutal." data-en="You know exactly what you should do — your own product, investments, savings system. The gap between knowing and doing is brutal.">Sabes exactamente qué deberías hacer — producto propio, inversiones, sistema de ahorro. La brecha entre saber y hacer es brutal.</div>
-        <span class="ip-tag" data-es="Solo necesita el sistema" data-en="Just needs the system">Solo necesita el sistema</span>
-      </div>
-      <div class="infl-profile">
-        <div class="ip-emoji">🔒</div>
-        <div class="ip-name"><em data-es="El Creador Ansioso" data-en="The Anxious Creator">El Creador Ansioso</em></div>
-        <div class="ip-desc" data-es="Tienes el control — pero desde el miedo, no desde la abundancia. Rechazas oportunidades porque nunca se siente el momento seguro." data-en="You have control — but from fear, not abundance. You reject opportunities because it never feels like the right moment.">Tienes el control — pero desde el miedo, no desde la abundancia. Rechazas oportunidades porque nunca se siente el momento seguro.</div>
-        <span class="ip-tag" data-es="Base sólida, mentalidad a crecer" data-en="Solid base, mindset to grow">Base sólida, mentalidad a crecer</span>
-      </div>
-    </div>
-
-    <!-- Quiz block CTA -->
-    <div class="infl-quiz-block reveal">
-      <div class="iqb-left">
-        <div class="iqb-tag" data-es="Quiz exclusivo para creadores" data-en="Exclusive quiz for creators">Quiz exclusivo para creadores</div>
-        <div class="iqb-h">
-          <span data-es="Descubre tu perfil financiero<br><em>como creador de contenido</em>" data-en="Discover your financial profile<br><em>as a content creator</em>">Descubre tu perfil financiero<br><em>como creador de contenido</em></span>
-        </div>
-        <p class="iqb-p" data-es="8 preguntas sobre brand deals, meses flojos, tarifas y monetización. Tu resultado incluye cómo este perfil afecta específicamente tu negocio — y los primeros pasos concretos." data-en="8 questions about brand deals, slow months, rates and monetization. Your result includes how this profile specifically affects your business — and the first concrete steps.">8 preguntas sobre brand deals, meses flojos, tarifas y monetización. Tu resultado incluye cómo este perfil afecta específicamente tu negocio — y los primeros pasos concretos.</p>
-      </div>
-      <div class="iqb-right">
-        <div class="iqb-stats">
-          <div class="iqb-stat">
-            <div class="iqb-num">8</div>
-            <div class="iqb-label" data-es="preguntas" data-en="questions">preguntas</div>
-          </div>
-          <div class="iqb-stat">
-            <div class="iqb-num">4</div>
-            <div class="iqb-label" data-es="perfiles" data-en="profiles">perfiles</div>
-          </div>
-          <div class="iqb-stat">
-            <div class="iqb-num">3 min</div>
-            <div class="iqb-label" data-es="gratis" data-en="free">gratis</div>
-          </div>
-        </div>
-        <a href="https://thefinancialclarity.github.io/perfil-financiero-creador.html" target="_blank" class="btn-plum" style="display:inline-block;" data-es="Hacer el quiz →" data-en="Take the quiz →" id="infl-quiz-link2">Hacer el quiz →</a>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -825,7 +669,7 @@ footer a:hover { color: #4A7C6F !important; }
         <div class="ff"><label class="fl" data-es="Tu nombre" data-en="Your name">Tu nombre</label><input type="text" class="fi" data-ph-es="¿Cómo te llamas?" data-ph-en="What's your name?" placeholder="¿Cómo te llamas?"></div>
         <div class="ff"><label class="fl" data-es="Tu email" data-en="Your email">Tu email</label><input type="email" class="fi" placeholder="tu@email.com"></div>
         <div class="ff"><label class="fl" data-es="¿A qué te dedicas?" data-en="What do you do?">¿A qué te dedicas?</label><input type="text" class="fi" data-ph-es="Diseñadora, fotógrafa, copywriter..." data-ph-en="Designer, photographer, copywriter..." placeholder="Diseñadora, fotógrafa, copywriter..."></div>
-        <button class="fb" id="btn-guide" data-es="Envíame la guía →" data-en="Send me the guide →">Envíame la guía →</button>
+        <button class="fb" onclick="doForm(this,'guide')" data-es="Envíame la guía →" data-en="Send me the guide →">Envíame la guía →</button>
         <div class="fp" data-es="🔒 Tu email es tuyo. No lo compartimos." data-en="🔒 Your email is yours. We never share it.">🔒 Tu email es tuyo. No lo compartimos.</div>
       </div>
     </div>
@@ -920,7 +764,7 @@ footer a:hover { color: #4A7C6F !important; }
           <div class="cff"><label class="cfl">Email</label><input type="email" class="cfi" placeholder="tu@email.com"></div>
         </div>
         <div class="cff"><label class="cfl" data-es="¿En qué te puedo ayudar?" data-en="How can I help?">¿En qué te puedo ayudar?</label><textarea class="cfi" data-ph-es="Cuéntame brevemente tu situación..." data-ph-en="Briefly describe your situation..." placeholder="Cuéntame brevemente tu situación..."></textarea></div>
-        <button class="cfb" id="btn-contact" data-es="Enviar mensaje →" data-en="Send message →">Enviar mensaje →</button>
+        <button class="cfb" onclick="doForm(this,'contact')" data-es="Enviar mensaje →" data-en="Send message →">Enviar mensaje →</button>
       </div>
     </div>
   </div>
@@ -935,7 +779,7 @@ footer a:hover { color: #4A7C6F !important; }
         <div class="f-tag" data-es="Tu dinero, tu tranquilidad. Finanzas reales + psicología del comportamiento." data-en="Your money, your peace of mind. Real finance + behavioral psychology.">Tu dinero, tu tranquilidad. Finanzas reales + psicología del comportamiento.</div>
       </div>
       <div class="f-links">
-        <div><div class="flg-t" data-es="Navegar" data-en="Navigate">Navegar</div><ul class="flg-l"><li><a href="#pain" data-es="¿Te suena?" data-en="Sound familiar?">¿Te suena?</a></li><li><a href="#psicologia" data-es="Psicología" data-en="Psychology">Psicología</a></li><li><a href="blog.html" data-es="Blog" data-en="Blog">Blog</a></li><li><a href="#about" data-es="Sobre mí" data-en="About Me">Sobre mí</a></li><li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li><li><a href="#influencers" data-es="✦ Creadores" data-en="✦ Creators" style="color:#9B7AAE!important;font-weight:500;">✦ Creadores</a></li><li><a href="#lm" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li><li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li></ul></div>
+        <div><div class="flg-t" data-es="Navegar" data-en="Navigate">Navegar</div><ul class="flg-l"><li><a href="#pain" data-es="¿Te suena?" data-en="Sound familiar?">¿Te suena?</a></li><li><a href="#psicologia" data-es="Psicología" data-en="Psychology">Psicología</a></li><li><a href="blog.html" data-es="Blog" data-en="Blog">Blog</a></li><li><a href="#about" data-es="Sobre mí" data-en="About Me">Sobre mí</a></li><li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li><li><a href="#lm" data-es="Guía gratis" data-en="Free Guide">Guía gratis</a></li><li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li></ul></div>
         <div><div class="flg-t" data-es="Servicios" data-en="Services">Servicios</div><ul class="flg-l"><li><a href="#services" data-es="Sesión Diagnóstico" data-en="Diagnostic Session">Sesión Diagnóstico</a></li><li><a href="#services" data-es="Coaching 1:1" data-en="1:1 Coaching">Coaching 1:1</a></li><li><a href="#services" data-es="Programa Grupal" data-en="Group Program">Programa Grupal</a></li>
 <li><a href="https://thefinancialclarity.github.io/test-relacion-dinero.html" target="_blank" data-es="Test gratis" data-en="Free Quiz" id="nav-quiz-link">Test gratis</a></li></ul></div>
       </div>
@@ -967,20 +811,14 @@ function setLang(l){
     var el=document.getElementById(id);
     if(el)el.href=quizUrl;
   });
-  var inflBase='https://thefinancialclarity.github.io/perfil-financiero-creador.html';
-  var inflUrl=l==='en'?inflBase+'?lang=en':inflBase;
-  ['infl-quiz-link','infl-quiz-link2'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el)el.href=inflUrl;
-  });
 }
 
 function applyPricing(geo){
   currentGeo=geo;
   var prices={
-    mx:{diag:'$997',coach:'$2,997',cohort:'$1,497',currency:'MXN'},
-    us:{diag:'$97',coach:'$297',cohort:'$147',currency:'USD'},
-    default:{diag:'$97',coach:'$297',cohort:'$147',currency:'USD'}
+    mx:{diag:'$697',coach:'$3,697',cohort:'$2,197',currency:'MXN'},
+    us:{diag:'$37',coach:'$197',cohort:'$117',currency:'USD'},
+    default:{diag:'$37',coach:'$197',cohort:'$117',currency:'USD'}
   };
   var p=prices[geo]||prices.default;
   document.getElementById('price-diag-amt').textContent=p.diag;
@@ -1043,69 +881,6 @@ function showGeoPicker(){
   },100);
 }
 
-// ── SCROLL NAV ──
-window.addEventListener('scroll',function(){
-  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
-});
-
-// ── MOBILE TOGGLE ──
-function tm(){
-  document.getElementById('mobMenu').classList.toggle('open');
-  document.body.classList.toggle('menu-open');
-}
-function cm(){
-  document.body.classList.remove('menu-open');
-  document.getElementById('mobMenu').classList.remove('open');
-}
-
-// ── FORMS ──
-function doForm(btn,type){
-  var orig=btn.textContent;
-  btn.textContent=lang==='en'?'Sending…':'Enviando…';
-  btn.disabled=true;
-  setTimeout(function(){
-    btn.textContent=lang==='en'?'Sent! ✓':'¡Enviado! ✓';
-    setTimeout(function(){btn.textContent=orig;btn.disabled=false;},3000);
-  },1200);
-}
-
-// ── REVEAL ON SCROLL ──
-var revealEls=document.querySelectorAll('.reveal');
-var io=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
-},{threshold:0.1});
-revealEls.forEach(function(el){io.observe(el);});
-
-// ── WIRE ALL EVENT LISTENERS ──
-// Script is at end of body so DOM is already parsed — no need to wait for DOMContentLoaded
-(function(){
-  // lang buttons
-  var btnEs=document.getElementById('btn-es');
-  var btnEn=document.getElementById('btn-en');
-  if(btnEs)btnEs.addEventListener('click',function(){setLang('es');});
-  if(btnEn)btnEn.addEventListener('click',function(){setLang('en');});
-
-  // nav toggle (hamburger)
-  var navT=document.getElementById('navT');
-  if(navT)navT.addEventListener('click',tm);
-
-  // mobile menu links — close menu on click
-  document.querySelectorAll('.mob-link').forEach(function(a){
-    a.addEventListener('click',cm);
-  });
-
-  // geo badge
-  var geoBadge=document.getElementById('geo-badge');
-  if(geoBadge)geoBadge.addEventListener('click',showGeoPicker);
-
-  // guide form button
-  var btnGuide=document.getElementById('btn-guide');
-  if(btnGuide)btnGuide.addEventListener('click',function(){doForm(this,'guide');});
-
-  // contact form button
-  var btnContact=document.getElementById('btn-contact');
-  if(btnContact)btnContact.addEventListener('click',function(){doForm(this,'contact');});
-}());
-</script>
-</body>
-</html>
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>60);});
+function tm(){document.getElementById('mobMenu').classList.toggle('open');document.body.classList.toggle('menu-open');}
+function cm(){document.body.classList.remove('menu-open');document.getElementById('mobMenu')
