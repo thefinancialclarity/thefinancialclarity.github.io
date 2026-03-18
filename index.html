@@ -1067,12 +1067,68 @@ function cm(){
 // ── FORMS ──
 function doForm(btn,type){
   var orig=btn.textContent;
+  var data={};
+
+  if(type==='guide'){
+    var card=btn.closest('.form-card');
+    var inputs=card?card.querySelectorAll('.fi'):[];
+    var nameVal=inputs[0]?inputs[0].value.trim():'';
+    var emailVal=inputs[1]?inputs[1].value.trim():'';
+    var jobVal=inputs[2]?inputs[2].value.trim():'';
+    if(!emailVal||!emailVal.includes('@')){
+      alert(lang==='en'?'Please enter your email.':'Por favor ingresa tu email.');
+      return;
+    }
+    data={
+      '_subject':'📥 Nueva solicitud de guía gratis — The Financial Clarity',
+      'Nombre':nameVal,
+      'Email':emailVal,
+      'Ocupacion':jobVal,
+      'Tipo':'Guía gratis'
+    };
+  } else if(type==='contact'){
+    var cf=document.querySelector('.cf');
+    var cinputs=cf?cf.querySelectorAll('.cfi'):[];
+    var cemailVal=cinputs[1]?cinputs[1].value.trim():'';
+    var cmsgVal=cinputs[2]?cinputs[2].value.trim():'';
+    if(!cemailVal||!cemailVal.includes('@')){
+      alert(lang==='en'?'Please enter your email.':'Por favor ingresa tu email.');
+      return;
+    }
+    if(!cmsgVal){
+      alert(lang==='en'?'Please write a message.':'Por favor escribe un mensaje.');
+      return;
+    }
+    data={
+      '_subject':'✉️ Nuevo mensaje de contacto — The Financial Clarity',
+      'Nombre':cinputs[0]?cinputs[0].value.trim():'',
+      'Email':cemailVal,
+      'Mensaje':cmsgVal,
+      'Tipo':'Contacto directo'
+    };
+  }
+
   btn.textContent=lang==='en'?'Sending…':'Enviando…';
   btn.disabled=true;
-  setTimeout(function(){
-    btn.textContent=lang==='en'?'Sent! ✓':'¡Enviado! ✓';
-    setTimeout(function(){btn.textContent=orig;btn.disabled=false;},3000);
-  },1200);
+
+  fetch('https://formspree.io/f/mjgaypdn',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(data)
+  }).then(function(res){
+    if(res.ok){
+      btn.textContent=lang==='en'?'Sent! ✓':'¡Enviado! ✓';
+      btn.style.background='var(--sage)';
+      btn.style.color='white';
+      setTimeout(function(){btn.textContent=orig;btn.disabled=false;btn.style.background='';btn.style.color='';},4000);
+    } else {
+      btn.textContent=lang==='en'?'Error — try again':'Error — intenta de nuevo';
+      btn.disabled=false;
+    }
+  }).catch(function(){
+    btn.textContent=lang==='en'?'Connection error':'Error de conexión';
+    btn.disabled=false;
+  });
 }
 
 // ── REVEAL ON SCROLL ──
