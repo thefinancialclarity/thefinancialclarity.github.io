@@ -984,9 +984,9 @@ function setLang(l){
 function applyPricing(geo){
   currentGeo=geo;
   var prices={
-    mx:{diag:'$997',coach:'$2,997',cohort:'$1,497',currency:'MXN'},
-    us:{diag:'$97',coach:'$297',cohort:'$147',currency:'USD'},
-    default:{diag:'$97',coach:'$297',cohort:'$147',currency:'USD'}
+    mx:{diag:'$697',coach:'$3,497',cohort:'$2,197',currency:'MXN'},
+    us:{diag:'$37',coach:'$187',cohort:'$117',currency:'USD'},
+    default:{diag:'$37',coach:'$187',cohort:'$117',currency:'USD'}
   };
   var p=prices[geo]||prices.default;
   document.getElementById('price-diag-amt').textContent=p.diag;
